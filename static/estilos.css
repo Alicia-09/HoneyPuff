@@ -9,7 +9,7 @@ body {
 /* sidebar */
 
 .sidebar {
-    background-color: #FFFFFF;
+    background-color: #F5EDE4;
     width: 250px;
     height: 100vh;
     border-right: 1px solid #eee;
@@ -65,7 +65,7 @@ body {
 
 .card-custom {
     border: none;
-    background-color: #FFFFFF;
+    background-color: #F5EDE4;
     border-radius: 15px;
     padding: 12px;
     transition: 0.2s;
@@ -86,7 +86,7 @@ body {
 }
 
 .card-custom-login:hover {
-    background-color: #F8B4C4;
+    background-color: #C48A44;
 }
 
 
