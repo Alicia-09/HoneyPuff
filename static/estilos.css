@@ -1,7 +1,7 @@
 /* fondo general */
 
 body {
-    background-color: #F5EDE4;
+    background-color: #F8F4E6;
     color: #4A4A4A;
 }
 
@@ -42,14 +42,14 @@ body {
 /* titulos */
 
 .titulo-rosa {
-    color: #F8B4C4;
+    color: #C48A44;
 }
 
 
 /* botones */
 
 .boton-rosa {
-    background-color: #F8B4C4;
+    background-color: #F6C44B;
     color: white;
     border: none;
     border-radius: 10px;
@@ -57,7 +57,7 @@ body {
 }
 
 .boton-rosa:hover {
-    background-color: #f49aad;
+    background-color: #F9E3A1;
 }
 
 
@@ -72,7 +72,7 @@ body {
 }
 
 .card-custom:hover {
-    background-color: #FDECEF;
+    background-color: #F9E3A1;
 }
 
 /* tarjetas login */
