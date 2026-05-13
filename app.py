@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, flash, ses
 from pymongo import MongoClient
 import bcrypt
 
-app = Flask(_name_)
+app = Flask(__name__)
 app.secret_key = "ibdr091903."
 
 
@@ -110,5 +110,5 @@ def logout():
     return redirect(url_for("login"))
 
 
-if _name_ == "_main_":
+if __name__ == "__main__":
     app.run(debug=True)

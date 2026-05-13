@@ -13,9 +13,9 @@ f = Fernet(clave)
 
 
 
-class GestorTareas:
+class honeyPuffDB:
 
-    def _init_(self):
+    def __init__(self):
 
         try:
 
