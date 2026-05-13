@@ -7,7 +7,7 @@ La idea principal del proyecto es crear una experiencia divertida y tranquila, c
 Además, tenemos pensado agregar pequeñas actividades educativas para niños, como minijuegos de letras, números, colores o memoria, con el objetivo de que la aplicación no solo sea entretenida, sino también útil para el aprendizaje. Aunque todavía no estamos seguros de implementar todas estas ideas ya que apenas estamos tomando en cuenta tiempo, utilidad, que seas adecuado, etc.
 La idea es que el usuario al ingresar los datos de inicio de sesión normalmente muestre una página en donde el usuario escogerá entre tres mascotas que serían un oso, abeja o una florecita (estamos pensando en eso), después eso, introduzcan el nombre, también tenemos en mente que escojan algunas prendas para su mascota (está en duda). Ya cuando el usuario tenga su nombre de la mascotita y todo, aparezca en un escenario tipo casa, en donde tendrá varias opciones, bañarlo, alimentarlo, dormirlo y jugar con el (estamos en debate de que agregar para que tenga una función productiva). Los juegos consistirán en ayudarlos a aprenderse números, letras, figuras y colores.
 
-## Nombre completo
+## Integrantes
 Campos Fernandez Ailev Alicia / 24308060610613
 
 <img width="150" height="190" alt="image" src="https://github.com/user-attachments/assets/98f721df-c28d-4eff-9b21-34e6944e86da" />
