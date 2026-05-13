@@ -1,0 +1,118 @@
+{% extends "base_publica.html" %}
+ {% block titulo %}Registrate{% endblock %} 
+ {%block contenido %}
+
+
+  <div class="card-login bg-white p-4 shadow">
+    <h4 class="titulo-rosa text-center mb-3">Crear cuenta</h4>
+
+    <div class="container mt-2">
+      {% with messages = get_flashed_messages(with_categories=true) %} {% if
+      messages %} {% for category, message in messages %}
+      <div
+        class="alert alert-{{ 'danger' if category == 'error' else 'success' }} alert-dismissible fade show"
+        role="alert">
+        {{ message }}
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="alert"
+          aria-label="Close">
+        </button>
+      </div>
+      {% endfor %} {% endif %} {% endwith %}
+    </div>
+
+    <form method="POST" action="{{ url_for('registro') }}">
+      <!-- nombre usuario-->
+      <section class="row mb-3">
+        <div class="col-6">
+          <label for="Nombre" class="form-label"></label>
+          <input
+            type="text"
+            class="form-control"
+            id="Nombre"
+            name="Nombre"
+            required
+            minlength="3"
+            maxlength="20"
+            placeholder="Nombre"
+            value="{{ request.form.get('Nombre', '')}}"
+            required
+          />
+        </div>
+
+        <div class="col-6">
+          <label for="Apellido" class="form-label"></label>
+          <input
+            type="text"
+            class="form-control"
+            id="Apellido"
+            name="Apellido"
+            value="{{ request.form.get('Apellido', '')}}"
+            placeholder="Apellido"
+            required
+          />
+        </div>
+      </section>
+
+      <!-- correo -->
+      <div class="mb-3">
+        <label for="Email" class="form-label"></label>
+        <input
+          type="email"
+          class="form-control"
+          id="Email"
+          name="Email"
+          placeholder="Correo electrónico"
+          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+          value="{{ request.form.get('Email', '')}}"
+          required
+        />
+      </div>
+
+      <!-- contraseña -->
+      
+        <div class="mb-3">
+          <label for="Contra" class="form-label"></label>
+          <input
+            type="password"
+            class="form-control"
+            id="Contra"
+            name="Contra"
+            placeholder="Contraseña"
+            aria-describedby="passwordHelp"
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+            title=" Minimo 8 caracteres, incluye mayusculas, minusculas y un caracter
+            especial"
+          required/>
+        </div>
+
+        <div class="mb-3">
+          <label for="ContraConfirm" class="form-label"></label>
+          <input
+            type="password"
+            class="form-control"
+            id="ContraConfirm"
+            name="ContraConfirm"
+            placeholder="Confirmar contraseña"
+            aria-describedby="passwordHelp"
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+            title=" Minimo 8 caracteres, incluye mayusculas, minusculas y un caracter
+            especial"
+          required/>
+        </div>
+      </section>
+
+      <button class="btn boton-rosa w-100 mb-2">Registrarse</button>
+    </form>
+
+    <div class="text-center">
+      <small>¿Ya tienes cuenta?</small><br />
+      <a href="http://127.0.0.1:5000/login" class="titulo-rosa"
+        >Iniciar sesión</a
+      >
+    </div>
+
+    {% endblock %}
+  </div>

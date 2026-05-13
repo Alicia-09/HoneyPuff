@@ -1,0 +1,190 @@
+{% extends "base_app.html" %}
+
+{% block titulo %}Inicio{% endblock %}
+
+{% block contenido %}
+
+<h4 class="titulo-rosa mb-3 pt-5">Inicio</h4>
+
+<!-- boton -->
+<button class="btn boton-rosa mb-3" data-bs-toggle="modal" data-bs-target="#modalTarea">
+  <i class="fa-solid fa-circle-plus"></i> Añadir tarea
+</button>
+
+{% if tareas %}
+
+  {% for tarea in tareas %}
+
+<div class="card-custom 
+        {% if tarea.prioridad == "alta" %} prioridad-alta 
+        {% elif tarea.prioridad == "media" %} prioridad-media 
+        {% else %} prioridad-baja 
+        {% endif %} 
+        mb-2 d-flex justify-content-between align-items-center">
+
+  <!-- parte izquierda -->
+  <div class="d-flex align-items-center">
+
+    <!-- marcar tarea completada-->
+    <a href="/completar/{{ tarea._id }}" class="me-2 text-decoration-none">
+
+      {% if tarea.estado == "completada" %}
+        <i class="fa-solid fa-circle fa-lg" style="color: #f8b4c4"></i>
+      {% else %}
+        <i class="fa-regular fa-circle fa-lg" style="color: #f8b4c4"></i>
+      {% endif %}
+
+    </a>
+
+    <!-- datos tarea -->
+    <div>
+      <strong>{{ tarea.titulo }}</strong>
+      <br />
+      <small>{{ tarea.descripcion }}</small>
+
+      <div class="mt-1">
+        <small class="text-muted">
+          <i class="fa-solid fa-calendar-days"></i>
+          {{ tarea.fecha_limite }}
+        </small>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- parte derecha -->
+  <div class="d-flex gap-2">
+
+    <!-- editar tarea -->
+    <a href="#" data-bs-toggle="modal" data-bs-target="#editar1"> ✏️ </a>
+
+    <!-- eliminar tarea -->
+    <a href="/eliminar_tarea/{{ tarea._id }}" class="btn-eliminar"> 🗑 </a>
+
+  </div>
+
+</div>
+
+  {% endfor %}
+
+<!-- MODAL EDITAR -->
+<div class="modal fade" id="editar1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title">Editar tarea</h5>
+        <button class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body">
+
+        <form>
+
+          <!-- titulo -->
+          <input type="text" class="form-control mb-2" value="Título de la tarea" />
+
+          <!-- descripcion -->
+          <textarea class="form-control mb-2">Descripcion de la tarea</textarea>
+
+          <!-- fecha -->
+          <input type="date" class="form-control mb-2" />
+
+          <!-- estado -->
+          <label class="mb-2">Estado</label>
+
+          <div class="d-flex gap-2 mb-3 flex-wrap">
+
+            <input type="radio" name="estado" id="pendiente" class="btn-check">
+            <label for="pendiente" class="estado pendiente flex-fill">Pendiente</label>
+
+            <input type="radio" name="estado" id="progreso" class="btn-check">
+            <label for="progreso" class="estado progreso flex-fill">En progreso</label>
+
+            <input type="radio" name="estado" id="pausada" class="btn-check">
+            <label for="pausada" class="estado pausada flex-fill">Pausada</label>
+
+            <input type="radio" name="estado" id="completada" class="btn-check">
+            <label for="completada" class="estado completada flex-fill">Completada</label>
+
+          </div>
+
+          <button class="btn boton-rosa w-100">Guardar cambios</button>
+
+        </form>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{% else %}
+
+<!-- mensaje no tareas -->
+<div class="card-custom text-center mt-3">
+  <p>No tienes tareas aún</p>
+  <i class="fa-solid fa-xmark fa-lg" style="color: #f8b4c4"></i>
+</div>
+
+{% endif %}
+
+<!-- MODAL CREAR TAREA -->
+<div class="modal fade" id="modalTarea">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Nueva tarea</h5>
+        <button class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body">
+        
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="alert alert-{{ 'danger' if category == 'error' else 'success' }} alert-dismissible fade show"
+                  role="alert">
+                {{ message }}
+                
+              </div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+
+        <form action="/crear_tarea" method="POST">
+          <!-- titulo tarea -->
+          <input type="text" class="form-control mb-2" placeholder="Título" name="titulo"  required/>
+
+          <!-- descripcion tarea -->
+          <textarea class="form-control mb-2" placeholder="Descripción" name="descripcion"></textarea>
+
+          <!-- fecha limite tarea -->
+          <label class="mb-1">Fecha limite</label>
+          <input type="date" class="form-control mb-3" name="fecha_limite"  required/>
+
+
+          <!-- prioridad tarea -->
+          <label class="mb-2">Prioridad</label>
+
+          <div class="d-flex gap-2 mb-3">
+
+            <input type="radio" name="prioridad" id="alta" value="alta" class="btn-check">
+            <label for="alta" class="prioridad alta flex-fill">Alta</label>
+
+            <input type="radio" name="prioridad" id="media" value="media" class="btn-check">
+            <label for="media" class="prioridad media flex-fill">Media</label>
+
+            <input type="radio" name="prioridad" id="baja" value="baja" class="btn-check">
+            <label for="baja" class="prioridad baja flex-fill">Baja</label>
+
+          </div>
+
+          <button class="btn boton-rosa w-100">Guardar tarea</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
