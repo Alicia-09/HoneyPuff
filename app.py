@@ -1,21 +1,10 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session
-from pymongo import MongoClient
-import bcrypt
+from funciones import HoneyPuffDB
 
 app = Flask(__name__)
 app.secret_key = "ibdr091903."
 
-
-
-MONGO_URI = "mongodb+srv://mely2:mely19@mely1.lnfi7bk.mongodb.net/?appName=mely1"
-
-client = MongoClient(MONGO_URI)
-
-db = client["HoneyPuff"]
-
-usuarios = db["usuarios"]
-mascotas = db["mascotas"]
-
+db = HoneyPuffDB()
 
 
 @app.route("/")
@@ -23,70 +12,86 @@ def login():
     return render_template("login.html")
 
 
-@app.route("/ValidaSesion", methods=["POST"])
+@app.route('/ValidaSesion', methods=['GET', 'POST'])
 def ValidaSesion():
 
-    email = request.form.get("Email")
-    contra = request.form.get("Contra")
+    if request.method == "POST":
 
-    usuario = usuarios.find_one({
-        "email": email
-    })
+        email = request.form.get('Email', '').strip()
+        contra = request.form.get('Contra', '').strip()
 
-    if not usuario:
-        flash("Usuario no encontrado")
-        return redirect(url_for("login"))
+        if not email or not contra:
 
-    if bcrypt.checkpw(
-        contra.encode("utf-8"),
-        usuario["password"]
-    ):
+            flash('Por favor ingresa correo y contraseña', 'error')
 
-        session["usuario_id"] = str(usuario["_id"])
-        session["usuario"] = usuario["nombreUsuario"]
+            return redirect(url_for('login'))
 
-        flash("Bienvenido")
-        return redirect(url_for("inicio"))
+        usuario = db.validar_usuario(email, contra)
 
-    flash("Contraseña incorrecta")
+        if not usuario:
 
-    return redirect(url_for("login"))
+            flash('Correo o contraseña incorrectos', 'error')
 
+            return redirect(url_for('login'))
+
+        session['usuario_email'] = email
+        session['usuario'] = usuario['nombre']
+        session['usuario_id'] = usuario['_id']
+        session['loggeado'] = True
+
+        flash(f"Bienvenido {usuario['nombre']}!", 'success')
+
+        return redirect(url_for('inicio'))
+
+    return redirect(url_for('login'))
 
 @app.route("/registro", methods=["GET", "POST"])
 def registro():
 
     if request.method == "POST":
-
-        nombreUsuario = request.form.get("Nombre")
+        
+        nombre = request.form.get("Nombre")
+        apellido = request.form.get("Apellido")
         email = request.form.get("Email")
         contra = request.form.get("Contra")
 
-        existe = usuarios.find_one({
-            "email": email
-        })
-
-        if existe:
-            flash("Ese correo ya existe")
-            return redirect(url_for("registro"))
-
-        password_hash = bcrypt.hashpw(
-            contra.encode("utf-8"),
-            bcrypt.gensalt()
+        usuario_creado = db.crear_usuario(
+            nombre,
+            apellido,
+            email,
+            contra
         )
 
-        usuarios.insert_one({
-            "nombreUsuario": nombreUsuario,
-            "email": email,
-            "password": password_hash
-        })
+        if usuario_creado:
 
-        flash("Cuenta creada correctamente")
+            flash("Cuenta creada correctamente")
 
-        return redirect(url_for("login"))
+            return redirect(url_for("login"))
+
+        flash("Ese correo ya existe")
+
+        return redirect(url_for("registro"))
 
     return render_template("registro.html")
 
+@app.route("/recuperar", methods=["GET", "POST"])
+def recuperar():
+
+    if request.method == "POST":
+
+        email = request.form.get("Email")
+
+        password = db.recuperar_password(email)
+
+        if password:
+
+            flash(f"Tu contraseña es: {password}")
+
+            return redirect(url_for("login"))
+
+        flash("Correo no encontrado")
+
+    return render_template("recuperar.html")
 
 
 @app.route("/inicio")
@@ -99,7 +104,6 @@ def inicio():
         "inicio.html",
         usuario=session["usuario"]
     )
-
 
 
 @app.route("/logout")

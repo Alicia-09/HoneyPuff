@@ -1,103 +1,70 @@
 {% extends "base_publica.html" %}
-
-{% block titulo %}
-Iniciar sesión
-{% endblock %}
-
+{% block titulo %}Iniciar sesión{% endblock %}
 {% block contenido %}
+  <div class="card-login bg-white p-4 shadow">
+    <h4 class="titulo-cafe text-center mb-3">Bienvenida</h4>
 
-<div class="card-login bg-white p-4 shadow">
+    <div class="container mt-2">
+                            {% with messages = get_flashed_messages(with_categories=true) %}
+                            {% if messages %}
+                            {% for category, message in messages %}
+                            <div class="alert alert-{{ 'danger' if category == 'error' else 'success' }} alert-dismissible fade show"
+                                role="alert">
+                                {{ message }} 
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                            {% endfor %}
+                            {% endif %}
+                            {% endwith %}
+                        </div>
 
-  <h4 class="titulo-rosa text-center mb-3">
-    Bienvenida
-  </h4>
+    <form method="POST" action="{{ url_for('ValidaSesion') }}">
+      <!-- correo -->
+      <div class="mb-3">
+        <label for="Email" class="form-label"></label>
+        <input
+          type="email"
+          class="form-control"
+          id="Email"
+          name="Email"
+          placeholder="Correo electrónico"
+          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+          value="{{ request.form.get('Email', '')}}"
+          required
+        />
+      </div>
 
- 
-  <div class="container mt-2">
+      <!-- contraseña -->
+      <div class="mb-3">
+        <label for="Contra" class="form-label"></label>
 
-    {% with messages = get_flashed_messages(with_categories=true) %}
-      {% if messages %}
+        <input
+          type="password"
+          class="form-control"
+          id="Contra"
+          name="Contra"
+          placeholder="Contraseña"
+          aria-describedby="passwordHelp"
+          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+          title="Debe contener al menos un número, una mayúscula, una minúscula y al menos 8 caracteres"
+          required/>
+      </div>
+     
+      <div class="text-center mb-3">
+        <a href="{{ url_for('recuperar') }}" class="titulo-cafe">
+          <small>¿Olvidaste tu contraseña?</small>
+        </a>
+      </div>
 
-        {% for category, message in messages %}
+      <!-- boton -->
+      <button type="submit" class="btn boton-amarillo w-100 mb-2">Entrar</button>
+    </form>
 
-          <div class="alert alert-{{ 'danger' if category == 'error' else 'success' }} alert-dismissible fade show"
-               role="alert">
-
-            {{ message }}
-
-            <button type="button"
-                    class="btn-close"
-                    data-bs-dismiss="alert">
-            </button>
-
-          </div>
-
-        {% endfor %}
-
-      {% endif %}
-    {% endwith %}
-
+    <!-- registro -->
+    <div class="text-center">
+      <small>¿No tienes cuenta?</small><br />
+      <a href="{{ url_for('registro') }}" class="titulo-cafe">Crear cuenta</a>
+    </div>
   </div>
 
-
-  <form method="POST" action="{{ url_for('ValidaSesion') }}">
-
-    <!-- EMAIL -->
-    <div class="mb-3">
-
-      <input
-        type="email"
-        class="form-control"
-        id="Email"
-        name="Email"
-        placeholder="Correo electrónico"
-        value="{{ request.form.get('Email', '') }}"
-        required
-      />
-
-    </div>
-
-  
-    <div class="mb-3">
-
-      <input
-        type="password"
-        class="form-control"
-        id="Contra"
-        name="Contra"
-        placeholder="Contraseña"
-        required
-      />
-
-    </div>
-
-
-    <button type="submit"
-            class="btn boton-rosa w-100 mb-2">
-
-      Entrar
-
-    </button>
-
-  </form>
-
-  <div class="text-center">
-
-    <small>
-      ¿No tienes cuenta?
-    </small>
-
-    <br>
-
-    <a href="{{ url_for('registro') }}"
-       class="titulo-rosa">
-
-      Crear cuenta
-
-    </a>
-
-  </div>
-
-</div>
-
-{% endblock %}   
+{% endblock %}  

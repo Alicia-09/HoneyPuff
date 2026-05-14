@@ -1,0 +1,96 @@
+{% extends "base_publica.html" %}
+
+{% block titulo %}
+Recuperar contraseña
+{% endblock %}
+
+{% block contenido %}
+
+<div class="card-login bg-white p-4 shadow">
+
+    <h4 class="titulo-cafe text-center mb-3">
+        Recuperar contraseña
+    </h4>
+
+    <p class="text-center text-muted mb-4">
+        Ingresa tu correo electrónico para recuperar tu contraseña
+    </p>
+
+    <!-- mensajes -->
+    <div class="container mt-2">
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+
+            {% if messages %}
+
+                {% for category, message in messages %}
+
+                    <div class="alert alert-{{ 'danger' if category == 'error' else 'success' }} alert-dismissible fade show"
+                        role="alert">
+
+                        {{ message }}
+
+                        <button type="button"
+                                class="btn-close"
+                                data-bs-dismiss="alert"
+                                aria-label="Close">
+                        </button>
+
+                    </div>
+
+                {% endfor %}
+
+            {% endif %}
+
+        {% endwith %}
+
+    </div>
+
+    <!-- formulario -->
+    <form method="POST" action="{{ url_for('recuperar') }}">
+
+        <!-- correo -->
+        <div class="mb-3">
+
+            <label for="Email" class="form-label"></label>
+
+            <input
+                type="email"
+                class="form-control"
+                id="Email"
+                name="Email"
+                placeholder="Correo electrónico"
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                value="{{ request.form.get('Email', '') }}"
+                required
+            />
+
+        </div>
+
+        <!-- boton -->
+        <button type="submit"
+                class="btn boton-amarillo w-100 mb-3">
+
+            Recuperar contraseña
+
+        </button>
+
+    </form>
+
+    <!-- volver login -->
+    <div class="text-center">
+
+        <small>¿Recordaste tu contraseña?</small><br>
+
+        <a href="{{ url_for('login') }}"
+           class="titulo-cafe">
+
+            Volver al inicio de sesión
+
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}

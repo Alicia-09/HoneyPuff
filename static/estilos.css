@@ -1,152 +1,100 @@
 /* fondo general */
 
 body {
-    background-color: #F8F4E6;
-    color: #4A4A4A;
+
+    background-color: #F8F4E6; 
+
+    color: #6B4B2A; 
+
 }
-
-
-/* sidebar */
-
-.sidebar {
-    background-color: #F5EDE4;
-    width: 250px;
-    height: 100vh;
-    border-right: 1px solid #eee;
-}
-
-
-/* menu */
-
-.menu-item {
-    color: #4A4A4A;
-    padding: 10px;
-    border-radius: 12px;
-    display: block;
-    text-decoration: none;
-}
-
-.menu-item:hover {
-    background-color: #FDECEF;
-}
-
-
-/* encabezado */
-
-.encabezado {
-    background-color: #FFFFFF;
-    border-bottom: 1px solid #eee;
-}
-
 
 /* titulos */
+.titulo-cafe {
 
-.titulo-rosa {
-    color: #C48A44;
+    color: #C48A44; 
+
 }
-
 
 /* botones */
 
-.boton-rosa {
-    background-color: #F6C44B;
-    color: white;
+.boton-amarillo {
+
+    background-color: #F6C44B; 
+
+    color: #6B4B2A;
+
     border: none;
+
     border-radius: 10px;
+
     padding: 8px 12px;
+
 }
 
-.boton-rosa:hover {
+.boton-amarillo:hover {
+
     background-color: #F9E3A1;
-}
 
+}
 
 /* tarjetas */
 
 .card-custom {
+
     border: none;
-    background-color: #F5EDE4;
+
+    background-color: #E8D3B5; 
+
     border-radius: 15px;
+
     padding: 12px;
+
     transition: 0.2s;
+
 }
 
 .card-custom:hover {
-    background-color: #F9E3A1;
+
+    background-color: #F6C44B; /* miel – cambiado */
+
 }
 
 /* tarjetas login */
 
 .card-custom-login {
+
     border: none;
-    background-color: #F5EDE4;
+
+    background-color: #E8D3B5; 
+
     border-radius: 15px;
+
     padding: 12px;
+
     transition: 0.2s;
+
 }
 
 .card-custom-login:hover {
-    background-color: #C48A44;
-}
 
+    background-color: #C48A44; 
+
+}
 
 /* modal */
 
 .modal-header {
-    background-color: #FDECEF;
+
+    background-color: #F9E3A1; 
+
     border-bottom: none;
+
 }
 
 .navbar {
+    background-color: #F9E3A1;
     padding: 10px 0;
-}
 
-
-/* usuario */
-
-.usuario {
-    background-color: #FDECEF;
-    padding: 8px;
-    border-radius: 10px;
-    font-size: 14px;
-}
-
-
-/* espacios */
-
-.padding {
-    padding: 20px;
-}
-
-
-/* badge */
-
-.badge {
-    border-radius: 10px;
-    padding: 5px 10px;
-    font-size: 12px;
-}
-
-/* eliminar */
-
-.btn-eliminar {
-    text-decoration: none;
-    font-size: 18px;
-    padding: 6px 10px;
-    border-radius: 8px;
-    transition: 0.2s;
-}
-
-.btn-eliminar:hover {
-    background-color: #FDECEF;
-    transform: scale(1.1);
-}
-
-/* login */
-
-.card-login {
-    width: 350px;
-    border-radius: 15px;
 }
 
 /* navbar img */
@@ -155,80 +103,67 @@ body {
     width: 150px;
 }
 
-.prioridad {
-    text-align: center;
-    padding: 10px;
+
+/* usuario */
+
+.usuario {
+
+    background-color: #F9E3A1; 
+
+    padding: 8px;
+
     border-radius: 10px;
-    color: white;
-    cursor: pointer;
-}
 
-/* colores */
-.alta {
-    background-color: #ff6b81;
-}
-
-.media {
-    background-color: #f7b731;
-}
-
-.baja {
-    background-color: #20bf6b;
-}
-
-/* ocultar radio */
-.btn-check {
-    display: none;
-}
-
-.estado {
-    text-align: center;
-    padding: 10px;
-    border-radius: 10px;
-    color: #4A4A4A;
-    cursor: pointer;
     font-size: 14px;
+
+}
+
+/* espacios */
+
+.padding {
+
+    padding: 20px;
+
+}
+
+/* badge */
+
+.badge {
+
+    border-radius: 10px;
+
+    padding: 5px 10px;
+
+    font-size: 12px;
+
+}
+
+/* eliminar */
+
+.btn-eliminar {
+
+    text-decoration: none;
+
+    font-size: 18px;
+
+    padding: 6px 10px;
+
+    border-radius: 8px;
+
     transition: 0.2s;
+
 }
 
-/* colores */
+.btn-eliminar:hover {
 
-.pendiente {
-    background-color: #FFD6E0;
+    background-color: #F9E3A1; 
+
+    transform: scale(1.1);
 }
 
-.progreso {
-    background-color: #D6EFFF;
-}
+/* login */
 
-.pausada {
-    background-color: #FFF0C9;
-}
-
-.completada {
-    background-color:  #DDF8E8;
-}
-
-/* ocultar radio */
-
-.btn-check {
-    display: none;
-}
-
-/* efecto hover */
-
-.estado:hover {
-    transform: scale(1.02);
-}
-
-.prioridad-alta {
-    border-left: 6px solid #F8B4C4;
-}
-
-.prioridad-media {
-    border-left: 6px solid #facc58;
-}
-
-.prioridad-baja {
-    border-left: 6px solid #C7F2D4;
+.card-login {
+    width: 350px;
+    border-radius: 15px;
 }
