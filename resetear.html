@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block titulo %}
-Recuperar contraseña
+Restablecer contraseña
 {% endblock %}
 
 {% block contenido %}
@@ -11,11 +11,11 @@ Recuperar contraseña
     <div class="card shadow p-4" style="max-width: 420px; width: 100%; border-radius: 12px;">
 
         <h4 class="text-center mb-3">
-            Recuperar contraseña
+            Restablecer contraseña
         </h4>
 
         <p class="text-center text-muted mb-4">
-            Ingresa tu correo y te enviaremos un código para recuperar tu contraseña.
+            Ingresa el código enviado a tu correo y escribe tu nueva contraseña.
         </p>
 
         {% with messages = get_flashed_messages(with_categories=true) %}
@@ -28,7 +28,7 @@ Recuperar contraseña
             {% endif %}
         {% endwith %}
 
-        <form method="POST" action="{{ url_for('recuperar') }}">
+        <form method="POST" action="{{ url_for('resetear') }}">
 
             <div class="mb-3">
 
@@ -38,7 +38,7 @@ Recuperar contraseña
 
                 <input
                     type="email"
-                    name="Email"
+                    name="email"
                     class="form-control"
                     placeholder="ejemplo@gmail.com"
                     required
@@ -46,11 +46,57 @@ Recuperar contraseña
 
             </div>
 
+            <div class="mb-3">
+
+                <label class="form-label">
+                    Código de recuperación
+                </label>
+
+                <input
+                    type="text"
+                    name="codigo"
+                    class="form-control"
+                    placeholder="123456"
+                    required
+                >
+
+            </div>
+
+            <div class="mb-3">
+
+                <label class="form-label">
+                    Nueva contraseña
+                </label>
+
+                <input
+                    type="password"
+                    name="password"
+                    class="form-control"
+                    required
+                >
+
+            </div>
+
+            <div class="mb-3">
+
+                <label class="form-label">
+                    Confirmar contraseña
+                </label>
+
+                <input
+                    type="password"
+                    name="confirmar"
+                    class="form-control"
+                    required
+                >
+
+            </div>
+
             <button
                 type="submit"
-                class="btn btn-primary w-100"
+                class="btn btn-dark w-100"
             >
-                Enviar código
+                Guardar contraseña
             </button>
 
         </form>

@@ -1,8 +1,12 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session
+from config import APIKEY
 from funciones import HoneyPuffDB
+import random
+#practicamente ya esta listo solo falta que en config.py pongas la contraseña de aplicacion de tu correo y el correo desde el que se enviaran los correos de recuperacion, ademas de la clave secreta para las sesiones, puedes generar una clave secreta con cualquier generador de claves en linea, por ejemplo https://randomkeygen.com/ y ponerla en APIKEY, tambien debes instalar las dependencias con pip install -r requirements.txt y luego ejecutar este archivo con python app.py
+#y que te fijes si las funciones estan bn nombradas y asi y pues si quieres cambiar eel diseño
 
 app = Flask(__name__)
-app.secret_key = "ibdr091903."
+app.secret_key = APIKEY
 
 db = HoneyPuffDB()
 
@@ -36,7 +40,7 @@ def ValidaSesion():
 
         session['usuario_email'] = email
         session['usuario'] = usuario['nombre']
-        session['usuario_id'] = usuario['_id']
+        session['usuario_id'] = str(usuario['_id'])
         session['loggeado'] = True
 
         flash(f"Bienvenido {usuario['nombre']}!", 'success')
@@ -45,11 +49,12 @@ def ValidaSesion():
 
     return redirect(url_for('login'))
 
+
 @app.route("/registro", methods=["GET", "POST"])
 def registro():
 
     if request.method == "POST":
-        
+
         nombre = request.form.get("Nombre")
         apellido = request.form.get("Apellido")
         email = request.form.get("Email")
@@ -74,6 +79,7 @@ def registro():
 
     return render_template("registro.html")
 
+
 @app.route("/recuperar", methods=["GET", "POST"])
 def recuperar():
 
@@ -81,17 +87,72 @@ def recuperar():
 
         email = request.form.get("Email")
 
-        password = db.recuperar_password(email)
+        usuario = db.buscar_usuario(email)
 
-        if password:
+        if not usuario:
 
-            flash(f"Tu contraseña es: {password}")
+            flash("Correo no encontrado")
 
-            return redirect(url_for("login"))
+            return redirect(url_for("recuperar"))
 
-        flash("Correo no encontrado")
+        codigo = str(random.randint(100000, 999999))
+
+        db.guardar_codigo_recuperacion(
+            email,
+            codigo
+        )
+
+        db.enviar_codigo_email(
+            email,
+            codigo
+        )
+
+        flash("Código enviado al correo")
+
+        return redirect(url_for("resetear"))
 
     return render_template("recuperar.html")
+
+
+@app.route("/resetear", methods=["GET", "POST"])
+def resetear():
+
+    if request.method == "POST":
+
+        email = request.form.get("Email")
+        codigo = request.form.get("Codigo")
+        nueva = request.form.get("Nueva")
+        confirmar = request.form.get("Confirmar")
+
+        if nueva != confirmar:
+
+            flash("Las contraseñas no coinciden")
+
+            return redirect(url_for("resetear"))
+
+        valido = db.validar_codigo(
+            email,
+            codigo
+        )
+
+        if not valido:
+
+            flash("Código inválido")
+
+            return redirect(url_for("resetear"))
+
+        db.actualizar_password(
+            email,
+            nueva
+        )
+
+        db.eliminar_codigo(email)
+
+        flash("Contraseña actualizada")
+
+        return redirect(url_for("login"))
+
+    return render_template("resetear.html")
 
 
 @app.route("/inicio")
