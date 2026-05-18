@@ -5,21 +5,12 @@ from datetime import datetime, timedelta
 from typing import Optional, Dict
 from cryptography.fernet import Fernet
 
-from config import (
-    CLAVESITA,
-    MONGO_ATLAS_URI,
-    CORREO,
-    PASSWORD_CORREO
-)
-
-import smtplib
-
-from email.mime.text import MIMEText
-
-clave = CLAVESITA
-
+clave = b'w4D1DFuM0HB_AQvNKVUGyqYOBfmD-ViDaod-b2C4y7g='
 f = Fernet(clave)
 
+from config import (
+    MONGO_ATLAS_URI
+)
 
 class HoneyPuffDB:
 
@@ -72,108 +63,55 @@ class HoneyPuffDB:
             print("❌ Ese correo ya existe")
             return None
 
-    def validar_usuario(self, email: str, password: str) -> Optional[Dict]:
+    def validar_usuario(self,email: str,password: str) -> Optional[Dict]:
         try:
-            usuario = self.usuarios.find_one({
-                "email": email
-            })
+            usuario = self.usuarios.find_one({"email": email})
 
             if not usuario:
                 return None
-
+            
             password_guardada = self.desencriptar_password(usuario["password"])
 
             if password_guardada == password:
                 usuario["_id"] = str(usuario["_id"])
                 return usuario
-
+            
             return None
-
+        
         except Exception as e:
             print(f"❌ Error login: {e}")
             return None
 
-    def obtener_usuario(self, usuario_id: str) -> Optional[Dict]:
-        usuario = self.usuarios.find_one({
-            "_id": ObjectId(usuario_id)
-        })
+    def obtener_usuario(self, usuario_id):
+        usuario = self.usuarios.find_one({"_id": ObjectId(usuario_id)})
 
         if usuario:
             usuario["_id"] = str(usuario["_id"])
-
         return usuario
 
-    def buscar_usuario(self, email: str) -> Optional[Dict]:
-        return self.usuarios.find_one({
-            "email": email
-        })
+    def recuperar_password(self, email):
 
-    def guardar_codigo_recuperacion(self, email: str, codigo: str) -> None:
-        expiracion = datetime.now() + timedelta(minutes=5)
+        usuario = self.usuarios.find_one({"email": email})
 
-        self.usuarios.update_one(
-            {"email": email},
-            {
-                "$set": {
-                    "codigo_recuperacion": str(codigo).strip(),
-                    "expiracion_codigo": expiracion
-                }
-            }
-        )
+        if not usuario:return None
+        
+        password = self.desencriptar_password(usuario["password"])
 
-    def validar_codigo(self, email: str, codigo: str) -> bool:
-        usuario = self.usuarios.find_one({
-            "email": email,
-            "codigo_recuperacion": str(codigo).strip()
-        })
+        return password
 
-        if not usuario:
-            return False
+    def guardar_codigo_recuperacion(self, email, codigo):
 
-        if datetime.now() > usuario["expiracion_codigo"]:
-            return False
-
-        return True
-
-    def actualizar_password(self, email: str, nueva_password: str) -> None:
-        nueva_password_encriptada = self.encriptar_password(nueva_password)
+        expira = datetime.now() + timedelta(minutes=5)
 
         self.usuarios.update_one(
             {"email": email},
             {
                 "$set": {
-                    "password": nueva_password_encriptada
+                    "codigo_recuperacion": str(codigo),
+                    "expira_codigo": expira
                 }
             }
         )
-
-    def eliminar_codigo(self, email: str) -> None:
-        self.usuarios.update_one(
-            {"email": email},
-            {
-                "$unset": {
-                    "codigo_recuperacion": "",
-                    "expiracion_codigo": ""
-                }
-            }
-        )
-
-    def enviar_codigo_email(self, destinatario: str, codigo: str) -> None:
-        mensaje = MIMEText(f"Tu código de recuperación es: {codigo}")
-
-        mensaje["Subject"] = "Recuperación de contraseña"
-        mensaje["From"] = CORREO
-        mensaje["To"] = destinatario
-
-        servidor = smtplib.SMTP("smtp.gmail.com", 587)
-
-        servidor.starttls()
-
-        servidor.login(CORREO, PASSWORD_CORREO)
-
-        servidor.send_message(mensaje)
-
-        servidor.quit()
 
     def cerrar_conexion(self):
         if self.cliente:
