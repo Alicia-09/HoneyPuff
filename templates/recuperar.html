@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base_publica.html" %}
 
 {% block titulo %}
 Recuperar contraseña
@@ -6,11 +6,9 @@ Recuperar contraseña
 
 {% block contenido %}
 
-<div class="container d-flex justify-content-center align-items-center" style="min-height: 70vh;">
+<div class="card-login bg-white p-4 shadow">
 
-    <div class="card shadow p-4" style="max-width: 420px; width: 100%; border-radius: 12px;">
-
-        <h4 class="text-center mb-3">
+        <h4 class="titulo-cafe text-center mb-3">
             Recuperar contraseña
         </h4>
 
@@ -32,7 +30,7 @@ Recuperar contraseña
 
             <div class="mb-3">
 
-                <label class="form-label">
+                <label class="form-label titulo-cafe">
                     Correo electrónico
                 </label>
 
@@ -41,15 +39,14 @@ Recuperar contraseña
                     name="Email"
                     class="form-control"
                     placeholder="ejemplo@gmail.com"
+                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                     required
                 >
 
             </div>
 
-            <button
-                type="submit"
-                class="btn btn-primary w-100"
-            >
+            <button type="submit"
+                class="btn boton-amarillo w-100">
                 Enviar código
             </button>
 
@@ -57,13 +54,11 @@ Recuperar contraseña
 
         <div class="text-center mt-3">
 
-            <a href="{{ url_for('login') }}">
+            <a href="{{ url_for('login') }}" class="titulo-cafe">
                 Volver al inicio de sesión
             </a>
 
         </div>
-
-    </div>
 
 </div>
 

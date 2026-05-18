@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base_publica.html" %}
 
 {% block titulo %}
 Restablecer contraseña
@@ -6,11 +6,9 @@ Restablecer contraseña
 
 {% block contenido %}
 
-<div class="container d-flex justify-content-center align-items-center" style="min-height: 70vh;">
+<div class="card-login bg-white p-4 shadow">
 
-    <div class="card shadow p-4" style="max-width: 420px; width: 100%; border-radius: 12px;">
-
-        <h4 class="text-center mb-3">
+        <h4 class="titulo-cafe text-center mb-3">
             Restablecer contraseña
         </h4>
 
@@ -48,7 +46,7 @@ Restablecer contraseña
 
             <div class="mb-3">
 
-                <label class="form-label">
+                <label class="form-label titulo-cafe">
                     Código de recuperación
                 </label>
 
@@ -57,6 +55,7 @@ Restablecer contraseña
                     name="codigo"
                     class="form-control"
                     placeholder="123456"
+                    maxlength="6"
                     required
                 >
 
@@ -64,7 +63,7 @@ Restablecer contraseña
 
             <div class="mb-3">
 
-                <label class="form-label">
+                <label class="form-label titulo-cafe">
                     Nueva contraseña
                 </label>
 
@@ -72,6 +71,8 @@ Restablecer contraseña
                     type="password"
                     name="password"
                     class="form-control"
+                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                    title="Debe contener al menos una mayúscula, una minúscula, un número y mínimo 8 caracteres"
                     required
                 >
 
@@ -79,7 +80,7 @@ Restablecer contraseña
 
             <div class="mb-3">
 
-                <label class="form-label">
+                <label class="form-label titulo-cafe">
                     Confirmar contraseña
                 </label>
 
@@ -87,6 +88,7 @@ Restablecer contraseña
                     type="password"
                     name="confirmar"
                     class="form-control"
+                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                     required
                 >
 
@@ -94,7 +96,7 @@ Restablecer contraseña
 
             <button
                 type="submit"
-                class="btn btn-dark w-100"
+                class="btn boton-amarillo w-100"
             >
                 Guardar contraseña
             </button>
@@ -103,7 +105,7 @@ Restablecer contraseña
 
         <div class="text-center mt-3">
 
-            <a href="{{ url_for('login') }}">
+            <a href="{{ url_for('login') }}" class="titulo-cafe">
                 Volver al inicio de sesión
             </a>
 

@@ -86,13 +86,10 @@ def recuperar():
     if request.method == "POST":
 
         email = request.form.get("Email")
-
         usuario = db.buscar_usuario(email)
 
         if not usuario:
-
             flash("Correo no encontrado")
-
             return redirect(url_for("recuperar"))
 
         codigo = str(random.randint(100000, 999999))
@@ -136,9 +133,7 @@ def resetear():
         )
 
         if not valido:
-
             flash("Código inválido")
-
             return redirect(url_for("resetear"))
 
         db.actualizar_password(
@@ -147,7 +142,6 @@ def resetear():
         )
 
         db.eliminar_codigo(email)
-
         flash("Contraseña actualizada")
 
         return redirect(url_for("login"))
@@ -169,9 +163,7 @@ def inicio():
 
 @app.route("/logout")
 def logout():
-
     session.clear()
-
     return redirect(url_for("login"))
 
 
