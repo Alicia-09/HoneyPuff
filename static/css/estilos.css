@@ -1,0 +1,169 @@
+/* fondo general */
+
+body {
+
+    background-color: #F8F4E6; 
+
+    color: #6B4B2A; 
+
+}
+
+/* titulos */
+.titulo-cafe {
+
+    color: #C48A44; 
+
+}
+
+/* botones */
+
+.boton-amarillo {
+
+    background-color: #F6C44B; 
+
+    color: #6B4B2A;
+
+    border: none;
+
+    border-radius: 10px;
+
+    padding: 8px 12px;
+
+}
+
+.boton-amarillo:hover {
+
+    background-color: #F9E3A1;
+
+}
+
+/* tarjetas */
+
+.card-custom {
+
+    border: none;
+
+    background-color: #E8D3B5; 
+
+    border-radius: 15px;
+
+    padding: 12px;
+
+    transition: 0.2s;
+
+}
+
+.card-custom:hover {
+
+    background-color: #F6C44B; /* miel – cambiado */
+
+}
+
+/* tarjetas login */
+
+.card-custom-login {
+
+    border: none;
+
+    background-color: #E8D3B5; 
+
+    border-radius: 15px;
+
+    padding: 12px;
+
+    transition: 0.2s;
+
+}
+
+.card-custom-login:hover {
+
+    background-color: #C48A44; 
+
+}
+
+/* modal */
+
+.modal-header {
+
+    background-color: #F9E3A1; 
+
+    border-bottom: none;
+
+}
+
+.navbar {
+    background-color: #F9E3A1;
+    padding: 10px 0;
+
+}
+
+/* navbar img */
+
+.navbar img {
+    width: 150px;
+}
+
+
+/* usuario */
+
+.usuario {
+
+    background-color: #F9E3A1; 
+
+    padding: 8px;
+
+    border-radius: 10px;
+
+    font-size: 14px;
+
+}
+
+/* espacios */
+
+.padding {
+
+    padding: 20px;
+
+}
+
+/* badge */
+
+.badge {
+
+    border-radius: 10px;
+
+    padding: 5px 10px;
+
+    font-size: 12px;
+
+}
+
+/* eliminar */
+
+.btn-eliminar {
+
+    text-decoration: none;
+
+    font-size: 18px;
+
+    padding: 6px 10px;
+
+    border-radius: 8px;
+
+    transition: 0.2s;
+
+}
+
+.btn-eliminar:hover {
+
+    background-color: #F9E3A1; 
+
+    transform: scale(1.1);
+}
+
+/* login */
+
+.card-login {
+    width: 350px;
+    border-radius: 15px;
+}

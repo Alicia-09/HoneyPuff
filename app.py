@@ -27,7 +27,7 @@ db = HoneyPuffDB()
 
 @app.route("/")
 def login():
-    return render_template("login.html")
+    return render_template("inicio.html")
 
 
 @app.route('/ValidaSesion', methods=['GET', 'POST'])
@@ -229,9 +229,6 @@ def inicio():
 
 @app.route("/elejir")
 def elejir():
-    if "usuario_id" not in session:
-        return redirect(url_for("login"))
-
     return render_template("elejir.html")
 
 @app.route("/elejir_oso")

@@ -1,11 +1,32 @@
-{% extends "base_inicio.html" %}
-{% block titulo %}Iniciar sesión{% endblock %}
-{% block contenido %}
+<!DOCTYPE html>
+<html lang="es">
 
-<div class="container d-flex justify-content-center align-items-center" style="height: 85vh;">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
 
-        <h1 class="titulo-cafe">Próximamente…</h1>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/inicio.css') }}">
+</head>
+
+<body>
+
+    <audio autoplay loop>
+        <source src="{{ url_for('static', filename='audio/menu.mp3') }}" type="audio/mp3">
+    </audio>
+
+    <div class="inicio">
+
+        <a href="{{ url_for('elejir') }}">
+
+            <img src="{{ url_for('static', filename='img/boton.png') }}" class="boton">
+
+        </a>
 
     </div>
+
+
+</body>
+
+
+
     
-{% endblock %}  

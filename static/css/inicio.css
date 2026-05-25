@@ -1,0 +1,27 @@
+body {
+    background-image: url('../img/inicio.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.inicio{
+    height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:flex-end;
+}
+
+
+.boton{
+    width:700px;
+    margin-bottom:10%;
+
+    transition:0.3s;
+}
+
+.boton:hover{
+    transform:scale(1.05);
+}
