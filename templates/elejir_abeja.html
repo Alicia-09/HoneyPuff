@@ -8,28 +8,38 @@
 
     <div class="acta-container">
 
+        <form method="POST">
 
-        <img src="{{ url_for('static', filename='img/abejitaacta.jpeg') }}"
-             class="acta-img"
-             alt="Acta Abejita">
+            <img src="{{ url_for('static', filename='img/abejitaacta.jpeg') }}"
+                 class="acta-img"
+                 alt="Acta Abejita">
 
-        <div class="overlay">
+            <div class="overlay">
 
-       
-            <input type="text"
-                   class="input-acta input-nombre"
-                   placeholder="Escribe aquí">
+                <input type="text"
+                       name="nombre"
+                       class="input-acta input-nombre"
+                       placeholder="Escribe aquí">
 
-       
-            <input type="text"
-                   class="input-acta input-fecha"
-                   placeholder="DD/MM/AAAA">
+                <input type="text"
+                       name="fecha_nacimiento"
+                       class="input-acta input-fecha"
+                       placeholder="DD/MM/AAAA">
 
-            <input type="text"
-                   class="input-acta input-lugar"
-                   placeholder="Escribe aquí">
+                <input type="text"
+                       name="lugar_nacimiento"
+                       class="input-acta input-lugar"
+                       placeholder="Escribe aquí">
 
-        </div>
+                <input type="hidden" name="usuario_id" value="123">
+
+            </div>
+
+            <button type="submit" class="btn btn-primary mt-3">
+                Guardar
+            </button>
+
+        </form>
 
     </div>
 

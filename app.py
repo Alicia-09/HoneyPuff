@@ -236,9 +236,31 @@ def elejir_gato():
         return redirect(url_for("login"))
     return render_template("elejir_gato.html")
 
-@app.route("/elejir_abeja")
+@app.route("/elejir_abeja", methods=["GET", "POST"])
 def elejir_abeja():
-    return render_template("elejir_abeja.html")
+
+    if request.method == "POST":
+
+        nombre = request.form.get("nombre")
+        fecha_nacimiento = request.form.get("fecha_nacimiento")
+        lugar_nacimiento = request.form.get("lugar_nacimiento")
+        usuario_id = request.form.get("usuario_id") 
+
+
+        id_mascota = db.registrar_mascota(
+            nombre,
+            fecha_nacimiento,
+            lugar_nacimiento,
+            usuario_id
+        )
+
+        print("Mascota registrada con ID:", id_mascota)
+
+        return redirect(url_for("elejir_abeja"))
+
+    mascotas = db.obtener_mascotas()
+
+    return render_template("elejir_abeja.html", mascotas=mascotas)
 
 
 
