@@ -116,31 +116,40 @@ class HoneyPuffDB:
         
     def registrar_mascota(self, nombre: str, fecha_nacimiento: str, lugar_nacimiento: str, usuario_id: str = None):
 
-        mascota = {
-            "nombre": nombre,
-            "fecha_nacimiento": fecha_nacimiento,
-            "lugar_nacimiento": lugar_nacimiento,
-            "fecha_registro": datetime.now()
+        mascotas = {
+           "nombre": nombre,
+           "fecha_nacimiento": fecha_nacimiento,
+           "lugar_nacimiento": lugar_nacimiento,
+           "fecha_registro": datetime.now()
         }
 
+    # SOLO convertir si el ID es válido
         if usuario_id:
-            mascota["usuario_id"] = ObjectId(usuario_id)
 
-        resultado = self.mascotas.insert_one(mascota)
+            if ObjectId.is_valid(usuario_id):
+                mascotas["usuario_id"] = ObjectId(usuario_id)
+
+            else:
+                mascotas["usuario_id"] = usuario_id
+
+        resultado = self.mascotas.insert_one(mascotas)
 
         return str(resultado.inserted_id)
 
-
     def obtener_mascotas(self):
 
-        mascotas = []
+        lista_mascotas = []
 
         for mascota in self.mascotas.find():
 
             mascota["_id"] = str(mascota["_id"])
-            mascotas.append(mascota)
 
-        return mascotas
+            if "usuario_id" in mascota:
+                mascota["usuario_id"] = str(mascota["usuario_id"])
+
+            lista_mascotas.append(mascota)
+
+        return lista_mascotas
 
     def cerrar_conexion(self):
         if self.cliente:

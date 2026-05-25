@@ -1,6 +1,8 @@
 {% extends "base_inicio.html" %}
 
-{% block titulo %}Acta de Nacimiento - Abejita{% endblock %}
+{% block titulo %}
+Acta de Nacimiento - gatito
+{% endblock %}
 
 {% block contenido %}
 
@@ -8,28 +10,38 @@
 
     <div class="acta-container">
 
+        <form method="POST" action="{{ url_for('elejir_gato') }}">
 
-        <img src="{{ url_for('static', filename='img/actagatito.jpeg') }}"
-             class="acta-img"
-             alt="Acta Abejita">
+            <img src="{{ url_for('static', filename='img/actagatito.jpeg') }}"
+                 class="acta-img"
+                 alt="Acta Gatito">
 
-        <div class="overlay">
+            <div class="overlay">
 
-       
-            <input type="text"
-                   class="input-acta input-nombre"
-                   placeholder="Escribe aquí">
+                <input type="text"
+                       name="nombre"
+                       class="input-acta input-nombre"
+                       placeholder="Escribe aquí">
 
-       
-            <input type="text"
-                   class="input-acta input-fecha"
-                   placeholder="DD/MM/AAAA">
+                <input type="text"
+                       name="fecha_nacimiento"
+                       class="input-acta input-fecha"
+                       placeholder="DD/MM/AAAA">
 
-            <input type="text"
-                   class="input-acta input-lugar"
-                   placeholder="Escribe aquí">
+                <input type="text"
+                       name="lugar_nacimiento"
+                       class="input-acta input-lugar"
+                       placeholder="Escribe aquí">
 
-        </div>
+            </div>
+
+           <button type="submit"
+        class="btn btn-primary mt-3"
+        style="position: relative; z-index: 9999;">
+    Guardar
+</button>
+
+        </form>
 
     </div>
 

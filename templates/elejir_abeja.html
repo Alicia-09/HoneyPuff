@@ -1,24 +1,16 @@
-{% extends "base_inicio.html" %} {% block titulo %}Acta de Nacimiento -
-Abejita{% endblock %} {% block contenido %}
+{% extends "base_inicio.html" %}
+
+{% block titulo %}
+Acta de Nacimiento - Abejita
+{% endblock %}
+
+{% block contenido %}
 
 <div class="container mt-4 d-flex justify-content-center">
-  <div class="acta-container">
-    <img
-      src="{{ url_for('static', filename='img/abejitaacta.jpeg') }}"
-      class="acta-img"
-      alt="Acta Abejita"
-    />
 
-    <form method="POST" action="{{ url_for('elejir_abeja') }}">
-      <div class="overlay">
-        <input
-          type="text"
-          class="input-acta input-nombre"
-          placeholder="Escribe aquí"
-        />
+    <div class="acta-container">
 
-<<<<<<< HEAD
-        <form method="POST">
+        <form method="POST" action="{{ url_for('elejir_abeja') }}">
 
             <img src="{{ url_for('static', filename='img/abejitaacta.jpeg') }}"
                  class="acta-img"
@@ -41,34 +33,18 @@ Abejita{% endblock %} {% block contenido %}
                        class="input-acta input-lugar"
                        placeholder="Escribe aquí">
 
-                <input type="hidden" name="usuario_id" value="123">
-
             </div>
 
-            <button type="submit" class="btn btn-primary mt-3">
-                Guardar
-            </button>
+           <button type="submit"
+        class="btn btn-primary mt-3"
+        style="position: relative; z-index: 9999;">
+    Guardar
+</button>
 
         </form>
 
     </div>
 
-=======
-        <input
-          type="text"
-          class="input-acta input-fecha"
-          placeholder="DD/MM/AAAA"
-        />
-
-        <input
-          type="text"
-          class="input-acta input-lugar"
-          placeholder="Escribe aquí"
-        />
-      </div>
-    </form>
-  </div>
->>>>>>> 613c749bb52cec862046acd71101e1b1f31cc57b
 </div>
 
 {% endblock %}

@@ -224,29 +224,22 @@ def login():
 def elejir():
     return render_template("elejir.html")
 
-@app.route("/elejir_oso")
+
+@app.route("/elejir_oso", methods=["GET", "POST"])
 def elejir_oso():
+
     if "usuario_id" not in session:
         return redirect(url_for("login"))
-    return render_template("elejir_oso.html")
-
-@app.route("/elejir_gato")
-def elejir_gato():
-    if "usuario_id" not in session:
-        return redirect(url_for("login"))
-    return render_template("elejir_gato.html")
-
-@app.route("/elejir_abeja", methods=["GET", "POST"])
-def elejir_abeja():
 
     if request.method == "POST":
 
         nombre = request.form.get("nombre")
         fecha_nacimiento = request.form.get("fecha_nacimiento")
         lugar_nacimiento = request.form.get("lugar_nacimiento")
-        usuario_id = request.form.get("usuario_id") 
 
+        usuario_id = session["usuario_id"]
 
+       
         id_mascota = db.registrar_mascota(
             nombre,
             fecha_nacimiento,
@@ -254,14 +247,79 @@ def elejir_abeja():
             usuario_id
         )
 
-        print("Mascota registrada con ID:", id_mascota)
+        print("Mascota guardada:", id_mascota)
 
-        return redirect(url_for("elejir_abeja"))
+      
+        return redirect(url_for("iniciomascotas"))
 
     mascotas = db.obtener_mascotas()
+    return render_template("elejir_oso.html", mascotas=mascotas)
 
+
+@app.route("/elejir_gato", methods=["GET", "POST"])
+def elejir_gato():
+
+    if "usuario_id" not in session:
+        return redirect(url_for("login"))
+
+    if request.method == "POST":
+
+        nombre = request.form.get("nombre")
+        fecha_nacimiento = request.form.get("fecha_nacimiento")
+        lugar_nacimiento = request.form.get("lugar_nacimiento")
+
+        usuario_id = session["usuario_id"]
+
+       
+        id_mascota = db.registrar_mascota(
+            nombre,
+            fecha_nacimiento,
+            lugar_nacimiento,
+            usuario_id
+        )
+
+        print("Mascota guardada:", id_mascota)
+
+      
+        return redirect(url_for("iniciomascotas"))
+
+    mascotas = db.obtener_mascotas()
+    return render_template("elejir_gato.html", mascotas=mascotas)
+
+@app.route("/elejir_abeja", methods=["GET", "POST"])
+def elejir_abeja():
+
+    if "usuario_id" not in session:
+        return redirect(url_for("login"))
+
+    if request.method == "POST":
+
+        nombre = request.form.get("nombre")
+        fecha_nacimiento = request.form.get("fecha_nacimiento")
+        lugar_nacimiento = request.form.get("lugar_nacimiento")
+
+        usuario_id = session["usuario_id"]
+
+       
+        id_mascota = db.registrar_mascota(
+            nombre,
+            fecha_nacimiento,
+            lugar_nacimiento,
+            usuario_id
+        )
+
+        print("Mascota guardada:", id_mascota)
+
+      
+        return redirect(url_for("iniciomascotas"))
+
+    mascotas = db.obtener_mascotas()
     return render_template("elejir_abeja.html", mascotas=mascotas)
 
+@app.route("/iniciomascotas")
+def iniciomascotas():
+    mascotas = db.obtener_mascotas()
+    return render_template("iniciomascotas.html", mascotas=mascotas)
 
 
 @app.route("/logout")

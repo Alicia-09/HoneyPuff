@@ -1,0 +1,49 @@
+{% extends "base_inicio.html" %}
+
+{% block titulo %}
+Acta de Nacimiento - osito
+{% endblock %}
+
+{% block contenido %}
+
+<div class="container mt-4 d-flex justify-content-center">
+
+    <div class="acta-container">
+
+        <form method="POST" action="{{ url_for('elejir_oso') }}">
+
+            <img src="{{ url_for('static', filename='img/actaosito.jpeg') }}"
+                 class="acta-img"
+                 alt="Acta Oso">
+            <div class="overlay">
+
+                <input type="text"
+                       name="nombre"
+                       class="input-acta input-nombre"
+                       placeholder="Escribe aquí">
+
+                <input type="text"
+                       name="fecha_nacimiento"
+                       class="input-acta input-fecha"
+                       placeholder="DD/MM/AAAA">
+
+                <input type="text"
+                       name="lugar_nacimiento"
+                       class="input-acta input-lugar"
+                       placeholder="Escribe aquí">
+
+            </div>
+
+           <button type="submit"
+        class="btn btn-primary mt-3"
+        style="position: relative; z-index: 9999;">
+    Guardar
+</button>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}
