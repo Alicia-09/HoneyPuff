@@ -1,7 +1,7 @@
 {% extends "base_publica.html" %}
 
 {% block titulo %}
-Recuperar contraseña
+Verificar código
 {% endblock %}
 
 {% block contenido %}
@@ -9,14 +9,12 @@ Recuperar contraseña
 <div class="card-login bg-white p-4 shadow">
 
     <h4 class="titulo-cafe text-center mb-3">
-        Recuperar contraseña
+        Verificar código
     </h4>
 
-    <p class="text-center text-muted mb-4">
-        Ingresa tu correo electrónico para recibir un código de recuperación
+    <p class="text-center mb-3">
+        Ingresa el código que enviamos a tu correo
     </p>
-
-    <!-- mensajes -->
 
     <div class="container mt-2">
 
@@ -33,8 +31,7 @@ Recuperar contraseña
 
                         <button type="button"
                                 class="btn-close"
-                                data-bs-dismiss="alert"
-                                aria-label="Close">
+                                data-bs-dismiss="alert">
                         </button>
 
                     </div>
@@ -47,10 +44,7 @@ Recuperar contraseña
 
     </div>
 
-    <!-- formulario -->
-
-    <form method="POST"
-          action="{{ url_for('recuperar') }}">
+    <form method="POST" action="{{ url_for('verificar_codigo') }}">
 
         <!-- correo -->
 
@@ -59,11 +53,23 @@ Recuperar contraseña
             <input
                 type="email"
                 class="form-control"
-                id="Email"
                 name="Email"
                 placeholder="Correo electrónico"
-                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-                value="{{ request.form.get('Email', '') }}"
+                required
+            >
+
+        </div>
+
+        <!-- codigo -->
+
+        <div class="mb-3">
+
+            <input
+                type="text"
+                class="form-control"
+                name="Codigo"
+                placeholder="Código de verificación"
+                maxlength="6"
                 required
             >
 
@@ -72,28 +78,13 @@ Recuperar contraseña
         <!-- boton -->
 
         <button type="submit"
-                class="btn boton-amarillo w-100 mb-3">
+                class="btn boton-amarillo w-100">
 
-            Enviar código
+            Verificar código
 
         </button>
 
     </form>
-
-    <!-- volver login -->
-
-    <div class="text-center">
-
-        <small>¿Recordaste tu contraseña?</small><br>
-
-        <a href="{{ url_for('login') }}"
-           class="titulo-cafe">
-
-            Volver al inicio de sesión
-
-        </a>
-
-    </div>
 
 </div>
 

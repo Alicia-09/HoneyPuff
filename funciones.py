@@ -1,25 +1,29 @@
 from pymongo import MongoClient
 from pymongo.errors import DuplicateKeyError, ConnectionFailure
 from bson.objectid import ObjectId
-from datetime import datetime
+from datetime import datetime, timedelta
 from typing import Optional, Dict
 from cryptography.fernet import Fernet
 
 clave = b'w4D1DFuM0HB_AQvNKVUGyqYOBfmD-ViDaod-b2C4y7g='
-
 f = Fernet(clave)
+
+from config import (
+    MONGO_ATLAS_URI
+)
 
 class HoneyPuffDB:
 
     def __init__(self):
         try:
-            uri = "mongodb+srv://mely2:mely19@mely1.lnfi7bk.mongodb.net/?appName=mely1"
-            self.cliente = MongoClient(uri,serverSelectionTimeoutMS=5000)
+            self.cliente = MongoClient(MONGO_ATLAS_URI, serverSelectionTimeoutMS=5000)
+            self.cliente.admin.command("ping")
 
-            self.cliente.admin.command('ping')
-            self.db = self.cliente['HoneyPuff']
-            self.usuarios = self.db['usuarios']
+            self.db = self.cliente["HoneyPuff"]
+            self.usuarios = self.db["usuarios"]
+
             self._crear_indices()
+
             print("✅ Conectado a Mongo Atlas")
 
         except ConnectionFailure:
@@ -27,20 +31,21 @@ class HoneyPuffDB:
             raise
 
     def _crear_indices(self):
-        self.usuarios.create_index("email",unique=True)
+        self.usuarios.create_index("email", unique=True)
 
     def encriptar_password(self, password):
         password_bytes = password.encode()
         password_encriptado = f.encrypt(password_bytes)
+
         return password_encriptado.decode()
 
     def desencriptar_password(self, password_encriptado):
         password_bytes = password_encriptado.encode()
         password_desencriptado = f.decrypt(password_bytes)
-        return password_desencriptado.decode()
-    
 
-    def crear_usuario(self, nombre: str,apellido: str,email: str,password: str) -> Optional[str]:
+        return password_desencriptado.decode()
+
+    def crear_usuario(self, nombre: str, apellido: str, email: str, password: str) -> Optional[str]:
         try:
             password_encriptado = self.encriptar_password(password)
 
@@ -53,6 +58,7 @@ class HoneyPuffDB:
             })
 
             return str(resultado.inserted_id)
+
         except DuplicateKeyError:
             print("❌ Ese correo ya existe")
             return None
@@ -82,7 +88,7 @@ class HoneyPuffDB:
         if usuario:
             usuario["_id"] = str(usuario["_id"])
         return usuario
-    
+
     def recuperar_password(self, email):
 
         usuario = self.usuarios.find_one({"email": email})
@@ -92,6 +98,20 @@ class HoneyPuffDB:
         password = self.desencriptar_password(usuario["password"])
 
         return password
+
+    def guardar_codigo_recuperacion(self, email, codigo):
+
+        expira = datetime.now() + timedelta(minutes=5)
+
+        self.usuarios.update_one(
+            {"email": email},
+            {
+                "$set": {
+                    "codigo_recuperacion": str(codigo),
+                    "expira_codigo": expira
+                }
+            }
+        )
 
     def cerrar_conexion(self):
         if self.cliente:
