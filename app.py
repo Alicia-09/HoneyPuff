@@ -4,8 +4,6 @@ from funciones import HoneyPuffDB
 from flask_mail import Mail, Message
 from datetime import datetime, timedelta
 import random
-#practicamente ya esta listo solo falta que en config.py pongas la contraseña de aplicacion de tu correo y el correo desde el que se enviaran los correos de recuperacion, ademas de la clave secreta para las sesiones, puedes generar una clave secreta con cualquier generador de claves en linea, por ejemplo https://randomkeygen.com/ y ponerla en APIKEY, tambien debes instalar las dependencias con pip install -r requirements.txt y luego ejecutar este archivo con python app.py
-#y que te fijes si las funciones estan bn nombradas y asi y pues si quieres cambiar eel diseño
 
 app = Flask(__name__)
 app.secret_key = APIKEY
@@ -61,7 +59,7 @@ def ValidaSesion():
 
         flash(f"Bienvenido {usuario['nombre']}!", 'success')
 
-        return redirect(url_for('inicio'))
+        return redirect(url_for('elejir'))
 
     return redirect(url_for('login'))
 
@@ -173,6 +171,7 @@ def verificar_codigo():
 
     return render_template("verificar_codigo.html")
 
+
 @app.route("/cambiar_password", methods=["GET", "POST"])
 def cambiar_password():
 
@@ -215,6 +214,7 @@ def cambiar_password():
 
     return render_template("cambiar_password.html")
 
+
 @app.route("/inicio")
 def inicio():
 
@@ -225,6 +225,34 @@ def inicio():
         "inicio.html",
         usuario=session["usuario"]
     )
+
+
+@app.route("/elejir")
+def elejir():
+    if "usuario_id" not in session:
+        return redirect(url_for("login"))
+
+    return render_template("elejir.html")
+
+@app.route("/elejir_oso")
+def elejir_oso():
+    if "usuario_id" not in session:
+        return redirect(url_for("login"))
+    return render_template("elejir_oso.html")
+
+@app.route("/elejir_gato")
+def elejir_gato():
+    if "usuario_id" not in session:
+        return redirect(url_for("login"))
+    return render_template("elejir_gato.html")
+
+@app.route("/elejir_abeja")
+def elejir_abeja():
+    if "usuario_id" not in session:
+        return redirect(url_for("login"))
+    return render_template("elejir_abeja.html")
+
+
 
 @app.route("/logout")
 def logout():
