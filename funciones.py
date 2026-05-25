@@ -21,6 +21,7 @@ class HoneyPuffDB:
 
             self.db = self.cliente["HoneyPuff"]
             self.usuarios = self.db["usuarios"]
+            self.mascotas = self.db["mascotas"]
 
             self._crear_indices()
 
@@ -112,6 +113,34 @@ class HoneyPuffDB:
                 }
             }
         )
+        
+    def registrar_mascota(self, nombre: str, fecha_nacimiento: str, lugar_nacimiento: str, usuario_id: str = None):
+
+        mascota = {
+            "nombre": nombre,
+            "fecha_nacimiento": fecha_nacimiento,
+            "lugar_nacimiento": lugar_nacimiento,
+            "fecha_registro": datetime.now()
+        }
+
+        if usuario_id:
+            mascota["usuario_id"] = ObjectId(usuario_id)
+
+        resultado = self.mascotas.insert_one(mascota)
+
+        return str(resultado.inserted_id)
+
+
+    def obtener_mascotas(self):
+
+        mascotas = []
+
+        for mascota in self.mascotas.find():
+
+            mascota["_id"] = str(mascota["_id"])
+            mascotas.append(mascota)
+
+        return mascotas
 
     def cerrar_conexion(self):
         if self.cliente:

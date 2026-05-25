@@ -26,7 +26,7 @@ db = HoneyPuffDB()
 
 
 @app.route("/")
-def login():
+def inicio():
     return render_template("inicio.html")
 
 
@@ -215,16 +215,9 @@ def cambiar_password():
     return render_template("cambiar_password.html")
 
 
-@app.route("/inicio")
-def inicio():
-
-    if "usuario_id" not in session:
-        return redirect(url_for("login"))
-
-    return render_template(
-        "inicio.html",
-        usuario=session["usuario"]
-    )
+@app.route("/login")
+def login():
+    return render_template("login.html")
 
 
 @app.route("/elejir")
@@ -245,8 +238,6 @@ def elejir_gato():
 
 @app.route("/elejir_abeja")
 def elejir_abeja():
-    if "usuario_id" not in session:
-        return redirect(url_for("login"))
     return render_template("elejir_abeja.html")
 
 

@@ -16,8 +16,8 @@ body {
 
 
 .boton{
-    width:700px;
-    margin-bottom:10%;
+    width:500px;
+    margin: bottom 5px;
 
     transition:0.3s;
 }
