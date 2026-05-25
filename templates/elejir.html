@@ -1,58 +1,59 @@
-{% extends "base_inicio.html" %} {% block titulo %}Elige tu mascota{% endblock
-%} {% block contenido %}
+{% extends "base_inicio.html" %}
+
+{% block titulo %}Elige tu mascota{% endblock %}
+
+{% block contenido %}
 <div class="container mt-5 text-center">
-  <h2 class="mb-5">¿Qué mascota quieres adoptar?</h2>
 
-  <div class="row justify-content-center g-4">
-    <form method="POST" action="{{ url_for('registrar_mascota') }}">
-      <div class="col-md-4">
-        <div class="card mascota-card p-3">
-          <img
-            src="{{ url_for('static', filename='img/osito1.png') }}"
-            class="mascota-img mb-3"
-            alt="Oso"
-          />
+    <h2 class="mb-5">¿Qué mascota quieres adoptar?</h2>
 
-          <h5>Oso</h5>
+    <div class="row justify-content-center g-4">
 
-          <a href="{{ url_for('elejir_oso') }}" class="btn btn-primary mt-2">
-            Elegir
-          </a>
+    
+        <div class="col-md-4">
+            <div class="card mascota-card p-3">
+                <img src="{{ url_for('static', filename='img/osito1.png') }}"
+                     class="mascota-img mb-3"
+                     alt="Oso">
+
+                <h5>Oso</h5>
+
+                <a href="{{ url_for('elejir_oso') }}" class="btn btn-primary mt-2">
+                    Elegir
+                </a>
+            </div>
         </div>
-      </div>
 
-      <div class="col-md-4">
-        <div class="card mascota-card p-3">
-          <img
-            src="{{ url_for('static', filename='img/gatito1.png') }}"
-            class="mascota-img mb-3"
-            alt="Gato"
-          />
 
-          <h5>Gato</h5>
+        <div class="col-md-4">
+            <div class="card mascota-card p-3">
+                <img src="{{ url_for('static', filename='img/gatito1.png') }}"
+                     class="mascota-img mb-3"
+                     alt="Gato">
 
-          <a href="{{ url_for('elejir_gato') }}" class="btn btn-success mt-2">
-            Elegir
-          </a>
+                <h5>Gato</h5>
+
+                <a href="{{ url_for('elejir_gato') }}" class="btn btn-success mt-2">
+                    Elegir
+                </a>
+            </div>
         </div>
-      </div>
 
-      <div class="col-md-4">
-        <div class="card mascota-card p-3">
-          <img
-            src="{{ url_for('static', filename='img/abejita1.png') }}"
-            class="mascota-img mb-3"
-            alt="abejita"
-          />
+      
+        <div class="col-md-4">
+            <div class="card mascota-card p-3">
+                <img src="{{ url_for('static', filename='img/abejita1.png') }}"
+                     class="mascota-img mb-3"
+                     alt="abejita">
 
-          <h5>Abejita</h5>
+                <h5>Abejita</h5>
 
-          <a href="{{ url_for('elejir_abeja') }}" class="btn btn-warning mt-2">
-            Elegir
-          </a>
+                <a href="{{ url_for('elejir_abeja') }}" class="btn btn-warning mt-2">
+                    Elegir
+                </a>
+            </div>
         </div>
-      </div>
-    </form>
-  </div>
+
+    </div>
 </div>
 {% endblock %}

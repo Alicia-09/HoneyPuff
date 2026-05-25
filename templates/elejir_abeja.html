@@ -1,38 +1,36 @@
-{% extends "base_inicio.html" %}
-
-{% block titulo %}Acta de Nacimiento - Abejita{% endblock %}
-
-{% block contenido %}
+{% extends "base_inicio.html" %} {% block titulo %}Acta de Nacimiento -
+Abejita{% endblock %} {% block contenido %}
 
 <div class="container mt-4 d-flex justify-content-center">
+  <div class="acta-container">
+    <img
+      src="{{ url_for('static', filename='img/abejitaacta.jpeg') }}"
+      class="acta-img"
+      alt="Acta Abejita"
+    />
 
-    <div class="acta-container">
+    <form method="POST" action="{{ url_for('elejir_abeja') }}">
+      <div class="overlay">
+        <input
+          type="text"
+          class="input-acta input-nombre"
+          placeholder="Escribe aquí"
+        />
 
+        <input
+          type="text"
+          class="input-acta input-fecha"
+          placeholder="DD/MM/AAAA"
+        />
 
-        <img src="{{ url_for('static', filename='img/abejitaacta.jpeg') }}"
-             class="acta-img"
-             alt="Acta Abejita">
-
-        <div class="overlay">
-
-       
-            <input type="text"
-                   class="input-acta input-nombre"
-                   placeholder="Escribe aquí">
-
-       
-            <input type="text"
-                   class="input-acta input-fecha"
-                   placeholder="DD/MM/AAAA">
-
-            <input type="text"
-                   class="input-acta input-lugar"
-                   placeholder="Escribe aquí">
-
-        </div>
-
-    </div>
-
+        <input
+          type="text"
+          class="input-acta input-lugar"
+          placeholder="Escribe aquí"
+        />
+      </div>
+    </form>
+  </div>
 </div>
 
 {% endblock %}
