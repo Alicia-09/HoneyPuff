@@ -42,18 +42,19 @@
 .acta-img {
     width: 100%;
     border-radius: 20px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
 
 .acta-container{
     position: relative;
-    width: 500px;
+    width: 450px;
 }
 
 .acta-img{
-    width: 100%;
+    width: 200%;
     display: block;
     border-radius: 20px;
+    margin-left: -225px;
 }
 
 /* CAPA ENCIMA */
@@ -68,35 +69,43 @@
     background: transparent;
     border: none;
     outline: none;
-    font-size: 16px;
+    font-size: 18px;
     color: #5b3400;
-    font-weight: 500;
-    font-family: 'Comic Sans MS', cursive;
-    padding-left: 5px;
+    font-weight: 900;
+    font-family: 'Comic Sans MS';
+    padding-left: 1px;
 }
 
 /* NOMBRE */
 .input-nombre{
-    top: 24%;
-    left: 55%;
+    top: 33%;
+    left: 25%;
     width: 190px;
 }
 
-/* FECHA */
-.input-fecha{
-    top: 34%;
-    left: 55%;
-    width: 190px;
-}
 
 /* LUGAR */
 .input-lugar{
-    top: 45%;
-    left: 55%;
+    top: 33%;
+    left: 83%;
     width: 190px;
 }
 
 /* PLACEHOLDER */
 .input-acta::placeholder{
     color: #9c7a4d;
+}
+
+.btn-guardar{
+    background: #f4c542;
+    color: black;
+    border: none;
+    width: 200px;      
+    height: 50px;      
+    border-radius: 10px;
+    margin: 30px auto;
+    display: block;
+    position: relative;
+    z-index: 9999;
+
 }

@@ -123,7 +123,6 @@ class HoneyPuffDB:
            "fecha_registro": datetime.now()
         }
 
-    # SOLO convertir si el ID es válido
         if usuario_id:
 
             if ObjectId.is_valid(usuario_id):

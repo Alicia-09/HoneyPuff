@@ -8,7 +8,6 @@ import random
 app = Flask(__name__)
 app.secret_key = APIKEY
 
-
 from config import (
     CORREO,
     PASSWORD_CORREO
@@ -234,7 +233,6 @@ def elejir_oso():
     if request.method == "POST":
 
         nombre = request.form.get("nombre")
-        fecha_nacimiento = request.form.get("fecha_nacimiento")
         lugar_nacimiento = request.form.get("lugar_nacimiento")
 
         usuario_id = session["usuario_id"]
@@ -242,7 +240,6 @@ def elejir_oso():
        
         id_mascota = db.registrar_mascota(
             nombre,
-            fecha_nacimiento,
             lugar_nacimiento,
             usuario_id
         )
@@ -265,7 +262,6 @@ def elejir_gato():
     if request.method == "POST":
 
         nombre = request.form.get("nombre")
-        fecha_nacimiento = request.form.get("fecha_nacimiento")
         lugar_nacimiento = request.form.get("lugar_nacimiento")
 
         usuario_id = session["usuario_id"]
@@ -273,7 +269,6 @@ def elejir_gato():
        
         id_mascota = db.registrar_mascota(
             nombre,
-            fecha_nacimiento,
             lugar_nacimiento,
             usuario_id
         )
@@ -295,7 +290,6 @@ def elejir_abeja():
     if request.method == "POST":
 
         nombre = request.form.get("nombre")
-        fecha_nacimiento = request.form.get("fecha_nacimiento")
         lugar_nacimiento = request.form.get("lugar_nacimiento")
 
         usuario_id = session["usuario_id"]
@@ -303,7 +297,6 @@ def elejir_abeja():
        
         id_mascota = db.registrar_mascota(
             nombre,
-            fecha_nacimiento,
             lugar_nacimiento,
             usuario_id
         )

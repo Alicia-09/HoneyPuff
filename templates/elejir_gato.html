@@ -12,7 +12,7 @@ Acta de Nacimiento - gatito
 
         <form method="POST" action="{{ url_for('elejir_gato') }}">
 
-            <img src="{{ url_for('static', filename='img/actagatito.jpeg') }}"
+            <img src="{{ url_for('static', filename='img/acta2gato.jpeg') }}"
                  class="acta-img"
                  alt="Acta Gatito">
 
@@ -23,10 +23,7 @@ Acta de Nacimiento - gatito
                        class="input-acta input-nombre"
                        placeholder="Escribe aquí">
 
-                <input type="text"
-                       name="fecha_nacimiento"
-                       class="input-acta input-fecha"
-                       placeholder="DD/MM/AAAA">
+               
 
                 <input type="text"
                        name="lugar_nacimiento"
@@ -35,9 +32,7 @@ Acta de Nacimiento - gatito
 
             </div>
 
-           <button type="submit"
-        class="btn btn-primary mt-3"
-        style="position: relative; z-index: 9999;">
+                   <button type="submit" class="btn-guardar">
     Guardar
 </button>
 
