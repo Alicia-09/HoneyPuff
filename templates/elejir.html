@@ -1,88 +1,89 @@
-
-
 {% extends "base_inicio.html" %}
 
 {% block titulo %}Elige tu mascota{% endblock %}
 
 {% block contenido %}
+
 <link rel="stylesheet" href="{{ url_for('static', filename='css/elejir.css') }}">
 
-<div class="container mt-5 text-center">
+<div class="container">
 
-    <h2 class="mb-5">¿Qué mascota quieres adoptar?</h2>
+    <div id="carouselMascotas"
+         class="carousel slide">
 
-    <div class="row justify-content-center g-4">
+        <div class="carousel-inner">
 
-        <!-- OSO -->
-        <div class="col-md-4">
-            <div class="card mascota-card p-3">
+            <div class="carousel-item active text-center">
 
-                <div class="img-container">
-                    <img src="{{ url_for('static', filename='img/oso.png') }}"
-                         class="mascota-img img-normal"
-                         alt="Oso">
+                <img src="{{ url_for('static', filename='img/osito1.png') }}"
+                     class="mascota img-fluid">
 
-                    <img src="{{ url_for('static', filename='img/osito1.png') }}"
-                         class="mascota-img img-feliz"
-                         alt="Oso feliz">
-                </div>
+                <br>
 
-                <h5>Oso</h5>
+                <a href="{{ url_for('elejir_oso') }}">
 
-                <a href="{{ url_for('elejir_oso') }}" class="btn btn-primary mt-2">
-                    Elegir
+                    <img src="{{ url_for('static', filename='img/boton_selec.png') }}"
+                         class="btn-img">
+
                 </a>
 
             </div>
-        </div>
 
-        <!-- GATO -->
-        <div class="col-md-4">
-            <div class="card mascota-card p-3">
+            <div class="carousel-item text-center">
 
-                <div class="img-container">
-                    <img src="{{ url_for('static', filename='img/gato.png') }}"
-                         class="mascota-img img-normal"
-                         alt="Gato">
+                <img src="{{ url_for('static', filename='img/gatito1.png') }}"
+                     class="mascota img-fluid">
 
-                    <img src="{{ url_for('static', filename='img/gatito1.png') }}"
-                         class="mascota-img img-feliz"
-                         alt="Gato feliz">
-                </div>
+                <br>
 
-                <h5>Gato</h5>
+                <a href="{{ url_for('elejir_gato') }}">
 
-                <a href="{{ url_for('elejir_gato') }}" class="btn btn-success mt-2">
-                    Elegir
+                    <img src="{{ url_for('static', filename='img/boton_selec.png') }}"
+                         class="btn-img">
+
                 </a>
 
             </div>
-        </div>
 
-        <!-- ABEJITA -->
-        <div class="col-md-4">
-            <div class="card mascota-card p-3">
+            <div class="carousel-item text-center">
 
-                <div class="img-container">
-                    <img src="{{ url_for('static', filename='img/abeja.png') }}"
-                         class="mascota-img img-normal"
-                         alt="Abejita">
+                <img src="{{ url_for('static', filename='img/abejita1.png') }}"
+                     class="mascota img-fluid">
 
-                    <img src="{{ url_for('static', filename='img/abejita1.png') }}"
-                         class="mascota-img img-feliz"
-                         alt="Abejita feliz">
-                </div>
+                <br>
 
-                <h5>Abejita</h5>
+                <a href="{{ url_for('elejir_abeja') }}">
 
-                <a href="{{ url_for('elejir_abeja') }}" class="btn btn-warning mt-2">
-                    Elegir
+                    <img src="{{ url_for('static', filename='img/boton_selec.png') }}"
+                         class="btn-img">
+
                 </a>
 
             </div>
+
         </div>
+
+
+        <button class="carousel-control-prev"
+                type="button"
+                data-bs-target="#carouselMascotas"
+                data-bs-slide="prev">
+
+            <span class="carousel-control-prev-icon"></span>
+
+        </button>
+
+        <button class="carousel-control-next"
+                type="button"
+                data-bs-target="#carouselMascotas"
+                data-bs-slide="next">
+
+            <span class="carousel-control-next-icon"></span>
+
+        </button>
 
     </div>
 
 </div>
+
 {% endblock %}

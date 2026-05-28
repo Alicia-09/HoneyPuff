@@ -1,49 +1,89 @@
-/* TARJETA */
-.mascota-card{
-    border: none;
-    border-radius: 20px;
-    background: #F8F4E6;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    transition: 0.3s;
+body{
+    background-image:url('../img/fondo.png');
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+
 }
 
-.mascota-card:hover{
-    transform: translateY(-8px);
+
+.container{
+    margin-top:12%;
 }
 
-/* CONTENEDOR DE IMAGEN */
-.img-container{
-    position: relative;
-    height: 250px;
+
+.carousel{
+    max-width:700px;
+    margin:auto;
 }
 
-/* IMÁGENES */
-.mascota-img{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 250px;
-    object-fit: contain;
-    transition: opacity 0.4s;
+.mascota{
+
+    width:28vw;
+
+    max-width:500px;
+
+    min-width:140px;
+
+    height:auto;
 }
 
-/* IMAGEN FELIZ OCULTA */
-.img-feliz{
-    opacity: 0;
+.btn-img{
+
+    width:22vw;
+
+    max-width:400px;
+
+    min-width:120px;
+
+    height:auto;
+
 }
 
-/* CAMBIO AL PASAR EL MOUSE */
-.mascota-card:hover .img-normal{
-    opacity: 0;
+.carousel-control-prev-icon,
+.carousel-control-next-icon{
+
+    width:80px;
+    height:80px;
+
+    background-color:#ffb300;
+
+    border-radius:50%;
 }
 
-.mascota-card:hover .img-feliz{
-    opacity: 1;
+.carousel-control-prev{
+    left:-60px;
 }
 
-/* TÍTULO */
-.mascota-card h5{
-    margin-top: 10px;
-    font-weight: bold;
+.carousel-control-next{
+    right:-60px;
+}
+
+@media (max-width:768px){
+
+    .mascota{
+        width:40vw;
+    }
+
+    .btn-img{
+        width:35vw;
+    }
+
+    .carousel-control-prev{
+        left:-20px;
+    }
+
+    .carousel-control-next{
+        right:-20px;
+    }
+
+}
+
+@media (min-width:1600px){
+
+    .mascota{
+        width:22vw;
+    }
+
 }
