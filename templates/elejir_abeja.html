@@ -5,9 +5,11 @@ Acta de Nacimiento - Abejita
 {% endblock %}
 
 {% block contenido %}
-
+<link rel="stylesheet" href="{{ url_for('static', filename='mascotas.css') }}">
+    
 <div class="container mt-4 d-flex justify-content-center">
-
+<link rel="stylesheet" href="{{ url_for('static', filename='mascotas.css') }}">
+    
     <div class="acta-container">
 
         <form method="POST" action="{{ url_for('elejir_abeja') }}">
