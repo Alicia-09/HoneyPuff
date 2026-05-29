@@ -1,70 +1,89 @@
-{% extends "base_publica.html" %}
+{% extends "base_inicio.html" %}
 {% block titulo %}Iniciar sesión{% endblock %}
+
 {% block contenido %}
-  <div class="card-login bg-white p-4 shadow">
-    <h4 class="titulo-cafe text-center mb-3">Bienvenida</h4>
 
-    <div class="container mt-2">
-                            {% with messages = get_flashed_messages(with_categories=true) %}
-                            {% if messages %}
-                            {% for category, message in messages %}
-                            <div class="alert alert-{{ 'danger' if category == 'error' else 'success' }} alert-dismissible fade show"
-                                role="alert">
-                                {{ message }} 
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
-                            {% endfor %}
-                            {% endif %}
-                            {% endwith %}
-                        </div>
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/login.css') }}">
 
-    <form method="POST" action="{{ url_for('ValidaSesion') }}">
-      <!-- correo -->
-      <div class="mb-3">
-        <label for="Email" class="form-label"></label>
-        <input
-          type="email"
-          class="form-control"
-          id="Email"
-          name="Email"
-          placeholder="Correo electrónico"
-          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-          value="{{ request.form.get('Email', '')}}"
-          required
-        />
-      </div>
+<img src="{{ url_for('static', filename='img/iniciosecion1.png') }}"
+     class="fondo-login">
 
-      <!-- contraseña -->
-      <div class="mb-3">
-        <label for="Contra" class="form-label"></label>
+<div class="contenedor-login">
 
-        <input
-          type="password"
-          class="form-control"
-          id="Contra"
-          name="Contra"
-          placeholder="Contraseña"
-          aria-describedby="passwordHelp"
-          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-          title="Debe contener al menos un número, una mayúscula, una minúscula y al menos 8 caracteres"
-          required/>
-      </div>
+   
+    <div class="alertas-login">
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+
+        {% for category, message in messages %}
+
+        <div class="alert alert-{{ 'danger' if category == 'error' else 'success' }} alert-dismissible fade show"
+             role="alert">
+
+            {{ message }}
+
+            <button type="button"
+                    class="btn-close"
+                    data-bs-dismiss="alert">
+            </button>
+
+        </div>
+
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+    </div>
+
+   
+    <form method="POST"
+          action="{{ url_for('ValidaSesion') }}">
+
      
-      <div class="text-center mb-3">
-        <a href="{{ url_for('recuperar') }}" class="titulo-cafe">
-          <small>¿Olvidaste tu contraseña?</small>
-        </a>
-      </div>
+        <input type="email"
+               class="input-login input-correo"
+               id="Email"
+               name="Email"
+               placeholder="Introduce correo"
+               value="{{ request.form.get('Email', '') }}"
+               required>
 
-      <!-- boton -->
-      <button type="submit" class="btn boton-amarillo w-100 mb-2">Entrar</button>
+      
+        <input type="password"
+               class="input-login input-password"
+               id="Contra"
+               name="Contra"
+               placeholder="Introduce contraseña"
+               required>
+        <a href="{{ url_for('recuperar') }}"
+           class="olvide">
+
+            ¿Olvidaste tu contraseña?
+
+        </a>
+
+   
+        <button type="submit"
+                class="boton-login">
+
+            <img src="{{ url_for('static', filename='img/btnentrar.png') }}">
+
+        </button>
+
     </form>
 
-    <!-- registro -->
-    <div class="text-center">
-      <small>¿No tienes cuenta?</small><br />
-      <a href="{{ url_for('registro') }}" class="titulo-cafe">Crear cuenta</a>
-    </div>
-  </div>
 
-{% endblock %}  
+    <div class="crear-cuenta">
+
+        <span>¿No tienes cuenta?</span>
+        <a href="{{ url_for('registro') }}">
+            Crear cuenta
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}
