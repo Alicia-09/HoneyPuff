@@ -1,15 +1,15 @@
-{% extends "base_inicio.html" %}
+{% extends "base_publica.html" %}
 
 {% block titulo %}
 Acta de Nacimiento - Abejita
 {% endblock %}
 
 {% block contenido %}
-<link rel="stylesheet" href="{{ url_for('static', filename='mascotas.css') }}">
-    
+<link rel="stylesheet" href="{{ url_for('static', filename='css/mascotas.css') }}">
+
+
 <div class="container mt-4 d-flex justify-content-center">
-<link rel="stylesheet" href="{{ url_for('static', filename='mascotas.css') }}">
-    
+
     <div class="acta-container">
 
         <form method="POST" action="{{ url_for('elejir_abeja') }}">
@@ -23,19 +23,20 @@ Acta de Nacimiento - Abejita
                 <input type="text"
                        name="nombre"
                        class="input-acta input-nombre"
-                       placeholder="Escribe aquí">
-
-                
+                       placeholder="Escribe aquí"
+                       required>
 
                 <input type="text"
                        name="lugar_nacimiento"
                        class="input-acta input-lugar"
-                       placeholder="Escribe aquí">
+                       placeholder="Escribe aquí"
+                       required>
+
+                <button type="submit" class="btn-guardar">
+                    Guardar
+                </button>
 
             </div>
-        <button type="submit" class="btn-guardar">
-    Guardar
-</button>
 
         </form>
 

@@ -2,99 +2,62 @@ body{
     margin: 0;
     overflow: hidden;
 }
-
-/* IMAGEN FONDO */
 .fondo-login{
     position: fixed;
-
     top: 0;
     left: 0;
-
     width: 100%;
     height: 100vh;
-
     object-fit: cover;
-
     z-index: 9999;
 }
 
-/* CONTENEDOR */
 .contenedor-login{
     width: 100%;
     height: 100vh;
 }
 
-/* ALERTAS */
 .alertas-login{
     position: absolute;
-
     top: 100px;
     left: 50%;
-
     transform: translateX(-50%);
-
     width: 350px;
-
     z-index: 10000;
 }
 
-/* INPUT GENERAL */
 .input-login{
     position: absolute;
-
     height: 45px;
-
     background: transparent;
-
     border: none;
-
     outline: none;
-
     font-size: 18px;
-
     color: #7a4300;
-
     z-index: 10000;
 }
-
-/* PLACEHOLDER */
 .input-login::placeholder{
     color: #7a4300;
 }
-
-/* INPUT CORREO */
 .input-correo{
     top: 60%;
-    left: 46%;
-
+    left: 44%;
     width: 300px;
 }
-
-/* INPUT PASSWORD */
 .input-password{
     top: 68%;
-    left: 46%;
-
+    left: 44%;
     width: 300px;
 }
-
-/* OLVIDASTE */
 .olvide{
     position: absolute;
-
     top: 74%;
     left: 45%;
-
     text-decoration: none;
-
     color: #7a4300;
-
     font-weight: bold;
-
     z-index: 10000;
 }
-
-/* BOTON */
 .boton-login{
     position: absolute;
     top: 76%;
@@ -103,13 +66,9 @@ body{
     background: none;
     z-index: 10000;
 }
-
-/* IMAGEN BOTON */
 .boton-login img{
     width: 220px;
 }
-
-/* CREAR CUENTA */
 .crear-cuenta {
     line-height: 1;
     position: absolute;
@@ -119,21 +78,14 @@ body{
     text-align: center;
     z-index: 10000;
 }
-
-/* LINK CREAR CUENTA */
 .crear-cuenta a{
  display: block;
-
     margin: 0;
     padding: 0;
-
     line-height: 1;
     text-decoration: none;
-
     color: #e68200;
-
     font-size: 22px;
-
     font-weight: bold;
 }
 

@@ -26,7 +26,7 @@ db = HoneyPuffDB()
 
 @app.route("/")
 def inicio():
-    return render_template("elejir.html")
+    return render_template("inicio.html")
 
 
 @app.route('/ValidaSesion', methods=['GET', 'POST'])
