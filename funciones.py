@@ -114,15 +114,14 @@ class HoneyPuffDB:
             }
         )
         
-    def registrar_mascota(self, nombre: str, tipo: str, fecha_nacimiento: str, lugar_nacimiento: str, usuario_id: str = None):
+    def registrar_mascota(self, nombre: str, tipo: str, lugar_nacimiento: str, usuario_id: str = None):
 
         mascota = {
            "nombre": nombre,
            "tipo": tipo,
            "comida": 100,
-           "sueno": 100,
+           "sueño": 100,
            "felicidad": 100,
-           "fecha_nacimiento": fecha_nacimiento,
            "lugar_nacimiento": lugar_nacimiento,
            "fecha_registro": datetime.now()
         }
@@ -158,8 +157,12 @@ class HoneyPuffDB:
 
         mascota = self.mascotas.find_one(
             {"usuario_id": ObjectId(usuario_id)})
-
-        if mascota: mascota["_id"] = str(mascota["_id"])
+        
+        if not mascota:
+            return None
+        
+        mascota["_id"] = str(mascota["_id"])
+        mascota["usuario_id"] = str(mascota["usuario_id"])
 
         return mascota
     

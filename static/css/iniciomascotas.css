@@ -95,17 +95,3 @@ body{
 
     transform:scale(1.05);
 }
-
-@media(max-width:768px){
-
-    .mascota{
-
-        width:40vw;
-    }
-
-    .boton-menu{
-
-        width:110px;
-    }
-
-}
