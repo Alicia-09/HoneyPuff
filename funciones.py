@@ -152,20 +152,23 @@ class HoneyPuffDB:
             lista_mascotas.append(mascota)
 
         return lista_mascotas
-    
-    def obtener_mascota_usuario(self,usuario_id):
+    def obtener_mascota_usuario(self, usuario_id):
 
-        mascota = self.mascotas.find_one(
-            {"usuario_id": ObjectId(usuario_id)})
-        
+        if not ObjectId.is_valid(usuario_id):
+            return None
+
+        mascota = self.mascotas.find_one({
+            "usuario_id": ObjectId(usuario_id)
+    })
+
         if not mascota:
             return None
-        
+
         mascota["_id"] = str(mascota["_id"])
         mascota["usuario_id"] = str(mascota["usuario_id"])
-
+ 
         return mascota
-    
+
     def alimentar_mascota(self,usuario_id):
 
         mascota = self.obtener_mascota_usuario(

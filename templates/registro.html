@@ -39,6 +39,7 @@ href="{{ url_for('static', filename='css/registro.css') }}">
     <input type="password"
            class="input-registro input-password"
            name="Contra"
+           pattern= "^(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$"
            placeholder="Contraseña"
            required>
 
@@ -46,6 +47,7 @@ href="{{ url_for('static', filename='css/registro.css') }}">
     <input type="password"
            class="input-registro input-confirmar-password"
            name="ContraConfirm"
+           pattern = "^(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$"
            placeholder="Confirmar contraseña"
            required>
 
