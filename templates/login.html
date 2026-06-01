@@ -58,6 +58,7 @@ href="{{ url_for('static', filename='css/login.css') }}">
                id="Contra"
                name="Contra"
                placeholder="Introduce contraseña"
+               pattern = "^(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$"
                required>
         <a href="{{ url_for('recuperar') }}"
            class="olvide">
