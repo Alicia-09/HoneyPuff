@@ -1,5 +1,3 @@
-
-
 {% extends "base_inicio.html" %}
 
 {% block titulo %}Elige tu mascota{% endblock %}
@@ -8,6 +6,7 @@
 
 <link rel="stylesheet" href="{{ url_for('static', filename='css/elejir.css') }}">
 
+<<<<<<< HEAD
 <div class="container py-5 text-center">
 
     <!-- TITULO -->
@@ -112,14 +111,96 @@
 
                     Elegir
 
+=======
+
+
+ <audio autoplay loop>
+        <source src="{{ url_for('static', filename='audio/menu.mp3') }}" type="audio/mp3">
+    </audio>
+
+<div class="container">
+
+    <div id="carouselMascotas"
+         class="carousel slide">
+
+        <div class="carousel-inner">
+
+            <div class="carousel-item active text-center">
+
+                <img src="{{ url_for('static', filename='img/osito1.png') }}"
+                     class="mascota img-fluid">
+
+                <br>
+
+                <a href="{{ url_for('elejir_oso') }}">
+
+                    <img src="{{ url_for('static', filename='img/boton_selec.png') }}"
+                         class="btn-img">
+
+                </a>
+
+            </div>
+
+            <div class="carousel-item text-center">
+
+                <img src="{{ url_for('static', filename='img/gatito1.png') }}"
+                     class="mascota img-fluid">
+
+                <br>
+
+                <a href="{{ url_for('elejir_gato') }}">
+
+                    <img src="{{ url_for('static', filename='img/boton_selec.png') }}"
+                         class="btn-img">
+
+                </a>
+
+            </div>
+
+            <div class="carousel-item text-center">
+
+                <img src="{{ url_for('static', filename='img/abejita1.png') }}"
+                     class="mascota img-fluid">
+
+                <br>
+
+                <a href="{{ url_for('elejir_abeja') }}">
+
+                    <img src="{{ url_for('static', filename='img/boton_selec.png') }}"
+                         class="btn-img">
+
+>>>>>>> 52a49a8cd56320c2016a0be63676a750c81decf6
                 </a>
 
             </div>
 
         </div>
 
+
+        <button class="carousel-control-prev"
+                type="button"
+                data-bs-target="#carouselMascotas"
+                data-bs-slide="prev">
+
+            <span class="carousel-control-prev-icon"></span>
+
+        </button>
+
+        <button class="carousel-control-next"
+                type="button"
+                data-bs-target="#carouselMascotas"
+                data-bs-slide="next">
+
+            <span class="carousel-control-next-icon"></span>
+
+        </button>
+
     </div>
 
 </div>
 
+<<<<<<< HEAD
 {% endblock %}
+=======
+{% endblock %}
+>>>>>>> 52a49a8cd56320c2016a0be63676a750c81decf6

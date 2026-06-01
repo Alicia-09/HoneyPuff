@@ -1,10 +1,12 @@
-{% extends "base_inicio.html" %}
+{% extends "base_publica.html" %}
 
 {% block titulo %}
 Acta de Nacimiento - osito
 {% endblock %}
 
 {% block contenido %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/mascotas.css') }}">
+
 
 <div class="container mt-4 d-flex justify-content-center">
 
@@ -15,23 +17,26 @@ Acta de Nacimiento - osito
             <img src="{{ url_for('static', filename='img/acta2oso.jpeg') }}"
                  class="acta-img"
                  alt="Acta Oso">
+
             <div class="overlay">
 
                 <input type="text"
                        name="nombre"
                        class="input-acta input-nombre"
-                       placeholder="Escribe aquí">
+                       placeholder="Escribe aquí"
+                       required>
 
                 <input type="text"
                        name="lugar_nacimiento"
                        class="input-acta input-lugar"
-                       placeholder="Escribe aquí">
+                       placeholder="Escribe aquí"
+                       required>
+
+                <button type="submit" class="btn-guardar">
+                    Guardar
+                </button>
 
             </div>
-
-             <button type="submit" class="btn-guardar">
-    Guardar
-</button>
 
         </form>
 

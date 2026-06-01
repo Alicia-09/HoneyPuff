@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* FONDO */
 body{
     margin:0;
@@ -110,5 +111,94 @@ h1{
 .btn:hover{
 
     transform:scale(1.05);
+=======
+body{
+    background-image:url('../img/fondo.png');
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+
+}
+
+
+.container{
+    margin-top:12%;
+}
+
+
+.carousel{
+    max-width:700px;
+    margin:auto;
+}
+
+.mascota{
+
+    width:28vw;
+
+    max-width:500px;
+
+    min-width:140px;
+
+    height:auto;
+}
+
+.btn-img{
+
+    width:22vw;
+
+    max-width:400px;
+
+    min-width:120px;
+
+    height:auto;
+
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon{
+
+    width:80px;
+    height:80px;
+
+    background-color:#ffb300;
+
+    border-radius:50%;
+}
+
+.carousel-control-prev{
+    left:-60px;
+}
+
+.carousel-control-next{
+    right:-60px;
+}
+
+@media (max-width:768px){
+
+    .mascota{
+        width:40vw;
+    }
+
+    .btn-img{
+        width:35vw;
+    }
+
+    .carousel-control-prev{
+        left:-20px;
+    }
+
+    .carousel-control-next{
+        right:-20px;
+    }
+
+}
+
+@media (min-width:1600px){
+
+    .mascota{
+        width:22vw;
+    }
+>>>>>>> 52a49a8cd56320c2016a0be63676a750c81decf6
 
 }

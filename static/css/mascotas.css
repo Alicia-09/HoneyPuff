@@ -1,111 +1,67 @@
-/* TARJETA PRINCIPAL */
-.mascota-card {
-    border: none;
-    border-radius: 20px;
-    transition: all 0.35s ease;
-    background: #F8F4E6;
-}
-
-/* EFECTO HOVER TARJETA */
-.mascota-card:hover {
-    transform: translateY(-12px) scale(1.03);
-}
-
-/* IMAGEN */
-.mascota-img {
-    transition: transform 0.35s ease;
-    border-radius: 15px;
-}
-
-/* ZOOM DE IMAGEN AL PASAR EL MOUSE */
-.mascota-card:hover .mascota-img {
-    transform: scale(1.08);
-}
-
-/* BOTÓN ANIMADO */
-.mascota-card .btn {
-    transition: all 0.3s ease;
-    border-radius: 12px;
-}
-
-.mascota-card .btn:hover {
-    transform: scale(1.05);
-    filter: brightness(1.1);
-}
-/* CONTENEDOR PRINCIPAL */
-.acta-container {
-    position: relative;
-    width: 420px;
-}
-
-/* IMAGEN DEL ACTA */
-.acta-img {
-    width: 100%;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-}
-
 .acta-container{
     position: relative;
-    width: 450px;
+    width: 1500px;
+    margin: auto;
+}
+
+.acta-container form{
+    position: relative;
 }
 
 .acta-img{
-    width: 200%;
+    width: 100%;
     display: block;
     border-radius: 20px;
-    margin-left: -225px;
 }
 
-/* CAPA ENCIMA */
 .overlay{
     position: absolute;
     inset: 0;
+    z-index: 100;
 }
 
-/* INPUTS */
 .input-acta{
     position: absolute;
     background: transparent;
     border: none;
     outline: none;
-    font-size: 18px;
+    font-size: 22px;
+    font-weight: bold;
     color: #5b3400;
-    font-weight: 900;
-    font-family: 'Comic Sans MS';
-    padding-left: 1px;
+    z-index: 101;
 }
 
-/* NOMBRE */
 .input-nombre{
-    top: 33%;
-    left: 25%;
-    width: 190px;
+    top: 40%;
+    left: 42%;
+    width: 260px;
 }
 
-
-/* LUGAR */
 .input-lugar{
-    top: 33%;
-    left: 83%;
-    width: 190px;
+    top: 40%;
+    left: 70%;
+    width: 260px;
 }
 
-/* PLACEHOLDER */
 .input-acta::placeholder{
     color: #9c7a4d;
 }
 
 .btn-guardar{
+    position: absolute;
+    top: 90%;
+    left: 68%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 50px;
+    border: none;
+    border-radius: 10px;
     background: #f4c542;
     color: black;
-    border: none;
-    width: 200px;      
-    height: 50px;      
-    border-radius: 10px;
-    margin: 30px auto;
-    display: block;
-    position: relative;
-    z-index: 9999;
+    cursor: pointer;
+    z-index: 101;
+}
 
+.btn-guardar:hover{
+    background: #ffd95e;
 }
