@@ -10,9 +10,6 @@ href="{{ url_for('static', filename='css/login.css') }}">
         <source src="{{ url_for('static', filename='audio/menu.mp3') }}" type="audio/mp3">
     </audio>
 
-<img src="{{ url_for('static', filename='img/iniciosecion1.png') }}"
-     class="fondo-login">
-
 <div class="contenedor-login">
 
    
@@ -51,6 +48,7 @@ href="{{ url_for('static', filename='css/login.css') }}">
                id="Email"
                name="Email"
                placeholder="Introduce correo"
+               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                value="{{ request.form.get('Email', '') }}"
                required>
 

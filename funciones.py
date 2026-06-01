@@ -114,10 +114,14 @@ class HoneyPuffDB:
             }
         )
         
-    def registrar_mascota(self, nombre: str, fecha_nacimiento: str, lugar_nacimiento: str, usuario_id: str = None):
+    def registrar_mascota(self, nombre: str, tipo: str, fecha_nacimiento: str, lugar_nacimiento: str, usuario_id: str = None):
 
-        mascotas = {
+        mascota = {
            "nombre": nombre,
+           "tipo": tipo,
+           "comida": 100,
+           "sueno": 100,
+           "felicidad": 100,
            "fecha_nacimiento": fecha_nacimiento,
            "lugar_nacimiento": lugar_nacimiento,
            "fecha_registro": datetime.now()
@@ -126,12 +130,12 @@ class HoneyPuffDB:
         if usuario_id:
 
             if ObjectId.is_valid(usuario_id):
-                mascotas["usuario_id"] = ObjectId(usuario_id)
+                mascota["usuario_id"] = ObjectId(usuario_id)
 
             else:
-                mascotas["usuario_id"] = usuario_id
+                mascota["usuario_id"] = usuario_id
 
-        resultado = self.mascotas.insert_one(mascotas)
+        resultado = self.mascotas.insert_one(mascota)
 
         return str(resultado.inserted_id)
 
@@ -149,6 +153,71 @@ class HoneyPuffDB:
             lista_mascotas.append(mascota)
 
         return lista_mascotas
+    
+    def obtener_mascota_usuario(self,usuario_id):
+
+        mascota = self.mascotas.find_one(
+            {"usuario_id": ObjectId(usuario_id)})
+
+        if mascota: mascota["_id"] = str(mascota["_id"])
+
+        return mascota
+    
+    def alimentar_mascota(self,usuario_id):
+
+        mascota = self.obtener_mascota_usuario(
+            usuario_id)
+
+        nueva_comida = min(mascota["comida"] + 10,100)
+
+        self.mascotas.update_one(
+
+        {"usuario_id": ObjectId(usuario_id)},
+
+        {"$set":{"comida": nueva_comida}}
+    )
+
+
+    def dormir_mascota(self, usuario_id):
+
+        mascota = self.obtener_mascota_usuario(usuario_id)
+
+        nuevo_sueño = min(
+            mascota["sueño"] + 10,100)
+
+        self.mascotas.update_one(
+
+        {
+            "usuario_id": ObjectId(usuario_id)
+        },
+
+        {
+            "$set":{
+                "sueno": nuevo_sueño
+            }
+        }
+
+    )
+        
+    def jugar_mascota(self,usuario_id):
+
+        mascota = self.obtener_mascota_usuario(usuario_id)
+
+        nueva_felicidad = min(mascota["felicidad"] + 10,100)
+
+        self.mascotas.update_one(
+
+        {
+            "usuario_id": ObjectId(usuario_id)
+        },
+
+        {
+            "$set":{
+                "felicidad": nueva_felicidad
+            }
+        }
+
+    )
 
     def cerrar_conexion(self):
         if self.cliente:

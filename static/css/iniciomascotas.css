@@ -1,0 +1,111 @@
+body{
+
+    background-image:url('../img/casa.png');
+
+    background-size:cover;
+
+    background-position:center;
+
+    background-repeat:no-repeat;
+
+    min-height:100vh;
+}
+
+.pantalla-principal{
+
+    min-height:100vh;
+
+    padding-top:20px;
+}
+
+.nombre-mascota{
+
+    width:250px;
+
+    margin:auto;
+
+    text-align:center;
+
+    font-size:28px;
+
+    font-weight:bold;
+
+    background:#FFF4D6;
+
+    border-radius:20px;
+
+    padding:10px;
+}
+
+.mascota-contenedor{
+
+    text-align:center;
+
+    margin-top:20px;
+}
+
+.mascota{
+
+    width:25vw;
+
+    max-width:300px;
+
+    min-width:160px;
+
+    height:auto;
+}
+
+.panel-estadisticas{
+
+    max-width:600px;
+
+    margin:auto;
+
+    margin-top:20px;
+}
+
+.progress{
+
+    height:28px;
+
+    border-radius:20px;
+}
+
+.menu-juego{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:30px;
+
+    margin-top:30px;
+}
+
+.boton-menu{
+
+    width:160px;
+
+    height:auto;
+
+    transition:0.3s;
+}
+
+.boton-menu:hover{
+
+    transform:scale(1.05);
+}
+
+@media(max-width:768px){
+
+    .mascota{
+
+        width:40vw;
+    }
+
+    .boton-menu{
+
+        width:110px;
+    }
+
+}

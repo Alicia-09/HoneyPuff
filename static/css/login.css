@@ -1,15 +1,9 @@
-body{
-    margin: 0;
-    overflow: hidden;
-}
-.fondo-login{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    object-fit: cover;
-    z-index: 9999;
+body {
+    background-image: url('../img/iniciosecion1.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 .contenedor-login{

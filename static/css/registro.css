@@ -1,20 +1,11 @@
-body{
-    margin: 0;
-    overflow: hidden;
+body {
+    background-image: url('../img/registrar.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
-.fondo-registro{
-    position: fixed;
 
-    top: 0;
-    left: 0;
-
-    width: 100%;
-    height: 100vh;
-
-    object-fit: cover;
-
-    z-index: 9999;
-}
 .input-registro{
     position: absolute;
     height: 45px;

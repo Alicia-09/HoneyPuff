@@ -1,4 +1,4 @@
-{% extends "base_publica.html" %}
+{% extends "base_inicio.html" %}
 {% block titulo %}Registrate{% endblock %}
 
 {% block contenido %}
@@ -10,50 +10,46 @@ href="{{ url_for('static', filename='css/registro.css') }}">
         <source src="{{ url_for('static', filename='audio/menu.mp3') }}" type="audio/mp3">
     </audio>
 
-<!-- IMAGEN COMPLETA -->
-<img src="{{ url_for('static', filename='img/registrar.png') }}"
-     class="fondo-registro">
-
-<!-- FORMULARIO -->
 <form method="POST"
       action="{{ url_for('registro') }}">
 
-    <!-- NOMBRE -->
+    <!-- nombre-->
     <input type="text"
            class="input-registro input-nombre"
            name="Nombre"
            placeholder="Nombre"
            required>
 
-    <!-- APELLIDO -->
+   <!-- apellido -->
     <input type="text"
            class="input-registro input-apellido"
            name="Apellido"
            placeholder="Apellido"
            required>
 
-    <!-- CORREO -->
+    <!-- correo -->
     <input type="email"
            class="input-registro input-correo"
            name="Email"
+           pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
            placeholder="Correo electrónico"
            required>
 
-    <!-- PASSWORD -->
+    <!-- contraseña -->
     <input type="password"
            class="input-registro input-password"
            name="Contra"
            placeholder="Contraseña"
            required>
 
-    <!-- CONFIRMAR -->
+    <!-- confirmar -->
     <input type="password"
            class="input-registro input-confirmar-password"
            name="ContraConfirm"
            placeholder="Confirmar contraseña"
            required>
 
-    <!-- BOTON -->
+    <!-- boton -->
     <button type="submit"
             class="boton-registro">
 

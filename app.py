@@ -26,7 +26,7 @@ db = HoneyPuffDB()
 
 @app.route("/")
 def inicio():
-    return render_template("elejir.html")
+    return render_template("iniciomascota.html")
 
 
 @app.route('/ValidaSesion', methods=['GET', 'POST'])
@@ -241,6 +241,7 @@ def elejir_oso():
         id_mascota = db.registrar_mascota(
             nombre,
             lugar_nacimiento,
+            "oso",
             usuario_id
         )
 
@@ -269,6 +270,7 @@ def elejir_gato():
        
         id_mascota = db.registrar_mascota(
             nombre,
+            "gato",
             lugar_nacimiento,
             usuario_id
         )
@@ -297,6 +299,7 @@ def elejir_abeja():
        
         id_mascota = db.registrar_mascota(
             nombre,
+            "abeja",
             lugar_nacimiento,
             usuario_id
         )
@@ -311,7 +314,12 @@ def elejir_abeja():
 
 @app.route("/iniciomascotas")
 def iniciomascotas():
-    mascotas = db.obtener_mascotas()
+
+    usuario_id = session["usuario_id"]
+
+    mascotas = db.obtener_mascotas(
+        usuario_id
+    )
     return render_template("iniciomascotas.html", mascotas=mascotas)
 
 

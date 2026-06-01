@@ -1,34 +1,117 @@
-<!DOCTYPE html>
+{% extends "base_inicio.html" %}
 
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Próximamente</title>
-    <style>
-        body {
-            margin: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: #ffd6e0; /* fondo granita */
-            font-family: Arial, sans-serif;
-        }
+{% block titulo %}HoneyPuff{% endblock %}
 
-```
-    h1 {
-        font-size: 60px;
-        color: white;
-    }
-</style>
-```
+{% block contenido %}
 
-</head>
-<body>
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/iniciomascotas.css') }}">
 
-```
-<h1>Próximamente</h1>
-```
+<div class="container-fluid pantalla-principal">
 
-</body>
-</html>
+ 
+
+    <div class="nombre-mascota">
+
+        {{ mascota.nombre }}
+
+    </div>
+
+
+
+    <div class="mascota-contenedor">
+
+        {% if mascota.tipo == "oso" %}
+
+            <img src="{{ url_for('static', filename='img/osito1.png') }}"
+                 class="mascota">
+
+        {% elif mascota.tipo == "gato" %}
+
+            <img src="{{ url_for('static', filename='img/gatito1.png') }}"
+                 class="mascota">
+
+        {% else %}
+
+            <img src="{{ url_for('static', filename='img/abejita1.png') }}"
+                 class="mascota">
+
+        {% endif %}
+
+    </div>
+
+
+
+    <div class="panel-estadisticas">
+
+        <label>🍯 Comida</label>
+
+        <div class="progress mb-3">
+
+            <div class="progress-bar bg-warning"
+                 style="width: {{ mascota.comida }}%;">
+
+                {{ mascota.comida }}%
+
+            </div>
+
+        </div>
+
+        <label>😴 Sueño</label>
+
+        <div class="progress mb-3">
+
+            <div class="progress-bar bg-info"
+                 style="width: {{ mascota.sueno }}%;">
+
+                {{ mascota.sueno }}%
+
+            </div>
+
+        </div>
+
+        <label>😊 Felicidad</label>
+
+        <div class="progress">
+
+            <div class="progress-bar bg-success"
+                 style="width: {{ mascota.felicidad }}%;">
+
+                {{ mascota.felicidad }}%
+
+            </div>
+
+        </div>
+
+    </div>
+
+  
+
+    <div class="menu-juego">
+
+        <a href="{{ url_for('cocina') }}">
+
+            <img src="{{ url_for('static', filename='img/btn_cocina.png') }}"
+                 class="boton-menu">
+
+        </a>
+
+        <a href="{{ url_for('patio') }}">
+
+            <img src="{{ url_for('static', filename='img/btn_patio.png') }}"
+                 class="boton-menu">
+
+        </a>
+
+        <a href="{{ url_for('habitacion') }}">
+
+            <img src="{{ url_for('static', filename='img/btn_cuarto.png') }}"
+                 class="boton-menu">
+
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}
