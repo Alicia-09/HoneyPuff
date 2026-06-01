@@ -7,46 +7,44 @@
 <link rel="stylesheet"
       href="{{ url_for('static', filename='css/iniciomascotas.css') }}">
 
-<div class="container-fluid pantalla-principal">
+<div class="pantalla-principal">
 
- 
+    <!-- nombre mascota -->
 
-    <div class="nombre-mascota">
+    <div class="nombre-mascota text-center fw-bold">
 
         {{ mascota.nombre }}
 
     </div>
 
+    <!-- mascota seleccionada -->
 
-
-    <div class="mascota-contenedor">
+    <div class="zona-mascota text-center">
 
         {% if mascota.tipo == "oso" %}
 
             <img src="{{ url_for('static', filename='img/osito1.png') }}"
-                 class="mascota">
+                 class="img-fluid mascota">
 
         {% elif mascota.tipo == "gato" %}
 
             <img src="{{ url_for('static', filename='img/gatito1.png') }}"
-                 class="mascota">
+                 class="img-fluid mascota">
 
         {% else %}
 
             <img src="{{ url_for('static', filename='img/abejita1.png') }}"
-                 class="mascota">
+                 class="img-fluid mascota">
 
         {% endif %}
 
     </div>
 
+    <!-- progress bar -->
 
+    <div class="barra-comida">
 
-    <div class="panel-estadisticas">
-
-        <label>🍯 Comida</label>
-
-        <div class="progress mb-3">
+        <div class="progress">
 
             <div class="progress-bar bg-warning"
                  style="width: {{ mascota.comida }}%;">
@@ -57,9 +55,12 @@
 
         </div>
 
-        <label>😴 Sueño</label>
+    </div>
 
-        <div class="progress mb-3">
+
+    <div class="barra-sueno">
+
+        <div class="progress">
 
             <div class="progress-bar bg-info"
                  style="width: {{ mascota.sueno }}%;">
@@ -70,7 +71,9 @@
 
         </div>
 
-        <label>😊 Felicidad</label>
+    </div>
+
+    <div class="barra-felicidad">
 
         <div class="progress">
 
@@ -85,28 +88,27 @@
 
     </div>
 
-  
 
-    <div class="menu-juego">
+    <div class="panel-derecho d-flex flex-column gap-3">
 
         <a href="#">
 
             <img src="{{ url_for('static', filename='img/btn_cocina.png') }}"
-                 class="boton-menu">
+                 class="img-fluid boton-menu">
 
         </a>
 
         <a href="#">
 
             <img src="{{ url_for('static', filename='img/btn_patio.png') }}"
-                 class="boton-menu">
+                 class="img-fluid boton-menu">
 
         </a>
 
         <a href="#">
 
             <img src="{{ url_for('static', filename='img/btn_cuarto.png') }}"
-                 class="boton-menu">
+                 class="img-fluid boton-menu">
 
         </a>
 

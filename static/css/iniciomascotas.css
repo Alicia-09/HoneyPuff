@@ -7,91 +7,102 @@ body{
     background-position:center;
 
     background-repeat:no-repeat;
-
-    min-height:100vh;
 }
+
 
 .pantalla-principal{
 
-    min-height:100vh;
+    position:relative;
 
-    padding-top:20px;
+    height:100vh;
 }
+
+/* nombre */
 
 .nombre-mascota{
 
+    position:absolute;
+
+    top:35px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
     width:250px;
 
-    margin:auto;
-
-    text-align:center;
-
-    font-size:28px;
-
-    font-weight:bold;
-
-    background:#FFF4D6;
+    background:white;
 
     border-radius:20px;
 
     padding:10px;
+
+    font-size:30px;
 }
 
-.mascota-contenedor{
+/* mascota */
 
-    text-align:center;
+.zona-mascota{
 
-    margin-top:20px;
+    position:absolute;
+
+    left:500px;
+
+    top:200px;
 }
 
 .mascota{
 
-    width:25vw;
-
-    max-width:300px;
-
-    min-width:160px;
-
-    height:auto;
+    width:350px;
 }
 
-.panel-estadisticas{
+/* barras */
 
-    max-width:600px;
+.barra-comida{
 
-    margin:auto;
+    position:absolute;
 
-    margin-top:20px;
+    bottom:35px;
+
+    left:200px;
+
+    width:250px;
 }
 
-.progress{
+.barra-sueno{
 
-    height:28px;
+    position:absolute;
 
-    border-radius:20px;
+    bottom:35px;
+
+    left:500px;
+
+    width:250px;
 }
 
-.menu-juego{
+.barra-felicidad{
 
-    display:flex;
+    position:absolute;
 
-    justify-content:center;
+    bottom:35px;
 
-    gap:30px;
+    left:790px;
 
-    margin-top:30px;
+    width:250px;
+}
+
+/* botones */
+
+.panel-derecho{
+
+    position:absolute;
+
+    right:80px;
+
+    top:100px;
 }
 
 .boton-menu{
 
-    width:160px;
-
-    height:auto;
-
-    transition:0.3s;
-}
-
-.boton-menu:hover{
-
-    transform:scale(1.05);
+    width:180px;
 }

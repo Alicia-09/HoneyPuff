@@ -239,10 +239,10 @@ def elejir_oso():
 
        
         id_mascota = db.registrar_mascota(
-            nombre,
-            lugar_nacimiento,
-            "oso",
-            usuario_id
+            nombre= nombre,
+            tipo="oso",
+            lugar_nacimiento=lugar_nacimiento,
+            usuario_id=usuario_id
         )
 
         print("Mascota guardada:", id_mascota)
@@ -269,7 +269,7 @@ def elejir_gato():
 
        
         id_mascota = db.registrar_mascota(
-            nomnre= nombre,
+            nombre= nombre,
             tipo="gato",
             lugar_nacimiento=lugar_nacimiento,
             usuario_id=usuario_id
@@ -298,10 +298,10 @@ def elejir_abeja():
 
        
         id_mascota = db.registrar_mascota(
-            nombre,
-            "abeja",
-            lugar_nacimiento,
-            usuario_id
+            nombre= nombre,
+            tipo="abeja",
+            lugar_nacimiento=lugar_nacimiento,
+            usuario_id=usuario_id
         )
 
         print("Mascota guardada:", id_mascota)
