@@ -13,17 +13,6 @@
 
 <body>
 
-    <nav class="navbar shadow-sm">
-        <div class="container d-flex justify-content-center align-items-center">
-            <img src="{{ url_for('static', filename='img/logotipo.png') }}" alt="Logo" class="me-2">
-
-            <h3 class="fw-bold titulo-cafe">
-                {% block titulo %}{% endblock %}
-            </h3>
-
-        </div>
-    </nav>
-
      {% block contenido %}
     {% endblock %}
 

@@ -5,19 +5,30 @@
 {% block titulo %}Elige tu mascota{% endblock %}
 
 {% block contenido %}
+
 <link rel="stylesheet" href="{{ url_for('static', filename='css/elejir.css') }}">
 
-<div class="container mt-5 text-center">
+<div class="container py-5 text-center">
 
-    <h2 class="mb-5">¿Qué mascota quieres adoptar?</h2>
+    <!-- TITULO -->
+    <h1 class="fw-bold text-warning mb-2">
+        🐾 Elige tu mascota 🐾
+    </h1>
 
+    <p class="text-secondary mb-5">
+        Escoge tu compañero para comenzar la aventura
+    </p>
+
+    <!-- CARDS -->
     <div class="row justify-content-center g-4">
 
         <!-- OSO -->
-        <div class="col-md-4">
-            <div class="card mascota-card p-3">
+        <div class="col-10 col-sm-8 col-md-4 col-lg-3">
+
+            <div class="card mascota-card p-3 h-100">
 
                 <div class="img-container">
+
                     <img src="{{ url_for('static', filename='img/oso.png') }}"
                          class="mascota-img img-normal"
                          alt="Oso">
@@ -25,22 +36,31 @@
                     <img src="{{ url_for('static', filename='img/osito1.png') }}"
                          class="mascota-img img-feliz"
                          alt="Oso feliz">
+
                 </div>
 
-                <h5>Oso</h5>
+                <h5 class="fw-bold mt-3">
+                    🐻 Oso
+                </h5>
 
-                <a href="{{ url_for('elejir_oso') }}" class="btn btn-primary mt-2">
+                <a href="{{ url_for('elejir_oso') }}"
+                   class="btn btn-warning rounded-pill fw-bold mt-2">
+
                     Elegir
+
                 </a>
 
             </div>
+
         </div>
 
         <!-- GATO -->
-        <div class="col-md-4">
-            <div class="card mascota-card p-3">
+        <div class="col-10 col-sm-8 col-md-4 col-lg-3">
+
+            <div class="card mascota-card p-3 h-100">
 
                 <div class="img-container">
+
                     <img src="{{ url_for('static', filename='img/gato.png') }}"
                          class="mascota-img img-normal"
                          alt="Gato">
@@ -48,22 +68,31 @@
                     <img src="{{ url_for('static', filename='img/gatito1.png') }}"
                          class="mascota-img img-feliz"
                          alt="Gato feliz">
+
                 </div>
 
-                <h5>Gato</h5>
+                <h5 class="fw-bold mt-3">
+                    🐱 Gato
+                </h5>
 
-                <a href="{{ url_for('elejir_gato') }}" class="btn btn-success mt-2">
+                <a href="{{ url_for('elejir_gato') }}"
+                   class="btn btn-warning rounded-pill fw-bold mt-2">
+
                     Elegir
+
                 </a>
 
             </div>
+
         </div>
 
         <!-- ABEJITA -->
-        <div class="col-md-4">
-            <div class="card mascota-card p-3">
+        <div class="col-10 col-sm-8 col-md-4 col-lg-3">
+
+            <div class="card mascota-card p-3 h-100">
 
                 <div class="img-container">
+
                     <img src="{{ url_for('static', filename='img/abeja.png') }}"
                          class="mascota-img img-normal"
                          alt="Abejita">
@@ -71,18 +100,26 @@
                     <img src="{{ url_for('static', filename='img/abejita1.png') }}"
                          class="mascota-img img-feliz"
                          alt="Abejita feliz">
+
                 </div>
 
-                <h5>Abejita</h5>
+                <h5 class="fw-bold mt-3">
+                    🐝 Abejita
+                </h5>
 
-                <a href="{{ url_for('elejir_abeja') }}" class="btn btn-warning mt-2">
+                <a href="{{ url_for('elejir_abeja') }}"
+                   class="btn btn-warning rounded-pill fw-bold mt-2">
+
                     Elegir
+
                 </a>
 
             </div>
+
         </div>
 
     </div>
 
 </div>
+
 {% endblock %}
