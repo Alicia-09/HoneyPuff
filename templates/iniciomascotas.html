@@ -7,49 +7,30 @@
 <link rel="stylesheet"
       href="{{ url_for('static', filename='css/iniciomascotas.css') }}">
 
-<div class="pantalla-principal">
+<div class="container-fluid vh-100 d-flex flex-column">
 
-    <!-- nombre mascota -->
+    <div class="row mt-3 align-items-center">
 
-    <div class="nombre-mascota text-center fw-bold">
+        <div class="col-2">
 
-        {{ mascota.nombre }}
+            <a href="/configuracion">
+                <img src="{{ url_for('static', filename='img/btn_config.png') }}"
+                     class="img-fluid">
+            </a>
 
-    </div>
+        </div>
 
-    <!-- mascota seleccionada -->
+        <div class="col-lg-2 col-md-4">
 
-    <div class="zona-mascota text-center">
+            <div class="card shadow rounded-4">
 
-        {% if mascota.tipo == "oso" %}
+                <div class="card-body text-center">
 
-            <img src="{{ url_for('static', filename='img/osito1.png') }}"
-                 class="img-fluid mascota">
+                    <h2 class="fw-bold mb-0">
+                        {{ mascota.nombre }}
+                    </h2>
 
-        {% elif mascota.tipo == "gato" %}
-
-            <img src="{{ url_for('static', filename='img/gatito1.png') }}"
-                 class="img-fluid mascota">
-
-        {% else %}
-
-            <img src="{{ url_for('static', filename='img/abejita1.png') }}"
-                 class="img-fluid mascota">
-
-        {% endif %}
-
-    </div>
-
-    <!-- progress bar -->
-
-    <div class="barra-comida">
-
-        <div class="progress">
-
-            <div class="progress-bar bg-warning"
-                 style="width: {{ mascota.comida }}%;">
-
-                {{ mascota.comida }}%
+                </div>
 
             </div>
 
@@ -57,15 +38,48 @@
 
     </div>
 
+    <div class="row flex-grow-1 align-items-center">
 
-    <div class="barra-sueno">
 
-        <div class="progress">
+        <div class="col-md-9 d-flex justify-content-end align-items-center">
 
-            <div class="progress-bar bg-info"
-                 style="width: {{ mascota.sueno }}%;">
+            {% if mascota.tipo == "oso" %}
 
-                {{ mascota.sueno }}%
+                <img src="{{ url_for('static', filename='img/osito1.png') }}"
+                     class="img-fluid me-5">
+
+            {% elif mascota.tipo == "gato" %}
+
+                <img src="{{ url_for('static', filename='img/gatito1.png') }}"
+                     class="img-fluid me-5">
+
+            {% else %}
+
+                <img src="{{ url_for('static', filename='img/abejita1.png') }}"
+                     class="img-fluid me-5">
+
+            {% endif %}
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="d-grid gap-3">
+
+                <a href="{{ url_for('cocina') }}">
+                    <img src="{{ url_for('static', filename='img/btn_cocina.png') }}"
+                         class="img-fluid">
+                </a>
+
+                <a href="#">
+                    <img src="{{ url_for('static', filename='img/btn_patio.png') }}"
+                         class="img-fluid">
+                </a>
+
+                <a href="#">
+                    <img src="{{ url_for('static', filename='img/btn_cuarto.png') }}"
+                         class="img-fluid">
+                </a>
 
             </div>
 
@@ -73,44 +87,83 @@
 
     </div>
 
-    <div class="barra-felicidad">
+    <div class="row justify-content-center g-5 mb-5">
+        <div class="col-lg-3 col-md-4">
+            <div class="card shadow rounded-4">
 
-        <div class="progress">
+                <div class="card-body">
 
-            <div class="progress-bar bg-success"
-                 style="width: {{ mascota.felicidad }}%;">
+                    <h5 class="text-center fw-bold">
+                        COMIDA
+                    </h5>
 
-                {{ mascota.felicidad }}%
+                    <div class="progress" style="height: 30px;">
+
+                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning"
+                        style="width: {{ mascota.comida }}%;">
+
+                            {{ mascota.comida }}%
+
+                        </div>
+
+                    </div>
+
+                </div>
 
             </div>
 
         </div>
 
-    </div>
 
+        <div class="col-lg-3 col-md-4">
+            <div class="card shadow rounded-4 border-info">
+                <div class="card-body">
 
-    <div class="panel-derecho d-flex flex-column gap-3">
+                    <h5 class="text-center fw-bold">
+                        SUEÑO
+                    </h5>
 
-        <a href="#">
+                    <div class="progress" style="height: 30px;">
 
-            <img src="{{ url_for('static', filename='img/btn_cocina.png') }}"
-                 class="img-fluid boton-menu">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-info"
+                             style="width: {{ mascota.sueno }}%;">
 
-        </a>
+                            {{ mascota.sueno }}%
 
-        <a href="#">
+                        </div>
 
-            <img src="{{ url_for('static', filename='img/btn_patio.png') }}"
-                 class="img-fluid boton-menu">
+                    </div>
 
-        </a>
+                </div>
 
-        <a href="#">
+            </div>
 
-            <img src="{{ url_for('static', filename='img/btn_cuarto.png') }}"
-                 class="img-fluid boton-menu">
+        </div>
 
-        </a>
+        <div class="col-lg-3 col-md-4">
+            <div class="card shadow rounded-4 border-success">
+                <div class="card-body">
+
+                    <h5 class="text-center fw-bold">
+                        FELICIDAD
+                    </h5>
+
+                    <div class="progress" style="height: 30px;">
+
+                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-success"
+                             style="width: {{ mascota.felicidad }}%;">
+
+                            {{ mascota.felicidad }}%
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
 
     </div>
 

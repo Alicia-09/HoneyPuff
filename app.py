@@ -338,44 +338,82 @@ def iniciomascotas():
 
     usuario_id = session["usuario_id"]
 
-    mascotas = db.obtener_mascota_usuario(usuario_id)
-    
-    if not mascotas:
-        flash("No tienes mascot regitrada")
-        return redirect(url_for("elejir"))
-        
-    return render_template("iniciomascotas.html", mascota=mascotas)
+    mascota = db.obtener_mascota_usuario(usuario_id)
 
-@app.route("/dormir", methods=["POST"])
+    if not mascota:
+        flash("No tienes mascota registrada")
+        return redirect(url_for("elejir"))
+
+    mascota = db.actualizar_mascota(mascota["_id"])
+
+    return render_template(
+        "iniciomascotas.html",
+        mascota=mascota
+    )
+
+@app.route("/cocina")
+def cocina():
+
+    usuario_id = session["usuario_id"]
+
+    mascota = db.obtener_mascota_usuario(usuario_id)
+
+    mascota = db.actualizar_mascota(mascota["_id"])
+
+    return render_template(
+        "cocina.html",
+        mascota=mascota
+    )
+
+@app.route("/comer")
+def comer():
+
+    usuario_id = session["usuario_id"]
+
+    mascota = db.obtener_mascota_usuario(usuario_id)
+
+    db.actualizar_mascota(
+        mascota["_id"],
+        "comer"
+    )
+
+    return redirect(url_for("cocina"))
+
+@app.route("/patio")
+def patio():
+     return redirect(url_for("patio"))
+
+@app.route("/jugar")
+def jugar():
+
+    usuario_id = session["usuario_id"]
+
+    mascota = db.obtener_mascota_usuario(usuario_id)
+
+    db.actualizar_mascota(
+        mascota["_id"],
+        "jugar"
+    )
+
+    return redirect(url_for("iniciomascotas"))
+
+@app.route("/cuarto")
+def cuarto():
+     return redirect(url_for("cuarto"))
+
+@app.route("/dormir")
 def dormir():
 
     usuario_id = session["usuario_id"]
 
     mascota = db.obtener_mascota_usuario(usuario_id)
 
-    if not mascota:
-        flash("No tienes mascota registrada")
-        return redirect(url_for("elejir"))
+    db.actualizar_mascota(
+        mascota["_id"],
+        "dormir"
+    )
 
-    db.dormir_mascota(usuario_id)
-
-    return redirect(url_for("inicio"))
-
-@app.route("/despertar", methods=["POST"])
-def despertar():
-
-    usuario_id = session["usuario_id"]
-
-    mascota = db.obtener_mascota_usuario(usuario_id)
-
-    if not mascota:
-        flash("No tienes mascota registrada")
-        return redirect(url_for("elejir"))
-
-    db.despertar_mascota(usuario_id)
-
-    return redirect(url_for("inicio"))
-    
+    return redirect(url_for("iniciomascotas"))
 
 
 @app.route("/logout")

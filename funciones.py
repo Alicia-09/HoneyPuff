@@ -122,6 +122,7 @@ class HoneyPuffDB:
            "comida": 100,
            "sueño": 100,
            "felicidad": 100,
+           "ultima_visita": datetime.now(),
            "lugar_nacimiento": lugar_nacimiento,
            "fecha_registro": datetime.now()
         }
@@ -152,6 +153,7 @@ class HoneyPuffDB:
             lista_mascotas.append(mascota)
 
         return lista_mascotas
+    
     def obtener_mascota_usuario(self, usuario_id):
 
         if not ObjectId.is_valid(usuario_id):
@@ -169,76 +171,71 @@ class HoneyPuffDB:
  
         return mascota
 
-    def alimentar_mascota(self,usuario_id):
+    def actualizar_mascota(self, mascota_id, accion=None):
 
-        mascota = self.obtener_mascota_usuario(
-            usuario_id)
+        mascota = self.mascotas.find_one({"_id": ObjectId(mascota_id)})
 
-        nueva_comida = min(mascota["comida"] + 10,100)
+        if not mascota:
+            return None
 
-        self.mascotas.update_one(
+        ahora = datetime.now()
 
-        {"usuario_id": ObjectId(usuario_id)},
+        minutos = int((ahora - mascota["ultima_visita"]).total_seconds() / 60)
 
-        {"$set":{"comida": nueva_comida}}
-    )
+        puntos = minutos // 10
+
+        mascota["comida"] = max(0, mascota["comida"] - puntos)
+        mascota["felicidad"] = max(0, mascota["felicidad"] - puntos)
+        mascota["sueño"] = max(0, mascota["sueño"] - puntos)
 
 
-    def dormir_mascota(self, usuario_id):
+        if accion == "comer":
+            mascota["comida"] += 20
 
-        mascota = self.obtener_mascota_usuario(usuario_id)
+        elif accion == "jugar":
+            mascota["felicidad"] += 20
 
-        nuevo_sueno = min(
-            mascota["sueno"] + 10,
-            100
-        )
+        elif accion == "dormir":
+            mascota["sueño"] += 20
 
-        self.mascotas.update_one(
-        {
-                "usuario_id": ObjectId(usuario_id)
-        },
-        {
+
+        mascota["comida"] = min(100, mascota["comida"])
+        mascota["felicidad"] = min(100, mascota["felicidad"])
+        mascota["sueño"] = min(100, mascota["sueño"])
+
+        if mascota["comida"] <= 30:
+            mascota["estado"] = "hambriento"
+
+        elif mascota["sueño"] <= 30:
+            mascota["estado"] = "cansado"
+
+        elif mascota["felicidad"] <= 30:
+            mascota["estado"] = "triste"
+
+        elif (
+            mascota["comida"] >= 80 and
+            mascota["felicidad"] >= 80 and
+            mascota["sueño"] >= 80):
+            mascota["estado"] = "feliz"
+
+        else:
+            mascota["estado"] = "normal"
+
+        mascota["ultima_visita"] = ahora
+
+        self.mascotas.update_one({"_id": ObjectId(mascota_id)},
+           {
                 "$set": {
-                    "sueno": nuevo_sueno,
-                    "luz": False
+                    "comida": mascota["comida"],
+                    "sueño": mascota["sueño"],
+                    "felicidad": mascota["felicidad"],
+                    "estado": mascota["estado"],
+                    "ultima_visita": ahora
                 }
             }
-        
-    )
-        
-    def despertar_mascota(self, usuario_id):
-
-        self.mascotas.update_one(
-            { 
-                "usuario_id": ObjectId(usuario_id)
-            },
-            {
-                "$set": {
-                    "luz": True
-                }
-            }
-        
         )
-        
-    def jugar_mascota(self,usuario_id):
 
-        mascota = self.obtener_mascota_usuario(usuario_id)
-
-        nueva_felicidad = min(mascota["felicidad"] + 10,100)
-
-        self.mascotas.update_one(
-
-        {
-            "usuario_id": ObjectId(usuario_id)
-        },
-
-        {
-            "$set":{
-                "felicidad": nueva_felicidad
-            }
-        }
-
-    )
+        return mascota
 
     def cerrar_conexion(self):
         if self.cliente:

@@ -1,0 +1,100 @@
+{% extends "base_inicio.html" %}
+
+{% block titulo %}HoneyPuff{% endblock %}
+
+{% block contenido %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/cocina.css') }}">
+
+<div class="container-fluid vh-100">
+
+    <div class="row pt-3">
+        <div class="col-12">
+
+            <a href="/inicio">
+                <img src="{{ url_for('static', filename='img/regresar.png') }}"
+                     class="img-fluid"
+                     style="max-width:70px;">
+            </a>
+
+        </div>
+    </div>
+
+ 
+    <div class="row justify-content-center mt-5">
+
+        <div class="col-auto text-center">
+
+            <img src="{{ url_for('static', filename='img/abejita1.png') }}"
+                 class="img-fluid"
+                 style="max-height:260px;">
+
+        </div>
+
+    </div>
+
+
+    <div class="row justify-content-center mt-3">
+
+        <div class="col-auto">
+
+            <div class="d-flex justify-content-center gap-4">
+
+                <a href="{{ url_for('comer') }}">
+                    <img src="{{ url_for('static', filename='img/manzana.png') }}"
+                         class="img-fluid"
+                         style="width:80px;">
+                </a>
+
+                <a href="{{ url_for('comer') }}">
+                    <img src="{{ url_for('static', filename='img/miel.png') }}"
+                         class="img-fluid"
+                         style="width:80px;">
+                </a>
+
+                <a href="{{ url_for('comer') }}">
+                    <img src="{{ url_for('static', filename='img/pastel.png') }}"
+                         class="img-fluid"
+                         style="width:80px;">
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="row justify-content-center mt-4">
+
+        <div class="col-10 col-md-8 col-lg-5">
+
+            <div class="card shadow rounded-4 border-warning">
+
+                <div class="card-body">
+
+                    <h5 class="text-center fw-bold">
+                        HAMBRE
+                    </h5>
+
+                    <div class="progress rounded-pill"
+                         style="height:30px;">
+
+                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning"
+                             style="width: {{ mascota.comida }}%;">
+
+                            {{ mascota.comida }}%
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}
