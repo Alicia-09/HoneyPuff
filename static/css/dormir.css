@@ -1,0 +1,12 @@
+body {
+    background-color: #f8f9fa;
+}
+
+.mascota{
+    width: 120px;
+    transition: 0.3s;
+}
+
+.position-relative{
+    max-width: 600px;
+}

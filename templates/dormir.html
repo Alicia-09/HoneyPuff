@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}Dormir - HoneyPuff{% endblock %}
+
+{% block contenido %}
+
+
+<div class="container text-center mt-4">
+
+    {% if mascota.luz %}
+
+        <img
+            src="{{ url_for('static', filename='img/abeja_despierta.png') }}"
+            class="img-fluid mascota"
+        >
+
+        <form action="{{ url_for('dormir') }}" method="POST" class="mt-3">
+            <button type="submit" class="btn btn-dark">
+                Dormir
+            </button>
+        </form>
+
+    {% else %}
+
+        <img
+            src="{{ url_for('static', filename='img/abeja_dormida.png') }}"
+            class="img-fluid mascota"
+        >
+
+        <form action="{{ url_for('despertar') }}" method="POST" class="mt-3">
+            <button type="submit" class="btn btn-warning">
+                Despertar
+            </button>
+        </form>
+
+    {% endif %}
+
+</div>
+
+
+{% endblock %}

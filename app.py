@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session
+from gridfs.grid_file import ObjectId
 from config import APIKEY
 from funciones import HoneyPuffDB
 from flask_mail import Mail, Message
@@ -253,17 +254,10 @@ def elejir_oso():
         lugar_nacimiento = request.form.get("lugar_nacimiento")
 
         id_mascota = db.registrar_mascota(
-<<<<<<< HEAD
             nombre= nombre,
             tipo="oso",
             lugar_nacimiento=lugar_nacimiento,
             usuario_id=usuario_id
-=======
-            nombre,
-            "oso",
-            lugar_nacimiento,
-            usuario_id
->>>>>>> 5c8b20277fba1acd963ad84a1c1fd7bcb78ef793
         )
 
         print("Mascota guardada:", id_mascota)
@@ -293,17 +287,10 @@ def elejir_gato():
         lugar_nacimiento = request.form.get("lugar_nacimiento")
 
         id_mascota = db.registrar_mascota(
-<<<<<<< HEAD
             nombre= nombre,
             tipo="gato",
             lugar_nacimiento=lugar_nacimiento,
             usuario_id=usuario_id
-=======
-            nombre,
-            "gato",
-            lugar_nacimiento,
-            usuario_id
->>>>>>> 5c8b20277fba1acd963ad84a1c1fd7bcb78ef793
         )
 
         print("Mascota guardada:", id_mascota)
@@ -358,6 +345,38 @@ def iniciomascotas():
         return redirect(url_for("elejir"))
         
     return render_template("iniciomascotas.html", mascota=mascotas)
+
+@app.route("/dormir", methods=["POST"])
+def dormir():
+
+    usuario_id = session["usuario_id"]
+
+    mascota = db.obtener_mascota_usuario(usuario_id)
+
+    if not mascota:
+        flash("No tienes mascota registrada")
+        return redirect(url_for("elejir"))
+
+    db.dormir_mascota(usuario_id)
+
+    return redirect(url_for("inicio"))
+
+@app.route("/despertar", methods=["POST"])
+def despertar():
+
+    usuario_id = session["usuario_id"]
+
+    mascota = db.obtener_mascota_usuario(usuario_id)
+
+    if not mascota:
+        flash("No tienes mascota registrada")
+        return redirect(url_for("elejir"))
+
+    db.despertar_mascota(usuario_id)
+
+    return redirect(url_for("inicio"))
+    
+
 
 @app.route("/logout")
 def logout():

@@ -188,22 +188,37 @@ class HoneyPuffDB:
 
         mascota = self.obtener_mascota_usuario(usuario_id)
 
-        nuevo_sueño = min(
-            mascota["sueño"] + 10,100)
+        nuevo_sueno = min(
+            mascota["sueno"] + 10,
+            100
+        )
 
         self.mascotas.update_one(
-
         {
-            "usuario_id": ObjectId(usuario_id)
+                "usuario_id": ObjectId(usuario_id)
         },
-
         {
-            "$set":{
-                "sueno": nuevo_sueño
+                "$set": {
+                    "sueno": nuevo_sueno,
+                    "luz": False
+                }
             }
-        }
-
+        
     )
+        
+    def despertar_mascota(self, usuario_id):
+
+        self.mascotas.update_one(
+            { 
+                "usuario_id": ObjectId(usuario_id)
+            },
+            {
+                "$set": {
+                    "luz": True
+                }
+            }
+        
+        )
         
     def jugar_mascota(self,usuario_id):
 
