@@ -219,8 +219,8 @@ def cambiar_password():
 def login():
     return render_template("login.html")
 
-@app.route("/elejir")
-def elejir():
+@app.route("/elegir")
+def elegir():
 
     if "usuario_id" not in session:
         return redirect(url_for("login"))
@@ -230,13 +230,13 @@ def elejir():
     )
 
     if mascota:
-        return redirect(url_for("iniciomascotas"))
+        return redirect(url_for("inicio_mascotas"))
 
-    return render_template("elejir.html")
+    return render_template("elegir.html")
 
 
-@app.route("/elejir_oso", methods=["GET", "POST"])
-def elejir_oso():
+@app.route("/elegir_oso", methods=["GET", "POST"])
+def elegir_oso():
 
     if "usuario_id" not in session:
         return redirect(url_for("login"))
@@ -246,7 +246,7 @@ def elejir_oso():
     mascota = db.obtener_mascota_usuario(usuario_id)
 
     if mascota:
-        return redirect(url_for("iniciomascotas"))
+        return redirect(url_for("inicio_mascotas"))
 
     if request.method == "POST":
 
@@ -262,14 +262,14 @@ def elejir_oso():
 
         print("Mascota guardada:", id_mascota)
 
-        return redirect(url_for("iniciomascotas"))
+        return redirect(url_for("inicio_mascotas"))
 
     mascotas = db.obtener_mascotas()
-    return render_template("elejir_oso.html", mascotas=mascotas)
+    return render_template("elegir_oso.html", mascotas=mascotas)
 
 
-@app.route("/elejir_gato", methods=["GET", "POST"])
-def elejir_gato():
+@app.route("/elegir_gato", methods=["GET", "POST"])
+def elegir_gato():
 
     if "usuario_id" not in session:
         return redirect(url_for("login"))
@@ -279,7 +279,7 @@ def elejir_gato():
     mascota = db.obtener_mascota_usuario(usuario_id)
 
     if mascota:
-        return redirect(url_for("iniciomascotas"))
+        return redirect(url_for("inicio_mascotas"))
 
     if request.method == "POST":
 
@@ -295,14 +295,14 @@ def elejir_gato():
 
         print("Mascota guardada:", id_mascota)
 
-        return redirect(url_for("iniciomascotas"))
+        return redirect(url_for("inicio_mascotas"))
 
     mascotas = db.obtener_mascotas()
-    return render_template("elejir_gato.html", mascotas=mascotas)
+    return render_template("elegir_gato.html", mascotas=mascotas)
 
 
-@app.route("/elejir_abeja", methods=["GET", "POST"])
-def elejir_abeja():
+@app.route("/elegir_abeja", methods=["GET", "POST"])
+def elegir_abeja():
 
     if "usuario_id" not in session:
         return redirect(url_for("login"))
@@ -312,7 +312,7 @@ def elejir_abeja():
     mascota = db.obtener_mascota_usuario(usuario_id)
 
     if mascota:
-        return redirect(url_for("iniciomascotas"))
+        return redirect(url_for("inicio_mascotas"))
 
     if request.method == "POST":
 
@@ -328,13 +328,13 @@ def elejir_abeja():
 
         print("Mascota guardada:", id_mascota)
 
-        return redirect(url_for("iniciomascotas"))
+        return redirect(url_for("inicio_mascotas"))
 
     mascotas = db.obtener_mascotas()
-    return render_template("elejir_abeja.html", mascotas=mascotas)
+    return render_template("elegir_abeja.html", mascotas=mascotas)
 
-@app.route("/iniciomascotas")
-def iniciomascotas():
+@app.route("/inicio_mascotas")
+def inicio_mascotas():
 
     usuario_id = session["usuario_id"]
 
@@ -342,12 +342,12 @@ def iniciomascotas():
 
     if not mascota:
         flash("No tienes mascota registrada")
-        return redirect(url_for("elejir"))
+        return redirect(url_for("elegir"))
 
     mascota = db.actualizar_mascota(mascota["_id"])
 
     return render_template(
-        "iniciomascotas.html",
+        "inicio_mascotas.html",
         mascota=mascota
     )
 
@@ -395,7 +395,7 @@ def jugar():
         "jugar"
     )
 
-    return redirect(url_for("iniciomascotas"))
+    return redirect(url_for("inicio_mascotas"))
 
 @app.route("/cuarto")
 def cuarto():
@@ -413,7 +413,7 @@ def dormir():
         "dormir"
     )
 
-    return redirect(url_for("iniciomascotas"))
+    return redirect(url_for("inicio_mascotas"))
 
 
 @app.route("/logout")

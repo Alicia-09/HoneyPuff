@@ -4,7 +4,7 @@
 
 {% block contenido %}
 
-<link rel="stylesheet" href="{{ url_for('static', filename='css/elejir.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/elegir.css') }}">
 
  <audio autoplay loop>
         <source src="{{ url_for('static', filename='audio/menu.mp3') }}" type="audio/mp3">
@@ -24,7 +24,7 @@
 
                 <br>
 
-                <a href="{{ url_for('elejir_oso') }}">
+                <a href="{{ url_for('elegir_oso') }}">
 
                     <img src="{{ url_for('static', filename='img/boton_selec.png') }}"
                          class="btn-img">
@@ -40,7 +40,7 @@
 
                 <br>
 
-                <a href="{{ url_for('elejir_gato') }}">
+                <a href="{{ url_for('elegir_gato') }}">
 
                     <img src="{{ url_for('static', filename='img/boton_selec.png') }}"
                          class="btn-img">
@@ -56,9 +56,9 @@
 
                 <br>
 
-                <a href="{{ url_for('elejir_abeja') }}">
+                <a href="{{ url_for('elegir_abeja') }}">
 
-                    <img src="{{ url_for('static', filename='img/boton_selec.png') }}"
+                    <img src="{{ url_for('static', filename='img/btn_selec.png') }}"
                          class="btn-img">
 
                 </a>

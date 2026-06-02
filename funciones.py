@@ -190,13 +190,13 @@ class HoneyPuffDB:
 
 
         if accion == "comer":
-            mascota["comida"] += 20
+            mascota["comida"] += 5
 
         elif accion == "jugar":
-            mascota["felicidad"] += 20
+            mascota["felicidad"] += 5
 
         elif accion == "dormir":
-            mascota["sueño"] += 20
+            mascota["sueño"] += 5
 
 
         mascota["comida"] = min(100, mascota["comida"])
