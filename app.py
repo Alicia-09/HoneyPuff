@@ -59,7 +59,7 @@ def ValidaSesion():
 
         flash(f"Bienvenido {usuario['nombre']}!", 'success')
 
-        return redirect(url_for('elejir'))
+        return redirect(url_for('elegir'))
 
     return redirect(url_for('login'))
 
