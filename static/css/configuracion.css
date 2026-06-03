@@ -1,0 +1,47 @@
+body{
+    background-image:url('../img/config.png');
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+}
+
+.card{
+    background-color:#F9E3A1;;
+}
+
+.btn-cerrar{
+    background-color: #6B4B2A; 
+
+    color: #F9E3A1;
+}
+
+.btn-cerrar:hover {
+
+    background-color: #F6C44B;
+
+}
+
+.btn-guardar{
+    background-color: #6B4B2A; 
+
+    color: #F9E3A1;
+}
+
+.btn-guardar:hover {
+
+    background-color: #F6C44B;
+
+}
+
+.btn-volver{
+    background-color: #6B4B2A; 
+
+    color: #F9E3A1;
+}
+
+.btn-volver:hover {
+
+    background-color: #F6C44B;
+
+}
+
