@@ -10,6 +10,31 @@ href="{{ url_for('static', filename='css/registro.css') }}">
         <source src="{{ url_for('static', filename='audio/menu.mp3') }}" type="audio/mp3">
     </audio>
 
+     <div class="alertas-registro">
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+
+        {% for category, message in messages %}
+
+        <div class="alert alert-{{ 'danger' if category == 'error' else 'success' }} alert-dismissible fade show"
+             role="alert">
+
+            {{ message }}
+
+            <button type="button"
+                    class="btn-close"
+                    data-bs-dismiss="alert">
+            </button>
+
+        </div>
+
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+    </div>
+
 <form method="POST"
       action="{{ url_for('registro') }}">
 
@@ -40,6 +65,7 @@ href="{{ url_for('static', filename='css/registro.css') }}">
            class="input-registro input-password"
            name="Contra"
            pattern= "^(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$"
+           title="Debe contener al menos un número, una mayúscula, una minúscula y al menos 8 caracteres con 1 especial"
            placeholder="Contraseña"
            required>
 
@@ -47,7 +73,8 @@ href="{{ url_for('static', filename='css/registro.css') }}">
     <input type="password"
            class="input-registro input-confirmar-password"
            name="ContraConfirm"
-           pattern = "^(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$"
+           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+           title="Debe contener al menos un número, una mayúscula, una minúscula y al menos 8 caracteres con 1 especial"
            placeholder="Confirmar contraseña"
            required>
 
