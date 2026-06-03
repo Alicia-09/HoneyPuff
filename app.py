@@ -57,6 +57,8 @@ def ValidaSesion():
         session['usuario_id'] = usuario['_id']
         session['loggeado'] = True
 
+        flash(f"Bienvenido {usuario['nombre']}!", 'success')
+
         return redirect(url_for('elegir'))
 
     return redirect(url_for('login'))
