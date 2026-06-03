@@ -1,5 +1,8 @@
-body {
-    background-color: #f8f9fa;
+body{
+    background-image:url('../img/cama.png');
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
 }
 
 .mascota{
