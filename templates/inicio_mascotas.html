@@ -39,58 +39,59 @@
     <div class="row flex-grow-1 align-items-center">
 
 
-        <div class="col-md-9 d-flex justify-content-end align-items-center">
-
+        <div class="col-md-9 d-flex align-items-center justify-content-end">
+           <div class="me-4 mt-5">
             {% if mascota.tipo == "oso" %}
 
                 {% if mascota.estado == "hambriento" %}
-                    <img src="{{ url_for('static', filename='img/oso_hambriento.png') }}" class="img-fluid me-5">
+                    <img src="{{ url_for('static', filename='img/oso_hambriento.png') }}" class="img-fluid mascota">
 
                 {% elif mascota.estado == "cansado" %}
-                    <img src="{{ url_for('static', filename='img/oso_cansado.png') }}" class="img-fluid me-5">
+                    <img src="{{ url_for('static', filename='img/oso_cansado.png') }}" class="img-fluid mascota">
 
                 {% elif mascota.estado == "triste" %}
-                    <img src="{{ url_for('static', filename='img/oso_triste.png') }}" class="img-fluid me-5">
+                    <img src="{{ url_for('static', filename='img/oso_triste.png') }}" class="img-fluid mascota">
 
                 {% else %}
-                    <img src="{{ url_for('static', filename='img/osito1.png') }}" class="img-fluid me-5">
+                    <img src="{{ url_for('static', filename='img/osito1.png') }}" class="img-fluid mascota">
                 {% endif %}
 
             {% elif mascota.tipo == "gato" %}
 
                 {% if mascota.estado == "hambriento" %}
-                    <img src="{{ url_for('static', filename='img/gato_hambriento.png') }}" class="img-fluid me-5">
+                    <img src="{{ url_for('static', filename='img/gato_hambriento.png') }}" class="img-fluid mascota">
 
                 {% elif mascota.estado == "cansado" %}
-                    <img src="{{ url_for('static', filename='img/gato_cansado.png') }}" class="img-fluid me-5">
+                    <img src="{{ url_for('static', filename='img/gato_cansado.png') }}" class="img-fluid mascota">
 
                 {% elif mascota.estado == "triste" %}
-                    <img src="{{ url_for('static', filename='img/gato_triste.png') }}" class="img-fluid me-5">
+                    <img src="{{ url_for('static', filename='img/gato_triste.png') }}" class="img-fluid mascota">
 
                 {% else %}
-                    <img src="{{ url_for('static', filename='img/gatito1.png') }}" class="img-fluid me-5">
+                    <img src="{{ url_for('static', filename='img/gatito1.png') }}" class="img-fluid mascota">
                 {% endif %}
 
             {% else %}
 
                 {% if mascota.estado == "hambriento" %}
-                    <img src="{{ url_for('static', filename='img/abeja_hambrienta.png') }}" class="img-fluid me-5">
+                    <img src="{{ url_for('static', filename='img/abeja_hambrienta.png') }}" class="img-fluid mascota">
 
                 {% elif mascota.estado == "cansado" %}
-                    <img src="{{ url_for('static', filename='img/abeja_cansada.png') }}" class="img-fluid me-5">
+                    <img src="{{ url_for('static', filename='img/abeja_cansada.png') }}" class="img-fluid mascota">
 
                 {% elif mascota.estado == "triste" %}
-                    <img src="{{ url_for('static', filename='img/abeja_triste.png') }}" class="img-fluid me-5">
+                    <img src="{{ url_for('static', filename='img/abeja_triste.png') }}" class="img-fluid mascota">
 
                 {% else %}
-                    <img src="{{ url_for('static', filename='img/abejita1.png') }}" class="img-fluid me-5">
+                    <img src="{{ url_for('static', filename='img/abejita1.png') }}" class="img-fluid mascota">
                 {% endif %}
 
             {% endif %}
 
+          </div>
         </div>
 
-        <div class="col-md-3">
+          <div class="col-md-3 d-flex justify-content-end">
 
             <div class="d-grid gap-3">
 

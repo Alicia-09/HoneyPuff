@@ -10,6 +10,16 @@
 
     <div class="row w-100 justify-content-center">
 
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-success mt-3 text-center">
+            {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+
         <div class="col-lg-8">
 
 
@@ -116,12 +126,12 @@
 
                         <div class="input-group">
 
-                            <input type="text" name="nombre" class="form-control" placeholder="Nuevo nombre">
+                            <input type="text" name="nombre" class="form-control" placeholder="Nuevo nombre" required
+                                minlength="3" maxlength="20" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ ]+"
+                                title="Solo letras, mínimo 3 caracteres">
 
                             <button type="submit" class="btn btn-guardar">
-
                                 Guardar
-
                             </button>
 
                         </div>
