@@ -1,0 +1,151 @@
+{% extends "base_inicio.html" %}
+
+{% block titulo %}Configuración{% endblock %}
+
+{% block contenido %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/configuracion.css') }}">
+
+<div class="container min-vh-100 d-flex align-items-center justify-content-center">
+
+    <div class="row w-100 justify-content-center">
+
+        <div class="col-lg-8">
+
+
+            <div class="card shadow rounded-4 mb-4">
+
+                <div class="card-body d-flex justify-content-between align-items-center">
+
+                    <h2 class="fw-bold mb-0">
+                        Configuración
+                    </h2>
+
+                    <a href="{{ url_for('inicio_mascotas') }}" class="btn btn-volver">
+
+                        Volver
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="card shadow rounded-4 mb-4">
+
+                <div class="card-header fw-bold">
+
+                    Información de la cuenta
+
+                </div>
+
+                <div class="card-body">
+
+                    <p>
+                        <strong>Correo:</strong>
+                        {{ usuario.email }}
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="card shadow rounded-4 mb-4">
+
+                <div class="card-header fw-bold">
+
+                    Información de la mascota
+
+                </div>
+
+                <div class="card-body">
+
+                    <div class="row">
+
+                        <div class="col-md-6 mb-3">
+
+                            <strong>Nombre:</strong><br>
+
+                            {{ mascota.nombre }}
+
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+
+                            <strong>Tipo:</strong><br>
+
+                            {{ mascota.tipo }}
+
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+
+                            <strong>Lugar de nacimiento:</strong><br>
+
+                            {{ mascota.lugar_nacimiento }}
+
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+
+                            <strong>Fecha de registro:</strong><br>
+
+                            {{ mascota.fecha_registro.strftime('%d/%m/%Y') }}
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="card shadow rounded-4 mb-4">
+
+                <div class="card-header fw-bold">
+
+                    Cambiar nombre
+
+                </div>
+
+                <div class="card-body">
+
+                    <form action="{{ url_for('cambiar_nombre') }}" method="POST">
+
+                        <div class="input-group">
+
+                            <input type="text" name="nombre" class="form-control" placeholder="Nuevo nombre">
+
+                            <button type="submit" class="btn btn-guardar">
+
+                                Guardar
+
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+            <div class="text-center">
+
+                <a href="{{ url_for('logout') }}" class="btn btn-cerrar btn-lg">
+
+                    Cerrar sesión
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

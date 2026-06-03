@@ -415,6 +415,37 @@ def dormir():
 
     return redirect(url_for("inicio_mascotas"))
 
+@app.route("/configuracion")
+def configuracion():
+
+    usuario_id = session["usuario_id"]
+
+    usuario = db.obtener_usuario(usuario_id)
+
+    mascota = db.obtener_mascota_usuario(usuario_id)
+
+    return render_template(
+        "configuracion.html",
+        usuario=usuario,
+        mascota=mascota
+    )
+
+@app.route("/cambiar_nombre", methods=["POST"])
+def cambiar_nombre():
+
+    nuevo_nombre = request.form.get("nombre")
+
+    usuario_id = session["usuario_id"]
+
+    mascota = db.obtener_mascota_usuario(usuario_id)
+
+    db.mascotas.update_one(
+        {"_id": mascota["_id"]},
+        {"$set": {"nombre": nuevo_nombre}}
+    )
+
+    return redirect(url_for("configuracion"))
+
 
 @app.route("/logout")
 def logout():

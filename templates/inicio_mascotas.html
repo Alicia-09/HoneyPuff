@@ -4,8 +4,7 @@
 
 {% block contenido %}
 
-<link rel="stylesheet"
-      href="{{ url_for('static', filename='css/iniciomascotas.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/iniciomascotas.css') }}">
 
 <div class="container-fluid vh-100 d-flex flex-column">
 
@@ -13,9 +12,8 @@
 
         <div class="col-2">
 
-            <a href="/configuracion">
-                <img src="{{ url_for('static', filename='img/btn_config.png') }}"
-                     class="img-fluid">
+            <a href="{{ url_for('configuracion') }}">
+                <img src="{{ url_for('static', filename='img/btn_config.png') }}" class="img-fluid">
             </a>
 
         </div>
@@ -45,18 +43,48 @@
 
             {% if mascota.tipo == "oso" %}
 
-                <img src="{{ url_for('static', filename='img/osito1.png') }}"
-                     class="img-fluid me-5">
+                {% if mascota.estado == "hambriento" %}
+                    <img src="{{ url_for('static', filename='img/oso_hambriento.png') }}" class="img-fluid me-5">
+
+                {% elif mascota.estado == "cansado" %}
+                    <img src="{{ url_for('static', filename='img/oso_cansado.png') }}" class="img-fluid me-5">
+
+                {% elif mascota.estado == "triste" %}
+                    <img src="{{ url_for('static', filename='img/oso_triste.png') }}" class="img-fluid me-5">
+
+                {% else %}
+                    <img src="{{ url_for('static', filename='img/osito1.png') }}" class="img-fluid me-5">
+                {% endif %}
 
             {% elif mascota.tipo == "gato" %}
 
-                <img src="{{ url_for('static', filename='img/gatito1.png') }}"
-                     class="img-fluid me-5">
+                {% if mascota.estado == "hambriento" %}
+                    <img src="{{ url_for('static', filename='img/gato_hambriento.png') }}" class="img-fluid me-5">
+
+                {% elif mascota.estado == "cansado" %}
+                    <img src="{{ url_for('static', filename='img/gato_cansado.png') }}" class="img-fluid me-5">
+
+                {% elif mascota.estado == "triste" %}
+                    <img src="{{ url_for('static', filename='img/gato_triste.png') }}" class="img-fluid me-5">
+
+                {% else %}
+                    <img src="{{ url_for('static', filename='img/gatito1.png') }}" class="img-fluid me-5">
+                {% endif %}
 
             {% else %}
 
-                <img src="{{ url_for('static', filename='img/abejita1.png') }}"
-                     class="img-fluid me-5">
+                {% if mascota.estado == "hambriento" %}
+                    <img src="{{ url_for('static', filename='img/abeja_hambrienta.png') }}" class="img-fluid me-5">
+
+                {% elif mascota.estado == "cansado" %}
+                    <img src="{{ url_for('static', filename='img/abeja_cansada.png') }}" class="img-fluid me-5">
+
+                {% elif mascota.estado == "triste" %}
+                    <img src="{{ url_for('static', filename='img/abeja_triste.png') }}" class="img-fluid me-5">
+
+                {% else %}
+                    <img src="{{ url_for('static', filename='img/abejita1.png') }}" class="img-fluid me-5">
+                {% endif %}
 
             {% endif %}
 
@@ -67,18 +95,15 @@
             <div class="d-grid gap-3">
 
                 <a href="{{ url_for('cocina') }}">
-                    <img src="{{ url_for('static', filename='img/btn_cocina.png') }}"
-                         class="img-fluid">
+                    <img src="{{ url_for('static', filename='img/btn_cocina.png') }}" class="img-fluid">
                 </a>
 
                 <a href="#">
-                    <img src="{{ url_for('static', filename='img/btn_patio.png') }}"
-                         class="img-fluid">
+                    <img src="{{ url_for('static', filename='img/btn_patio.png') }}" class="img-fluid">
                 </a>
 
                 <a href="#">
-                    <img src="{{ url_for('static', filename='img/btn_cuarto.png') }}"
-                         class="img-fluid">
+                    <img src="{{ url_for('static', filename='img/btn_cuarto.png') }}" class="img-fluid">
                 </a>
 
             </div>
@@ -99,8 +124,8 @@
 
                     <div class="progress" style="height: 30px;">
 
-                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning"
-                        style="width: {{ mascota.comida }}%;">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning"
+                            style="width: {{ mascota.comida }}%;">
 
                             {{ mascota.comida }}%
 
@@ -126,9 +151,9 @@
                     <div class="progress" style="height: 30px;">
 
                         <div class="progress-bar progress-bar-striped progress-bar-animated bg-info"
-                             style="width: {{ mascota.sueno }}%;">
+                            style="width: {{ mascota.sueño }}%;">
 
-                            {{ mascota.sueno }}%
+                            {{ mascota.sueño }}%
 
                         </div>
 
@@ -151,7 +176,7 @@
                     <div class="progress" style="height: 30px;">
 
                         <div class="progress-bar progress-bar-striped progress-bar-animated bg-success"
-                             style="width: {{ mascota.felicidad }}%;">
+                            style="width: {{ mascota.felicidad }}%;">
 
                             {{ mascota.felicidad }}%
 
