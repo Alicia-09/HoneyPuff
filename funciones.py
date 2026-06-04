@@ -187,7 +187,11 @@ class HoneyPuffDB:
 
         mascota["comida"] = max(0, mascota["comida"] - puntos)
         mascota["felicidad"] = max(0, mascota["felicidad"] - puntos)
-        mascota["sueño"] = max(0, mascota["sueño"] - puntos)
+
+        if mascota.get("durmiendo", False):
+           mascota["sueño"] = min(100, mascota["sueño"] + puntos)
+        else:
+            mascota["sueño"] = max(0, mascota["sueño"] - puntos) 
 
 
         if accion == "comer":

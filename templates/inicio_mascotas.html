@@ -4,6 +4,10 @@
 
 {% block contenido %}
 
+<audio autoplay loop>
+        <source src="{{ url_for('static', filename='audio/forest.mp3') }}" type="audio/mp3">
+    </audio>
+
 <link rel="stylesheet" href="{{ url_for('static', filename='css/iniciomascotas.css') }}">
 
 <div class="container-fluid vh-100 d-flex flex-column">

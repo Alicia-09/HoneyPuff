@@ -4,4 +4,5 @@ APIKEY="ibdr091903."
 CORREO = "honeypuff.soporte@gmail.com"
 
 PASSWORD_CORREO = "vexv vkpn dkef qfwd"
-#tienes que agregar tu correo y tu contraseña de aplicación para que el sistema de recuperación de contraseña funcione correctamente.s
+#tienes que agregar tu correo y tu contraseña de aplicación para que el sistema de recuperación de contraseña funcione correctamente.
+#keniasarahii.nfante08@gmail.com 
