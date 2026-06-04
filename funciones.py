@@ -238,28 +238,6 @@ class HoneyPuffDB:
 
         return mascota
     
-    def despertar_mascota(self, mascota_id):
-
-        mascota = self.mascotas.find_one({"_id": ObjectId(mascota_id)})
-
-        if not mascota:
-            return None
-
-        mascota["sueño"] = 100
-        mascota["ultima_visita"] = datetime.now()
-
-        self.mascotas.update_one({"_id": ObjectId(mascota_id)},
-           {
-                "$set": {
-                    "sueño": mascota["sueño"],
-                    "ultima_visita": mascota["ultima_visita"],
-                    "durmiendo": False
-                }
-            }
-        )
-
-        return mascota  
-    
     def dormir_mascota(self, mascota_id):
 
         mascota = self.mascotas.find_one({"_id": ObjectId(mascota_id)})
@@ -267,19 +245,42 @@ class HoneyPuffDB:
         if not mascota:
             return None
 
-        mascota["sueño"] = 100
+        mascota["durmiendo"] = True
         mascota["ultima_visita"] = datetime.now()
 
-        self.mascotas.update_one({"_id": ObjectId(mascota_id)},
-           {
-                "$set": {
-                    "sueño": mascota["sueño"],
-                    "ultima_visita": mascota["ultima_visita"],
-                    "durmiendo": True
-                }
+        self.mascotas.update_one(
+        {"_id": ObjectId(mascota_id)},
+        {
+            "$set": {
+                "durmiendo": True,
+                "ultima_visita": mascota["ultima_visita"]
             }
-        )
+        }
+    )
+ 
+        return mascota
 
+
+    def despertar_mascota(self, mascota_id):
+
+        mascota = self.mascotas.find_one({"_id": ObjectId(mascota_id)})
+
+        if not mascota:
+            return None
+
+        mascota["durmiendo"] = False
+        mascota["ultima_visita"] = datetime.now()
+
+        self.mascotas.update_one(
+        {"_id": ObjectId(mascota_id)},
+        {
+            "$set": {
+                "durmiendo": False,
+                "ultima_visita": mascota["ultima_visita"]
+            }
+        }
+    )
+ 
         return mascota
 
     def cerrar_conexion(self):
