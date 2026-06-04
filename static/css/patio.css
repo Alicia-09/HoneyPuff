@@ -1,5 +1,5 @@
 body{
-    background-image:url('../img/cocina.png');
+    background-image:url('../img/patio.png');
     background-size:cover;
     background-position:center;
     background-repeat:no-repeat;
@@ -13,13 +13,13 @@ body{
    width: 300px;
 }
 
-.img-comida {
+.img-juguetes {
     width: 80px;
 
     transition:0.3s;
 }
 
-.img-comida:hover{
+.img-juguetes:hover{
     transform:scale(1.05);
 }
 
@@ -30,4 +30,3 @@ body{
 .animacion:hover{
     transform:scale(1.05);
 }
-

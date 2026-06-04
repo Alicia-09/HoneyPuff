@@ -204,13 +204,13 @@ class HoneyPuffDB:
         mascota["felicidad"] = min(100, mascota["felicidad"])
         mascota["sueño"] = min(100, mascota["sueño"])
 
-        if mascota["comida"] <= 30:
+        if mascota["comida"] <= 40:
             mascota["estado"] = "hambriento"
 
-        elif mascota["sueño"] <= 30:
+        elif mascota["sueño"] <= 40:
             mascota["estado"] = "cansado"
 
-        elif mascota["felicidad"] <= 30:
+        elif mascota["felicidad"] <= 40:
             mascota["estado"] = "triste"
 
         elif (

@@ -1,0 +1,135 @@
+{% extends "base_inicio.html" %}
+
+{% block titulo %}HoneyPuff{% endblock %}
+
+{% block contenido %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/patio.css') }}">
+
+<div class="container-fluid vh-100">
+
+    <div class="row pt-3">
+        <div class="col-12">
+
+            <a href="{{ url_for('inicio_mascotas') }}">
+                <img src="{{ url_for('static', filename='img/btn_regresar.png') }}"
+                     class="img-fluid animacion">
+            </a>
+
+        </div>
+    </div>
+
+    <div class="row justify-content-center mt-4">
+
+        <div class="col-auto text-center">
+
+           {% if mascota.tipo == "oso" %}
+
+                {% if mascota.estado == "hambriento" %}
+                    <img src="{{ url_for('static', filename='img/oso_hambriento.png') }}" class="img-fluid img-mascota">
+
+                {% elif mascota.estado == "cansado" %}
+                    <img src="{{ url_for('static', filename='img/oso_cansado.png') }}" class="img-fluid img-mascota">
+
+                {% elif mascota.estado == "triste" %}
+                    <img src="{{ url_for('static', filename='img/oso_triste.png') }}" class="img-fluid img-mascota">
+
+                {% else %}
+                    <img src="{{ url_for('static', filename='img/osito1.png') }}" class="img-fluid img-mascota">
+                {% endif %}
+
+            {% elif mascota.tipo == "gato" %}
+
+                {% if mascota.estado == "hambriento" %}
+                    <img src="{{ url_for('static', filename='img/gato_hambriento.png') }}" class="img-fluid img-mascota">
+
+                {% elif mascota.estado == "cansado" %}
+                    <img src="{{ url_for('static', filename='img/gato_cansado.png') }}" class="img-fluid img-mascota">
+
+                {% elif mascota.estado == "triste" %}
+                    <img src="{{ url_for('static', filename='img/gato_triste.png') }}" class="img-fluid img-mascota">
+
+                {% else %}
+                    <img src="{{ url_for('static', filename='img/gatito1.png') }}" class="img-fluid img-mascota">
+                {% endif %}
+
+            {% else %}
+
+                {% if mascota.estado == "hambriento" %}
+                    <img src="{{ url_for('static', filename='img/abeja_hambrienta.png') }}" class="img-fluid img-mascota">
+
+                {% elif mascota.estado == "cansado" %}
+                    <img src="{{ url_for('static', filename='img/abeja_cansada.png') }}" class="img-fluid img-mascota">
+
+                {% elif mascota.estado == "triste" %}
+                    <img src="{{ url_for('static', filename='img/abeja_triste.png') }}" class="img-fluid img-mascota">
+
+                {% else %}
+                    <img src="{{ url_for('static', filename='img/abejita1.png') }}" class="img-fluid img-mascota">
+                {% endif %}
+
+            {% endif %}
+
+
+
+        </div>
+
+    </div>
+
+
+    <div class="row justify-content-center mb-4 ">
+
+        <div class="col-auto">
+
+            <div class="d-flex justify-content-center gap-5">
+
+                <a href="{{ url_for('jugar') }}">
+                    <img src="{{ url_for('static', filename='img/balon1.png') }}"
+                         class="img-fluid  img-juguetes">
+                </a>
+
+                <a href="{{ url_for('jugar') }}">
+                    <img src="{{ url_for('static', filename='img/consola.png') }}"
+                         class="img-fluid img-juguetes">
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="row justify-content-center mt-5 pt-5">
+
+        <div class="col-10 col-md-8 col-lg-5">
+
+            <div class="card shadow rounded-4 border-warning">
+
+                <div class="card-body">
+
+                    <h5 class="text-center fw-bold">
+                        FELICIDAD
+                    </h5>
+
+                    <div class="progress" style="height: 30px;">
+
+                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-success"
+                            style="width: {{ mascota.felicidad }}%;">
+
+                            {{ mascota.felicidad }}%
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}

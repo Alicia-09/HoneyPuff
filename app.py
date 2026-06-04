@@ -381,7 +381,17 @@ def comer():
 
 @app.route("/patio")
 def patio():
-     return redirect(url_for("patio"))
+
+    usuario_id = session["usuario_id"]
+
+    mascota = db.obtener_mascota_usuario(usuario_id)
+
+    mascota = db.actualizar_mascota(mascota["_id"])
+
+    return render_template(
+        "patio.html",
+        mascota=mascota
+    )
 
 @app.route("/jugar")
 def jugar():
@@ -395,7 +405,7 @@ def jugar():
         "jugar"
     )
 
-    return redirect(url_for("inicio_mascotas"))
+    return redirect(url_for("patio"))
 
 @app.route("/cuarto")
 def cuarto():

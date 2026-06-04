@@ -60,31 +60,26 @@ href="{{ url_for('static', filename='css/login.css') }}">
                placeholder="Introduce contraseña"
                pattern = "^(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$"
                required>
+
+
         <a href="{{ url_for('recuperar') }}"
-           class="olvide">
-
-            ¿Olvidaste tu contraseña?
-
+            class="olvide position-absolute start-50 translate-middle-x fw-bold text-decoration-none">
+              ¿Olvidaste tu contraseña?
         </a>
 
    
-        <button type="submit"
-                class="boton-login">
-
-            <img src="{{ url_for('static', filename='img/btn_entrar.png') }}">
-
-        </button>
+        <div class="position-absolute start-50 translate-middle-x top-login">
+            <button type="submit" class="boton-login border-0 bg-transparent p-0">
+                <img src="{{ url_for('static', filename='img/btn_entrar.png') }}" width="220">
+            </button>
+        </div>
 
     </form>
 
 
-    <div class="crear-cuenta">
-
+    <div class="crear-cuenta d-flex justify-content-center align-items-center gap-1 fw-bold">
         <span>¿No tienes cuenta?</span>
-        <a href="{{ url_for('registro') }}">
-            Crear cuenta
-        </a>
-
+        <a href="{{ url_for('registro') }}">Crear cuenta</a>
     </div>
 
 </div>
