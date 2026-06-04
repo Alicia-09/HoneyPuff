@@ -44,22 +44,23 @@ href="{{ url_for('static', filename='css/login.css') }}">
 
      
         <input type="email"
-               class="input-login input-correo"
-               id="Email"
-               name="Email"
-               placeholder="Introduce correo"
-               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-               value="{{ request.form.get('Email', '') }}"
-               required>
+                class="input-login input-correo"
+                id="Email"
+                name="Email"
+                placeholder="Introduce correo"
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                value="{{ request.form.get('Email', '') }}"
+        required>
 
       
         <input type="password"
-               class="input-login input-password"
-               id="Contra"
-               name="Contra"
-               placeholder="Introduce contraseña"
-               pattern = "^(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$"
-               required>
+                class="input-login input-password"
+                id="Contra"
+                name="Contra"
+                placeholder="Introduce contraseña"
+                pattern = "^(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$"
+                title="Debe contener al menos un número, una mayúscula, una minúscula y al menos 8 caracteres con 1 especial"
+        required>
 
 
         <a href="{{ url_for('recuperar') }}"

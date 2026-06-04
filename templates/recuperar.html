@@ -16,8 +16,6 @@ Recuperar contraseña
         Ingresa tu correo electrónico para recibir un código de recuperación
     </p>
 
-    <!-- mensajes -->
-
     <div class="container mt-2">
 
         {% with messages = get_flashed_messages(with_categories=true) %}
@@ -47,12 +45,8 @@ Recuperar contraseña
 
     </div>
 
-    <!-- formulario -->
-
     <form method="POST"
           action="{{ url_for('recuperar') }}">
-
-        <!-- correo -->
 
         <div class="mb-3">
 
@@ -69,8 +63,6 @@ Recuperar contraseña
 
         </div>
 
-        <!-- boton -->
-
         <button type="submit"
                 class="btn boton-amarillo w-100 mb-3">
 
@@ -79,8 +71,6 @@ Recuperar contraseña
         </button>
 
     </form>
-
-    <!-- volver login -->
 
     <div class="text-center">
 

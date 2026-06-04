@@ -66,13 +66,9 @@ body {
 .boton-registro img{
     width: 290px;
 }
+
 .link-login{
-    top: 90%;
-    left: 46%;
     color: #7a3f00;
-    font-size: 22px;
-    font-weight: bold;
-    position: absolute;
-    z-index: 10000;
+    margin-top: 43%;
 }
 

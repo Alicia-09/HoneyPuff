@@ -5,16 +5,12 @@ body{
     background-repeat:no-repeat;
 }
 
-.col-auto.text-center img{
-    margin-top: 10px;
-}
-
 .img-mascota {
-   width: 300px;
+   width: 500px;
 }
 
 .img-comida {
-    width: 80px;
+    width: 150px;
 
     transition:0.3s;
 }

@@ -1,9 +1,9 @@
 body {
-
-    background-color: #F8F4E6; 
-
-    color: #6B4B2A; 
-
+    background-image:url('../img/config.png');
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    
 }
 
 

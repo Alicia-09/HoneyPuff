@@ -24,12 +24,20 @@ Acta de Nacimiento - Abejita
                        name="nombre"
                        class="input-acta input-nombre"
                        placeholder="Escribe aquí"
+                       minlength="3"
+                       maxlength="30"
+                       pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ ]+"
+                       title="Solo letras, espacios, comas y puntos. Minimo 3 caracteres."
                        required>
 
                 <input type="text"
                        name="lugar_nacimiento"
                        class="input-acta input-lugar"
                        placeholder="Escribe aquí"
+                       minlength="3"
+                       maxlength="30"
+                       pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ ,.]+"
+                       title="Solo letras, espacios, comas y puntos. Máximo 30 caracteres."
                        required>
 
                 <button type="submit" class="btn-guardar">

@@ -40,17 +40,21 @@ href="{{ url_for('static', filename='css/registro.css') }}">
 
     <!-- nombre-->
     <input type="text"
-           class="input-registro input-nombre"
-           name="Nombre"
-           placeholder="Nombre"
-           required>
+              class="input-registro input-nombre"
+              name="Nombre"
+              placeholder="Nombre"
+              minlength="3"
+              maxlength="20"
+       required>
 
    <!-- apellido -->
     <input type="text"
            class="input-registro input-apellido"
            name="Apellido"
            placeholder="Apellido"
-           required>
+           minlength="3"
+           maxlength="20"
+       required>
 
     <!-- correo -->
     <input type="email"
@@ -58,16 +62,16 @@ href="{{ url_for('static', filename='css/registro.css') }}">
            name="Email"
            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
            placeholder="Correo electrónico"
-           required>
+       required>
 
     <!-- contraseña -->
     <input type="password"
            class="input-registro input-password"
            name="Contra"
-           pattern= "^(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$"
+           pattern= "^(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}"
            title="Debe contener al menos un número, una mayúscula, una minúscula y al menos 8 caracteres con 1 especial"
            placeholder="Contraseña"
-           required>
+       required>
 
     <!-- confirmar -->
     <input type="password"
@@ -76,7 +80,7 @@ href="{{ url_for('static', filename='css/registro.css') }}">
            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
            title="Debe contener al menos un número, una mayúscula, una minúscula y al menos 8 caracteres con 1 especial"
            placeholder="Confirmar contraseña"
-           required>
+       required>
 
     <!-- boton -->
     <button type="submit"
@@ -86,11 +90,12 @@ href="{{ url_for('static', filename='css/registro.css') }}">
 
     </button>
    
-<a href="{{ url_for('login') }}"
-   class="link-login">
-   iniciar sesión
-
-</a>
+    <div class="text-center mt-5">
+       <a href="{{ url_for('login') }}"
+          class="link-login d-flex justify-content-center align-items-center fw-bold fs-2 text-decoration-none">
+           Iniciar sesión
+       </a>
+    </div>
 
 </form>
 
