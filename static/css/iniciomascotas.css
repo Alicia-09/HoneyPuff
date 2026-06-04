@@ -11,7 +11,10 @@ body{
 
 
 .mascota{
-    width: 400px;
+    position: absolute;
+    width: 500px;
+    top: 40%;
+    left: 48%;
 }
 
 .card{

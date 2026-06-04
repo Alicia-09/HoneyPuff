@@ -29,3 +29,11 @@
     left:63%;
     top:36%;
 }
+.barra-progreso{
+    position:absolute;
+    left:42%;
+    top:89%;
+    width:1000px;
+
+}
+

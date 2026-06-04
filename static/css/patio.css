@@ -10,16 +10,31 @@ body{
 }
 
 .img-mascota {
-   width: 300px;
+    position: absolute;
+   width: 400px;
+   top: 49%;
+   left: 42%;
 }
 
-.img-juguetes {
-    width: 80px;
+.img-balon {
+    position: absolute;
+    width: 130px;
+    left: 39%;
+    top: 76%;
+
+    transition:0.3s;
+}
+.img-consola {
+    position: absolute;
+    width: 130px;
+    left: 58%;
+    top: 76%;
 
     transition:0.3s;
 }
 
-.img-juguetes:hover{
+.img-balon:hover,
+.img-consola:hover{
     transform:scale(1.05);
 }
 
@@ -29,4 +44,12 @@ body{
 
 .animacion:hover{
     transform:scale(1.05);
+}
+
+.barra-progreso{
+    position:absolute;
+    left:42%;
+    top:89%;
+    width:1000px;
+
 }

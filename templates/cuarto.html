@@ -12,7 +12,6 @@
         <img src="{{ url_for('static', filename='img/btn_regresar.png') }}">
     </a>
 
-<<<<<<< HEAD
     {% if mascota.tipo == "oso" %}
 
         {% if mascota.durmiendo %}
@@ -42,33 +41,6 @@
             <img src="{{ url_for('static', filename='img/abejita1.png') }}"
                  class="mascota">
         {% endif %}
-=======
-        {% if mascota.tipo == "oso" %} 
-            <img src="{{ url_for('static', filename='img/osito1.png') }}" class="img-fluid me-5"> 
-            
-            {% elif mascota.tipo == "gato" %} 
-                <img src="{{ url_for('static', filename='img/gatito1.png') }}" class="img-fluid me-5"> 
-                
-                {% else %}
-                    <img src="{{ url_for('static', filename='img/abejita1.png') }}" class="img-fluid me-5"> 
-                    
-        {% endif %}
-
-
-    {% else %}
-
-        {% if mascota.tipo == "oso" %} 
-            <img src="{{ url_for('static', filename='img/osito1.png') }}" class="img-fluid me-5"> 
-            
-            {% elif mascota.tipo == "gato" %} 
-                <img src="{{ url_for('static', filename='img/gatito1.png') }}" class="img-fluid me-5"> 
-                
-                {% else %}
-                    <img src="{{ url_for('static', filename='img/abejita1.png') }}" class="img-fluid me-5"> 
-                    
-        {% endif %}
-
->>>>>>> 0669583f706e963e1ee0019773b074a80e786837
 
     {% endif %}
 
@@ -85,6 +57,37 @@
         </a>
 
     {% endif %}
+
+    <div class="barra-progreso">
+
+        <div class="col-10 col-md-8 col-lg-5">
+
+            <div class="card shadow rounded-4 border-warning">
+
+                <div class="card-body">
+
+                    <h5 class="text-center fw-bold">
+                        sueño
+                    </h5>
+
+                    <div class="progress" style="height: 30px;">
+
+                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-info"
+                            style="width: {{ mascota.sueño}}%;">
+
+                            {{ mascota.sueño }}%
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </div>
 
