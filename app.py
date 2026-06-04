@@ -405,7 +405,7 @@ def jugar():
         "jugar"
     )
 
-    return redirect(url_for("inicio_mascotas"))
+    return redirect(url_for("patio"))
 
 @app.route("/cuarto")
 def cuarto():

@@ -37,48 +37,36 @@ body {
     left: 44%;
     width: 300px;
 }
+
 .input-password{
     top: 68%;
     left: 44%;
     width: 300px;
 }
-.olvide{
-    position: absolute;
+
+
+.olvide {
     top: 74%;
-    left: 45%;
-    text-decoration: none;
     color: #7a4300;
-    font-weight: bold;
-    z-index: 10000;
 }
-.boton-login{
-    position: absolute;
-    top: 76%;
-    left: 44%;
-    border: none;
-    background: none;
-    z-index: 10000;
-}
+
 .boton-login img{
     width: 220px;
 }
-.crear-cuenta {
-    line-height: 1;
-    position: absolute;
-    top: 84%;
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: center;
-    z-index: 10000;
-}
-.crear-cuenta a{
- display: block;
-    margin: 0;
-    padding: 0;
-    line-height: 1;
-    text-decoration: none;
-    color: #e68200;
-    font-size: 22px;
-    font-weight: bold;
+
+.top-login {
+    top: 76%;
 }
 
+.crear-cuenta {
+    position: absolute;
+    top: 83%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.crear-cuenta a {
+    color: #7a4300;
+    text-decoration: none;
+    font-weight: bold;
+}
