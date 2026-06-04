@@ -411,6 +411,16 @@ def cuarto():
         mascota=mascota
     )
 
+@app.route("/dormir")
+def dormir():
+
+    usuario_id = session["usuario_id"]
+
+    mascota = db.obtener_mascota_usuario(usuario_id)
+
+    db.dormir_mascota(mascota["_id"])
+
+    return redirect(url_for("cuarto"))
 
 @app.route("/despertar")
 def despertar():
@@ -421,18 +431,7 @@ def despertar():
 
     db.despertar_mascota(mascota["_id"])
 
-    return redirect(url_for("inicio_mascotas")) 
-
-@app.route("/dormir")
-def dormir():
-
-    usuario_id = session["usuario_id"]
-
-    mascota = db.obtener_mascota_usuario(usuario_id)
-
-    db.dormir_mascota(mascota["_id"])
-
-    return redirect(url_for("inicio_mascotas"))
+    return redirect(url_for("cuarto"))
 
 @app.route("/configuracion")
 def configuracion():

@@ -1,42 +1,63 @@
-{% extends "base_publica.html" %}
+{% extends "base_inicio.html" %}
 
-{% block title %}Dormir - HoneyPuff{% endblock %}
+{% block title %}Cuarto{% endblock %}
 
 {% block contenido %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/dormir.css') }}">   
 
+<link rel="stylesheet" href="{{ url_for('static', filename='css/cuarto.css') }}">
 
-<div class="container text-center mt-4">
+<div class="cuarto {% if mascota.durmiendo %}noche{% else %}dia{% endif %}">
 
-    {% if mascota.luz %}
+    <a href="{{ url_for('inicio_mascotas') }}" class="btn-regresar">
+        <img src="{{ url_for('static', filename='img/btn_regresar.png') }}">
+    </a>
 
-        <img
-            src="{{ url_for('static', filename='img/abejita1.png') }}"
-            class="img-fluid mascota"
-        >
+    {% if mascota.tipo == "oso" %}
 
-        <form action="{{ url_for('dormir') }}" method="POST" class="mt-3">
-            <button type="submit" class="btn btn-dark">
-                Dormir
-            </button>
-        </form>
+        {% if mascota.durmiendo %}
+            <img src="{{ url_for('static', filename='img/oso_cansado.png') }}"
+                 class="mascota">
+        {% else %}
+            <img src="{{ url_for('static', filename='img/osito1.png') }}"
+                 class="mascota">
+        {% endif %}
+
+    {% elif mascota.tipo == "gato" %}
+
+        {% if mascota.durmiendo %}
+            <img src="{{ url_for('static', filename='img/gatodormido.png') }}"
+                 class="mascota">
+        {% else %}
+            <img src="{{ url_for('static', filename='img/gatito1.png') }}"
+                 class="mascota">
+        {% endif %}
 
     {% else %}
 
-        <img
-            src="{{ url_for('static', filename='img/abejadormida.png') }}"
-            class="img-fluid mascota"
-        >
+        {% if mascota.durmiendo %}
+            <img src="{{ url_for('static', filename='img/abejadormida.png') }}"
+                 class="mascota">
+        {% else %}
+            <img src="{{ url_for('static', filename='img/abejita1.png') }}"
+                 class="mascota">
+        {% endif %}
 
-        <form action="{{ url_for('despertar') }}" method="POST" class="mt-3">
-            <button type="submit" class="btn btn-warning">
-                Despertar
-            </button>
-        </form>
+    {% endif %}
+
+    {% if mascota.durmiendo %}
+
+        <a href="{{ url_for('despertar') }}" class="lampara">
+            <img src="{{ url_for('static', filename='img/lamparaapagada.png') }}">
+        </a>
+
+    {% else %}
+
+        <a href="{{ url_for('dormir') }}" class="lampara">
+            <img src="{{ url_for('static', filename='img/lampara.png') }}">
+        </a>
 
     {% endif %}
 
 </div>
-
 
 {% endblock %}

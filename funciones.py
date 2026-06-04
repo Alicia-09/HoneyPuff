@@ -122,6 +122,7 @@ class HoneyPuffDB:
            "comida": 100,
            "sueño": 100,
            "felicidad": 100,
+           "durmiendo": False,
            "ultima_visita": datetime.now(),
            "lugar_nacimiento": lugar_nacimiento,
            "fecha_registro": datetime.now()
@@ -251,7 +252,8 @@ class HoneyPuffDB:
            {
                 "$set": {
                     "sueño": mascota["sueño"],
-                    "ultima_visita": mascota["ultima_visita"]
+                    "ultima_visita": mascota["ultima_visita"],
+                    "durmiendo": False
                 }
             }
         )
@@ -272,7 +274,8 @@ class HoneyPuffDB:
            {
                 "$set": {
                     "sueño": mascota["sueño"],
-                    "ultima_visita": mascota["ultima_visita"]
+                    "ultima_visita": mascota["ultima_visita"],
+                    "durmiendo": True
                 }
             }
         )

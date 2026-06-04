@@ -1,0 +1,31 @@
+.cuarto{
+    width:100vw;
+    height:100vh;
+    position:relative;
+}
+
+.dia{
+    background-image:url('../img/cama.png');
+    background-size:cover;
+    background-position:center;
+}
+
+.noche{
+    background-image:url('../img/camanoche.png');
+    background-size:cover;
+    background-position:center;
+}
+
+.mascota{
+    position:absolute;
+    left:45%;
+    top:34%;
+    width:350px;
+
+}
+
+.lampara{
+    position:absolute;
+    left:63%;
+    top:36%;
+}
