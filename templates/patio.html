@@ -9,127 +9,106 @@
 <div class="container-fluid vh-100">
 
     <div class="row pt-3">
-        <div class="col-12">
-
+        <div class="col">
             <a href="{{ url_for('inicio_mascotas') }}">
-                <img src="{{ url_for('static', filename='img/btn_regresar.png') }}"
-                     class="img-fluid animacion">
+                <img src="{{ url_for('static', filename='img/btn_regresar.png') }}" class="img-fluid animacion">
             </a>
-
         </div>
     </div>
 
-    <div class="row justify-content-center mt-4">
 
-        <div class="col-auto text-center">
+    <div class="row justify-content-center align-items-center mt-5">
 
-           {% if mascota.tipo == "oso" %}
+        <div class="col-auto">
+            <a href="{{ url_for('jugar') }}">
+                <img src="{{ url_for('static', filename='img/balon1.png') }}" class="img-fluid img-balon">
+            </a>
+        </div>
 
+        <div class="col-auto text-center mt-5">
+            {% if mascota.tipo == "oso" %}
                 {% if mascota.estado == "hambriento" %}
-                    <img src="{{ url_for('static', filename='img/oso_hambriento.png') }}" class="img-fluid img-mascota">
+                    <img src="{{ url_for('static', filename='img/oso_hambriento.png') }}" class="img-fluid mascota">
 
                 {% elif mascota.estado == "cansado" %}
-                    <img src="{{ url_for('static', filename='img/oso_cansado.png') }}" class="img-fluid img-mascota">
+                    <img src="{{ url_for('static', filename='img/oso_cansado.png') }}" class="img-fluid mascota">
 
                 {% elif mascota.estado == "triste" %}
-                    <img src="{{ url_for('static', filename='img/oso_triste.png') }}" class="img-fluid img-mascota">
+                    <img src="{{ url_for('static', filename='img/oso_triste.png') }}" class="img-fluid mascota">
 
                 {% else %}
-                    <img src="{{ url_for('static', filename='img/osito1.png') }}" class="img-fluid img-mascota">
+                    <img src="{{ url_for('static', filename='img/osito1.png') }}" class="img-fluid mascota">
                 {% endif %}
 
             {% elif mascota.tipo == "gato" %}
 
                 {% if mascota.estado == "hambriento" %}
-                    <img src="{{ url_for('static', filename='img/gato_hambriento.png') }}" class="img-fluid img-mascota">
+                    <img src="{{ url_for('static', filename='img/gato_hambriento.png') }}" class="img-fluid mascota">
 
                 {% elif mascota.estado == "cansado" %}
-                    <img src="{{ url_for('static', filename='img/gato_cansado.png') }}" class="img-fluid img-mascota">
+                    <img src="{{ url_for('static', filename='img/gato_cansado.png') }}" class="img-fluid mascota">
 
                 {% elif mascota.estado == "triste" %}
-                    <img src="{{ url_for('static', filename='img/gato_triste.png') }}" class="img-fluid img-mascota">
+                    <img src="{{ url_for('static', filename='img/gato_triste.png') }}" class="img-fluid mascota">
 
                 {% else %}
-                    <img src="{{ url_for('static', filename='img/gatito1.png') }}" class="img-fluid img-mascota">
+                    <img src="{{ url_for('static', filename='img/gatito1.png') }}" class="img-fluid mascota">
                 {% endif %}
 
             {% else %}
 
                 {% if mascota.estado == "hambriento" %}
-                    <img src="{{ url_for('static', filename='img/abeja_hambrienta.png') }}" class="img-fluid img-mascota">
+                    <img src="{{ url_for('static', filename='img/abeja_hambrienta.png') }}" class="img-fluid mascota">
 
                 {% elif mascota.estado == "cansado" %}
-                    <img src="{{ url_for('static', filename='img/abeja_cansada.png') }}" class="img-fluid img-mascota">
+                    <img src="{{ url_for('static', filename='img/abeja_cansada.png') }}" class="img-fluid mascota">
 
                 {% elif mascota.estado == "triste" %}
-                    <img src="{{ url_for('static', filename='img/abeja_triste.png') }}" class="img-fluid img-mascota">
+                    <img src="{{ url_for('static', filename='img/abeja_triste.png') }}" class="img-fluid mascota">
 
                 {% else %}
-                    <img src="{{ url_for('static', filename='img/abejita1.png') }}" class="img-fluid img-mascota">
+                    <img src="{{ url_for('static', filename='img/abejita1.png') }}" class="img-fluid mascota">
                 {% endif %}
 
             {% endif %}
 
 
+            <div class="mt-3">
+                <div class="card shadow rounded-4 border-warning">
 
-        </div>
+                    <div class="card-body">
 
-    </div>
+                        <h5 class="text-center fw-bold">
+                            Felicidad
+                        </h5>
 
+                        <div class="progress" style="height:30px;">
 
-    <div class="row justify-content-center mb-4 ">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-success"
+                                style="width: {{ mascota.felicidad }}%;">
 
-        <div class="col-auto">
+                                {{ mascota.felicidad }}%
 
-            <div class="d-flex justify-content-center gap-5">
-
-                <a href="{{ url_for('jugar') }}">
-                    <img src="{{ url_for('static', filename='img/balon1.png') }}"
-                         class="img-fluid  img-balon">
-                </a>
-
-                <a href="{{ url_for('jugar') }}">
-                    <img src="{{ url_for('static', filename='img/consola.png') }}"
-                         class="img-fluid img-consola">
-                </a>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <div class="barra-progreso">
-
-        <div class="col-10 col-md-10++¡ col-lg-5">
-
-            <div class="card shadow rounded-4 border-warning">
-
-                <div class="card-body">
-
-                    <h5 class="text-center fw-bold">
-                        felicidad
-                    </h5>
-
-                    <div class="progress" style="height: 30px;">
-
-                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-success"
-                            style="width: {{ mascota.felicidad }}%;">
-
-                            {{ mascota.felicidad }}%
+                            </div>
 
                         </div>
 
                     </div>
 
                 </div>
-
             </div>
 
         </div>
 
+        <div class="col-auto">
+            <a href="{{ url_for('jugar') }}">
+                <img src="{{ url_for('static', filename='img/consola.png') }}" class="img-fluid img-consola">
+            </a>
+        </div>
+
     </div>
+
+
 
 </div>
 {% endblock %}

@@ -183,7 +183,7 @@ class HoneyPuffDB:
 
         minutos = int((ahora - mascota["ultima_visita"]).total_seconds() / 60)
 
-        puntos = minutos // 10
+        puntos = minutos // 10 #cada 10 minutos se perdera un punto
 
         mascota["comida"] = max(0, mascota["comida"] - puntos)
         mascota["felicidad"] = max(0, mascota["felicidad"] - puntos)
@@ -191,14 +191,10 @@ class HoneyPuffDB:
 
 
         if accion == "comer":
-            mascota["comida"] += 5
+            mascota["comida"] += 10
 
         elif accion == "jugar":
-            mascota["felicidad"] += 5
-
-        elif accion == "dormir":
-            mascota["sueño"] += 5
-
+            mascota["felicidad"] += 10
 
         mascota["comida"] = min(100, mascota["comida"])
         mascota["felicidad"] = min(100, mascota["felicidad"])

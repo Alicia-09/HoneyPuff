@@ -5,51 +5,23 @@ body{
     background-repeat:no-repeat;
 }
 
-.col-auto.text-center img{
-    margin-top: 10px;
+.mascota{
+    width: 450px;
+    margin-top: 50%;
 }
 
-.img-mascota {
-    position: absolute;
-   width: 400px;
-   top: 49%;
-   left: 42%;
-}
-
-.img-balon {
-    position: absolute;
-    width: 130px;
-    left: 39%;
-    top: 76%;
-
-    transition:0.3s;
-}
-.img-consola {
-    position: absolute;
-    width: 130px;
-    left: 58%;
-    top: 76%;
-
-    transition:0.3s;
+.img-balon,
+.img-consola{
+    width: 180px;
+    transition: .3s;
 }
 
 .img-balon:hover,
-.img-consola:hover{
-    transform:scale(1.05);
-}
-
-.animacion {
-    transition:0.3s;
-}
-
+.img-consola:hover,
 .animacion:hover{
-    transform:scale(1.05);
+    transform: scale(1.05);
 }
 
-.barra-progreso{
-    position:absolute;
-    left:42%;
-    top:89%;
-    width:1000px;
-
+.animacion{
+    transition: .3s;
 }

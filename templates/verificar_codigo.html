@@ -46,8 +46,6 @@ Verificar código
 
     <form method="POST" action="{{ url_for('verificar_codigo') }}">
 
-        <!-- correo -->
-
         <div class="mb-3">
 
             <input
@@ -55,12 +53,9 @@ Verificar código
                 class="form-control"
                 name="Email"
                 placeholder="Correo electrónico"
-                required
-            >
+                required>
 
         </div>
-
-        <!-- codigo -->
 
         <div class="mb-3">
 
@@ -70,12 +65,13 @@ Verificar código
                 name="Codigo"
                 placeholder="Código de verificación"
                 maxlength="6"
-                required
-            >
+                inputmode="numeric"
+                pattern="[0-9]{6}"
+                title="El código debe contener exactamente 6 números"
+                required>
+            
 
         </div>
-
-        <!-- boton -->
 
         <button type="submit"
                 class="btn boton-amarillo w-100">
